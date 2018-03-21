@@ -1,0 +1,6 @@
+achtergrond kleur: rgb(80, 80, 80) -> donker grijs.
+tekst kleur: rgb(255, 255, 255) -> wit.
+
+navigatie achtergrond: royalblue;
+navigatie achterground hover: deepskyblue;
+navigatie tekst kleur: white
