@@ -1,12 +1,34 @@
 ﻿
 /* By default make all the text white*/
-h1, h2, h3, h4, h5, p
+h1, h2, h3, h4, h5, p, a
 {
-	color: rgb(255, 255, 255);
+	color: white;
+}
+
+a:hover
+{
+	color: white;
 }
 
 /*Set the default background color*/
 body 
 {
-	background-color: rgb(60, 60, 60);
+	background-color: rgb(80, 80, 80);
+}
+
+
+/* Navigation bar formatting */
+.navbar-colors 
+{
+	background-color: rgb(40, 40, 40);
+}
+
+ul.nav a:hover
+{
+	background-color: royalblue !important;
+}
+
+ul.nav a:focus {
+	color: white !important;
+	background-color: royalblue !important;
 }
