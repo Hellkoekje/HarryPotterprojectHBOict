@@ -4,12 +4,16 @@
 
 <html>
 	<head>
-		@RenderPage("~/Shared/_DefaultHead.cshtml");
+		@RenderPage("~/Shared/_DefaultHead.cshtml")
 	</head>
 
 	<body>
-			
-		<h1> Welkom!</h1>
 
+		@RenderPage("~/Shared/_NavigationBar.cshtml")
+
+		<h1> Welkom!</h1>
 	</body>
+
+	@RenderPage("~/Shared/_DefaultScripts.cshtml")
+
 </html>

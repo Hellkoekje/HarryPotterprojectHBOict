@@ -1,4 +1,12 @@
-﻿body 
+﻿
+/* By default make all the text white*/
+h1, h2, h3, h4, h5, p
 {
-	background-color: red;
+	color: rgb(255, 255, 255);
+}
+
+/*Set the default background color*/
+body 
+{
+	background-color: rgb(60, 60, 60);
 }
