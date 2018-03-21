@@ -1,0 +1,37 @@
+﻿
+@{
+    //  Database db = Database.Open("Database");
+}
+
+<!doctype Html>
+<html>
+<head>
+    <title>Log In System</title>
+    <link rel="stylesheet" type="text/css" href="~/StyleSheet.css"
+</head>
+<body>
+    <div class="header">
+        <h1>Register</h1>
+    </div>
+    <form method="post" action="register.php">
+        <div class="input-group">
+            <label>Username:</label>
+            <input type="text" name="username" />
+        </div>
+       
+        <div class="input-group">
+            <label>Password:</label>
+            <input type="password" name="password_1" />
+        </div>
+        <div class="input-group">
+            <button type="submit" name="Login">Log In</button>
+        </div>
+        <p>Not yet a member?<a href="~/Register.cshtml">Sign Up</a></p>
+
+
+    </form>
+</body>
+
+
+</html>
+

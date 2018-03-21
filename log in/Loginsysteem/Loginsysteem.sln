@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Loginsysteem", "Loginsysteem\", "{C5B070FC-C10A-45CD-A44E-C9F166A2D47A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58044"
+		Debug.AspNetCompiler.PhysicalPath = "Loginsysteem\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58044\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58044"
+		Release.AspNetCompiler.PhysicalPath = "Loginsysteem\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58044\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58044"
+		SlnRelativePath = "Loginsysteem\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5B070FC-C10A-45CD-A44E-C9F166A2D47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B070FC-C10A-45CD-A44E-C9F166A2D47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F41060D7-0F9B-4978-BC33-CED4F2B8FB99}
+	EndGlobalSection
+EndGlobal
