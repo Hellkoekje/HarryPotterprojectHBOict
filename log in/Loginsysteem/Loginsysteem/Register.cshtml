@@ -1,7 +1,24 @@
 ﻿
 
 @{
-  //  Database db = Database.Open("Database");
+    var userName = "";
+    var firstName = "";
+    var lastName = "";
+    var email = "";
+    var password_1 = "";
+
+        if(IsPost){
+            userName = Request.Form["userName"];
+            firstName = Request.Form["firstName"];
+            lastName = Request.Form["lastName"];
+            email = Request.Form["email"];
+            password_1 = Request.Form["password_1"];
+
+        var db = Database.Open("Database");
+        var insertCommand = "INSERT INTO users (userName, firstName, lastName, email, password_1) VALUES (@0, @1, @2, @3, @4)";
+        db.execute(instertCommand, userName, firstName, lastName, email, password_1);
+}
+
 }
 
 <!doctype Html>
@@ -14,37 +31,37 @@
     <div class="header">
         <h1>Register</h1>
     </div>
-    <form method="post" action="register.php">
-        <div class="input-group">
-            <label>Username:</label>
-            <input type="text" name="username" />
-        </div>
-        <div class="input-group">
-            <label>First Name:</label>
-            <input type="text" name="firstname" />
-        </div>
-        <div class="input-group">
-            <label>Last Name:</label>
-            <input type="text" name="lastname" />
-        </div>
-        <div class="input-group">
-            <label>Email:</label>
-            <input type="text" name="email" />
-        </div>
-        <div class="input-group">
-            <label>Password:</label>
-            <input type="password" name="password_1" />
-        </div>
-        <div class="input-group">
-            <label>Confirm Password:</label>
-            <input type="password" name="password_2" />
-        </div>
-        <div class="input-group">
-            <button type="submit" name="register">Register</button>
-        </div>
+    <form method="post">
+        <fieldset>
+            <div class="input-group">
+                <label>Username:</label>
+                <input type="text" name="userName" value="@Request.form["userName"]"/> 
+            </div>
+            <div class="input-group">
+                <label>First Name:</label>
+                <input type="text" name="firstName" value="@Request.form["firstName"]"/>
+            </div>
+            <div class="input-group">
+                <label>Last Name:</label>
+                <input type="text" name="lastName" value="@Request.form["lastName"]" />
+            </div>
+            <div class="input-group">
+                <label>Email:</label>
+                <input type="text" name="email" value="@Request.form["email"]" />
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" name="password_1" value="@Request.form["password_1"]" />
+            </div>
+            <div class="input-group">
+                <label>Confirm Password:</label>
+                <input type="password" name="password_2" />
+            </div>
+            <div class="input-group">
+                <button type="submit" name="register">Register</button>
+            </div>
         <p>Already a member?<a href="~/Login.cshtml">Log In</a></p>
-
-
+        </fieldset>
     </form>
 </body>
 

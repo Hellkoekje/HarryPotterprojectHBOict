@@ -1,4 +1,7 @@
-﻿
+﻿@using System.Data;
+@using System.Data.SqlClient;
+@using System.Configuration;
+
 @{
     //  Database db = Database.Open("Database");
 }
@@ -8,7 +11,7 @@
 <head>
     <title>Log In System</title>
     <link rel="stylesheet" type="text/css" href="~/StyleSheet.css"
-</head>
+</head>                                                                                                                                                                                                                                                                                                                                                                                                                                                
 <body>
     <div class="header">
         <h1>Register</h1>
@@ -21,7 +24,7 @@
        
         <div class="input-group">
             <label>Password:</label>
-            <input type="password" name="password_1" />
+            <input id="Password1" type="password" />
         </div>
         <div class="input-group">
             <button type="submit" name="Login">Log In</button>
