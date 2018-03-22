@@ -1,0 +1,24 @@
+﻿@{
+	Page.Title = "Home";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	@RenderPage("~/Shared/Common/_DefaultHead.cshtml")
+</head>
+
+<body>
+	@RenderPage("~/Shared/Common/_NavigationBar.cshtml")
+
+	<div class="content">
+		@RenderBody()
+	</div>
+
+
+	@RenderPage("~/Shared/Common/_Footer.cshtml")
+</body>
+
+@RenderPage("~/Shared/Common/_DefaultScripts.cshtml")
+
+</html>
