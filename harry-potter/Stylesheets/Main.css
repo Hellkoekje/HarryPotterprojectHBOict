@@ -23,6 +23,18 @@ body
 	background-color: rgb(40, 40, 40);
 }
 
+.navbar-hamburger-button
+{
+	color: white;
+	background-color: royalblue;
+}
+
+.navbar-hamburger-button:hover
+{
+	color: black;
+	background-color: white;
+}
+
 ul.nav a:hover
 {
 	background-color: royalblue !important;
@@ -31,4 +43,24 @@ ul.nav a:hover
 ul.nav a:focus {
 	color: white !important;
 	background-color: royalblue !important;
+}
+
+/* Footer formatting */
+.footer-position
+{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+}
+
+.footer-color
+{
+	color: white;
+	background-color: rgb(40,40,40);
+}
+
+.footer-copyright-color
+{
+	background-color: royalblue;
 }
