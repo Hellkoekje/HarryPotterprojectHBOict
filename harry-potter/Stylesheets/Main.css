@@ -1,5 +1,11 @@
 ﻿
 /* By default make all the text white*/
+html 
+{
+	position: relative;
+	min-height: 100%;
+}
+
 h1, h2, h3, h4, h5, p, a
 {
 	color: white;
@@ -13,7 +19,14 @@ a:hover
 /*Set the default background color*/
 body 
 {
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
 	background-color: rgb(80, 80, 80);
+	overflow: hidden;
+	margin-bottom: 60px;
 }
 
 
@@ -21,6 +34,7 @@ body
 .navbar-colors 
 {
 	background-color: rgb(40, 40, 40);
+	margin: 0;
 }
 
 .navbar-hamburger-button
@@ -46,12 +60,10 @@ ul.nav a:focus {
 }
 
 /* Footer formatting */
-.footer-position
+.footer-position 
 {
-	position: fixed;
 	width: 100%;
-	bottom: 0;
-	left: 0;
+	flex: 0, 0, 50px;
 }
 
 .footer-color
@@ -60,7 +72,21 @@ ul.nav a:focus {
 	background-color: rgb(40,40,40);
 }
 
-.footer-copyright-color
+.footer-copyright
 {
+	width:100%;
 	background-color: royalblue;
+}
+
+/* Content of the default page */
+.content 
+{
+	height: 100%;
+}
+
+.content-wrapper 
+{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
