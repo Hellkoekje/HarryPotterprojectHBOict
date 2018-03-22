@@ -19,13 +19,8 @@ a:hover
 /*Set the default background color*/
 body 
 {
-
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-
 	background-color: rgb(80, 80, 80);
-	overflow: hidden;
+	overflow-x: hidden;
 	margin-bottom: 60px;
 }
 
@@ -63,7 +58,10 @@ ul.nav a:focus {
 .footer-position 
 {
 	width: 100%;
-	flex: 0, 0, 50px;
+
+	position: fixed;
+	left: 0;
+	bottom: 0;
 }
 
 .footer-color
@@ -82,11 +80,4 @@ ul.nav a:focus {
 .content 
 {
 	height: 100%;
-}
-
-.content-wrapper 
-{
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
 }
