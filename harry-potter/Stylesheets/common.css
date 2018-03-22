@@ -1,0 +1,14 @@
+﻿
+/* Vertical margin levels.*/
+.vm-1
+{
+	margin-top: 20px;
+}
+
+.vm-2 {
+	margin-top: 50px;
+}
+
+.vm-3 {
+	margin-top: 80px;
+}

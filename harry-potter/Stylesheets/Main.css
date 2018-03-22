@@ -19,7 +19,7 @@ a:hover
 /*Set the default background color*/
 body 
 {
-	background-color: rgb(80, 80, 80);
+	background-color: rgb(50, 50, 50);
 	overflow-x: hidden;
 	margin-bottom: 60px;
 }
