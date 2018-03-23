@@ -1,31 +1,24 @@
-﻿
-
+﻿@using WebMatrix.Data;
 @{
-    var userName = "";
-    var firstName = "";
-    var lastName = "";
-    var email = "";
-    var password_1 = "";
+    var uUname = "";
+    var uEmail = "";
+    var uPassword = "";
 
         if(IsPost){
-            userName = Request.Form["userName"];
-            firstName = Request.Form["firstName"];
-            lastName = Request.Form["lastName"];
-            email = Request.Form["email"];
-            password_1 = Request.Form["password_1"];
+            uUname = Request.Form["uUname"];
+            uEmail = Request.Form["uEmail"];
+            uPassword = Request.Form["uPassword"];
 
         var db = Database.Open("Database");
-        var insertCommand = "INSERT INTO users (userName, firstName, lastName, email, password_1) VALUES (@0, @1, @2, @3, @4)";
-        db.execute(instertCommand, userName, firstName, lastName, email, password_1);
-}
-
-}
+        var insertCommand = "INSERT INTO users (uUname, Uemail, uPassword) VALUES (@0, @1, @2)";
+        db.Execute(insertCommand, uUname, uEmail, uPassword);
+}}
 
 <!doctype Html>
 <html>
 <head>
     <title>Log In System</title>
-    <link rel="stylesheet" type="text/css" href="~/StyleSheet.css"
+    <link rel="stylesheet" type="text/css" href="~/StyleSheet.css" />
 </head>
 <body>
     <div class="header">
@@ -35,27 +28,19 @@
         <fieldset>
             <div class="input-group">
                 <label>Username:</label>
-                <input type="text" name="userName" value="@Request.form["userName"]"/> 
-            </div>
-            <div class="input-group">
-                <label>First Name:</label>
-                <input type="text" name="firstName" value="@Request.form["firstName"]"/>
-            </div>
-            <div class="input-group">
-                <label>Last Name:</label>
-                <input type="text" name="lastName" value="@Request.form["lastName"]" />
+                <input type="text" name="uUname" value="@Request.Form["userName"]"/> 
             </div>
             <div class="input-group">
                 <label>Email:</label>
-                <input type="text" name="email" value="@Request.form["email"]" />
+                <input type="text" name="uEmail" value="@Request.Form["email"]" />
             </div>
             <div class="input-group">
                 <label>Password:</label>
-                <input type="password" name="password_1" value="@Request.form["password_1"]" />
+                <input type="password" name="uPassword" value="@Request.Form["password_1"]" />
             </div>
             <div class="input-group">
                 <label>Confirm Password:</label>
-                <input type="password" name="password_2" />
+                <input type="password" name="uPassword_1" />
             </div>
             <div class="input-group">
                 <button type="submit" name="register">Register</button>
