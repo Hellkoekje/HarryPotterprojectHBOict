@@ -1,5 +1,8 @@
 ﻿@using WebMatrix.Data;
 @{
+
+    
+    
     var uUname = "";
     var uEmail = "";
     var uPassword = "";
@@ -9,7 +12,7 @@
             uEmail = Request.Form["uEmail"];
             uPassword = Request.Form["uPassword"];
 
-        var db = Database.Open("Database");
+        Database db = Database.Open("Database");
         var insertCommand = "INSERT INTO users (uUname, Uemail, uPassword) VALUES (@0, @1, @2)";
         db.Execute(insertCommand, uUname, uEmail, uPassword);
 }}
