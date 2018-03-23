@@ -3,24 +3,27 @@
 	Layout = "~/Shared/_DefaultPage.cshtml";
 }
 
-
 <div class="col-md-12" align="center">
-	<div class="row">
-		<img src="@Href("~/Content/Images/logo.png")" width="480" height="328" />
-		<h1> HogwartSim </h1>
+	<div class="row vm-1">
+		<h1> Contact </h1>
 	</div>
 
 	<div class="row vm-1">
 		<p>
-			Are you always wanted to become a wizard? Enroll now! Follow virtual lessons on the HogwartSim we website<br />
-			Compete against other wizards, become a part of an house, earn and spend smekkies in Hogsmead!<br /><br />
-			Click the enroll button to start enrolling into Hogwarts!
+			Sooo you muggle, you wanted to get in touch with us...&nbsp; Please fill out this form and we will take a look at it!
 		</p>
 	</div>
 
 	<div class="row vm-2">
 
-		<button type="button" class="btn btn-secondary">Enroll now!</button>
+		<form method="post" action="">
+			<div class="form-group">
+				<label for="email-address">E-mail Address</label>
+				<input name="email-address" class="form-control">
+			</div>
+
+
+		</form>
 	</div>
 </div>
 

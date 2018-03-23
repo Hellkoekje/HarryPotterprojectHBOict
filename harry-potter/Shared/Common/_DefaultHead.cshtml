@@ -12,3 +12,17 @@
 <link rel="stylesheet" href="@Href("~/Stylesheets/main.css")" />
 <link rel="stylesheet" href="@Href("~/Stylesheets/common.css")" />
 
+@{
+	//Include page specific css.
+	string stylesheetName = Page.Title.ToLower() + ".css";
+	string stylesheetDirectory = "~/Stylesheets";
+
+	string serverPath = Server.MapPath(stylesheetDirectory);
+	string localPath = Path.Combine(stylesheetDirectory, stylesheetName);
+	string path = Path.Combine(serverPath, stylesheetName);
+
+	if (File.Exists(path))
+	{
+		<link rel="stylesheet" href=@Href(localPath)/>
+	}
+}
