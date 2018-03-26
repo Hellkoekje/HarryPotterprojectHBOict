@@ -15,10 +15,7 @@
 
         try
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
-            string provider = "System.Data.SqlClient";
-
-            Database db = Database.OpenConnectionString(connectionString, provider);
+            Database db = Database.Open("Database");
             var insertCommand = "INSERT INTO users (uUname, Uemail, uPassword) VALUES (@0, @1, @2)";
             db.Execute(insertCommand, uUname, uEmail, uPassword);
         }
