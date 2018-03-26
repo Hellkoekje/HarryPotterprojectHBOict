@@ -29,6 +29,7 @@
     Validator.StringLength(1024, 6, "The given password is too short")
     );
 
+   
 
     if (IsPost)
     {
@@ -45,6 +46,7 @@
                 Database db = Database.Open("Database");
                 var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword) VALUES (@0, @1, @2)";
                 db.Execute(insertCommand, uUname, uEmail, uPassword);
+
             }
             catch (Exception e)
             {
@@ -52,7 +54,7 @@
             }
         }
 
-    } 
+    }
 }
 
 
