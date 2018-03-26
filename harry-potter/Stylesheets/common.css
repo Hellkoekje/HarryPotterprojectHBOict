@@ -1,5 +1,5 @@
 ﻿
-/* Vertical margin levels.*/
+/* Spacing classes.*/
 .vm-1
 {
 	margin-top: 20px;
@@ -15,7 +15,14 @@
 	margin-top: 80px;
 }
 
+/* Link (a element) related */
 .inline-link
 {
     color: royalblue;
+}
+
+/* Form related */
+.form-label
+{
+    color: white;
 }

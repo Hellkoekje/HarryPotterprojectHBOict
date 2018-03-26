@@ -1,26 +1,50 @@
 ﻿@{
-	Page.Title = "Enroll";
-	Layout = "~/Shared/_DefaultPage.cshtml";
+    Page.Title = "Enroll";
+    Layout = "~/Shared/_DefaultPage.cshtml";
 }
 
 
 <div class="col-md-12" align="center">
-	<div class="row">
-		<img src="@Href("~/Content/Images/logo.png")" width="480" height="328" />
-		<h1> HogwartSim </h1>
-	</div>
+    <div class="row vm-1">
+        <h1>Enroll</h1>
+    </div>
 
-	<div class="row vm-1">
-		<p>
-			Are you always wanted to become a wizard? Enroll now! Follow virtual lessons on the HogwartSim we website<br />
-			Compete against other wizards, become a part of an house, earn and spend smekkies in Hogsmead!<br /><br />
-			Click the enroll button to start enrolling into Hogwarts!
-		</p>
-	</div>
+    <div class="row vm-1">
+        <p>
+            Look who came back crawling to become a mighty wizard... Alright then... <br/>
+            If you are up for the challenge, I guess it won't cause any harm. Now fill in this form and start your journey!
+        </p>
+    </div>
 
-	<div class="row vm-2">
+    <div class="row vm-2">
+        <div class="contact-form col-md-offset-3 col-md-6" align="left">
 
-		<button type="button" class="btn btn-secondary">Enroll now!</button>
-	</div>
+            <form method="post">
+
+                <div class="form-group">
+                    <label class="form-label" for="uUname">Username</label>
+                    <input name="uUname" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uEmail">E-mail Address</label>
+                    <input name="uEmail" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uPassword">Password</label>
+                    <input name="uPassword" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uPasswordConfirm">Confirm password</label>
+                    <input name="uPasswordConfirm" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-secondary vm-1">Enroll!</button>
+            </form>
+        </div>
+    </div>
 </div>
+
 
