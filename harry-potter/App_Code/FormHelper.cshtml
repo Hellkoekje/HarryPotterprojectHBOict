@@ -1,0 +1,9 @@
+﻿@helper GetFormFieldError(string name, bool state)
+{
+    if (!state)
+    {
+        <span class="form-error">
+            - @Html.ValidationMessage(name)
+        </span>
+    }
+}
