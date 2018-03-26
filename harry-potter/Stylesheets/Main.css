@@ -26,6 +26,11 @@ body
 
 
 /* Navigation bar formatting */
+.navbar-active 
+{
+    background-color: cornflowerblue;
+}
+
 .navbar-colors 
 {
 	background-color: rgb(40, 40, 40);

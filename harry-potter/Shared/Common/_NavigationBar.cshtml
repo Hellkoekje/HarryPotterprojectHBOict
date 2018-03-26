@@ -38,7 +38,7 @@
 
 			@foreach (var item in navigationLinks)
 			{
-				string classes = item.Item1.Equals(Page.Title) ? "active" : "";
+				string classes = item.Item1.Equals(Page.Title) ? "navbar-active" : "";
 
 				<li class=@classes>
 					<a href="@item.Item2"><i class="fas @item.Item3"></i> @item.Item1</a>
