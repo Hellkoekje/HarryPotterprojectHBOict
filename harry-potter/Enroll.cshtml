@@ -1,5 +1,7 @@
 ﻿@using WebMatrix.Data;
 @{
+    bool hasPost = false;
+
     var uUname = "";
     var uEmail = "";
     var uPassword = "";
@@ -11,28 +13,27 @@
         Validator.Required("Username cannot be empty"),
         Validator.StringLength(32, 6, "Username is too long or too short"),
         Validator.Regex(@"^[A-Za-z0-9_.]+$", "Usernames contains illegal characters")
-        );
+    );
 
     Validation.Add("uEmail",
-    Validator.Required("Email cannot be empty"),
-    Validator.StringLength(128, 3, "Username is too long or too short"),
-    Validator.Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", "Email format is incorrect")
+        Validator.Required("Email cannot be empty"),
+        Validator.StringLength(128, 3, "Username is too long or too short"),
+        Validator.Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", "Email format is incorrect")
     );
 
     Validation.Add("uPassword",
-    Validator.Required("Password cannot be empty"),
-    Validator.StringLength(1024, 6, "The given password is too short")
+        Validator.Required("Password cannot be empty"),
+        Validator.StringLength(1024, 6, "The given password is too short")
     );
 
     Validation.Add("uPasswordConfirm",
-    Validator.Required("Password cannot be empty"),
-    Validator.StringLength(1024, 6, "The given password is too short")
+        Validator.Required("Password cannot be empty"),
+        Validator.StringLength(1024, 6, "The given password is too short")
     );
-
-   
 
     if (IsPost)
     {
+        hasPost = true;
         AntiForgery.Validate();
 
         if (Validation.IsValid())
@@ -53,59 +54,56 @@
                 Response.Write($"You fucked up! {Environment.NewLine} Error: {e.Message}");
             }
         }
-
     }
 }
 
+<div class="col-md-12" align="center">
+    <div class="row vm-1">
+        <h1>Enroll</h1>
+    </div>
 
+    <div class="row vm-1">
+        <p>
+            Look who came back crawling to become a mighty wizard... Alright then... <br />
+            If you are up for the challenge, I guess it won't cause any harm. Now fill in this form and start your journey!
+        </p>
+    </div>
 
-        <div class="col-md-12" align="center">
-            <div class="row vm-1">
-                <h1>Enroll</h1>
-            </div>
+    <div class="row vm-2">
+        <div class="contact-form col-md-offset-3 col-md-6" align="left">
 
-            <div class="row vm-1">
-                <p>
-                    Look who came back crawling to become a mighty wizard... Alright then... <br />
-                    If you are up for the challenge, I guess it won't cause any harm. Now fill in this form and start your journey!
-                </p>
-            </div>
+            @Html.ValidationSummary(true)
 
-            <div class="row vm-2">
-                <div class="contact-form col-md-offset-3 col-md-6" align="left">
-
-                    @Html.ValidationSummary(true)
-
-                    <form method="post">
-                        @AntiForgery.GetHtml()
-                        <div class="form-group">
-                            <label class="form-label" for="uUname">Username</label>
-                            <input name="uUname" class="form-control" @Validation.For("uUname") required>
-                            @FormHelper.GetFormFieldError("uUname", Validation.IsValid("uUname"))
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="uEmail">E-mail Address</label>
-                            <input name="uEmail" class="form-control" @Validation.For("uEmail") required>
-                            @FormHelper.GetFormFieldError("uEmail", Validation.IsValid("uEmail"))
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="uPassword">Password</label>
-                            <input type="password" name="uPassword" class="form-control" @Validation.For("uPassword") required>
-                            @FormHelper.GetFormFieldError("uPassword", Validation.IsValid("uPassword"))
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="uPasswordConfirm">Confirm password</label>
-                            <input type="password" name="uPasswordConfirm" class="form-control" @Validation.For("uPasswordConfirm") required>
-                            @FormHelper.GetFormFieldError("uPasswordConfirm", Validation.IsValid("uPasswordConfirm"))
-                        </div>
-
-                        <button type="submit" class="btn btn-secondary vm-1">Enroll!</button>
-                    </form>
+            <form method="post">
+                @AntiForgery.GetHtml()
+                <div class="form-group">
+                    <label class="form-label" for="uUname">Username</label>
+                    <input name="uUname" class="form-control" @Validation.For("uUname") required>
+                    @FormHelper.GetFormFieldError("uUname", Validation.IsValid("uUname"), hasPost)
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uEmail">E-mail Address</label>
+                    <input name="uEmail" class="form-control" @Validation.For("uEmail") required>
+                    @FormHelper.GetFormFieldError("uEmail", Validation.IsValid("uEmail"), hasPost)
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uPassword">Password</label>
+                    <input type="password" name="uPassword" class="form-control" @Validation.For("uPassword") required>
+                    @FormHelper.GetFormFieldError("uPassword", Validation.IsValid("uPassword"), hasPost)
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="uPasswordConfirm">Confirm password</label>
+                    <input type="password" name="uPasswordConfirm" class="form-control" @Validation.For("uPasswordConfirm") required>
+                    @FormHelper.GetFormFieldError("uPasswordConfirm", Validation.IsValid("uPasswordConfirm"), hasPost)
+                </div>
+
+                <button type="submit" class="btn btn-secondary vm-1">Enroll!</button>
+            </form>
         </div>
+    </div>
+</div>
 
 
