@@ -1,26 +1,81 @@
 ﻿@{
-	Page.Title = "Login";
-	Layout = "~/Shared/_DefaultPage.cshtml";
+    Page.Title = "Login";
+    Layout = "~/Shared/_DefaultPage.cshtml";
+
+    bool hasPost = false;
+
+    Validation.Add("uUname",
+        Validator.Required("Username cannot be empty"),
+        Validator.StringLength(32, 6, "Username is too long or too short"),
+        Validator.Regex(@"^[A-Za-z0-9_.]+$", "Usernames contains illegal characters")
+    );
+
+    Validation.Add("uPassword",
+        Validator.Required("Password cannot be empty"),
+        Validator.StringLength(1024, 6, "The given password is too short")
+    );
+
+    if (IsPost)
+    {
+        hasPost = true;
+
+        bool isValid = true;
+
+        if (!Validation.IsValid())
+        {
+            isValid = false;
+        }
+
+        if(isValid)
+        {
+            ModelState.AddError("accountNotFound", "The given account name does not exist!");
+            ModelState.AddError("passwordIncorrect", "The password for this account is incorrect.");
+
+            Response.Redirect("~/Portal.cshtml");
+        }
+    }
 }
 
 
 <div class="col-md-12" align="center">
-	<div class="row">
-		<img src="@Href("~/Content/Images/logo.png")" width="480" height="328" />
-		<h1> HogwartSim </h1>
-	</div>
+    <div class="row vm-1">
+        <h1>Login</h1>
+    </div>
 
-	<div class="row vm-1">
-		<p>
-			Are you always wanted to become a wizard? Enroll now! Follow virtual lessons on the HogwartSim we website<br />
-			Compete against other wizards, become a part of an house, earn and spend smekkies in Hogsmead!<br /><br />
-			Click the enroll button to start enrolling into Hogwarts!
-		</p>
-	</div>
+    <div class="row vm-1">
+        <p>
+            The train to hogwarts is leaving in about 5 minutes, be quick!
+        </p>
+    </div>
 
-	<div class="row vm-2">
+    <div class="row vm-3">
+        <div class="contact-form col-md-offset-3 col-md-6" align="left">
 
-		<button type="button" class="btn btn-secondary">Enroll now!</button>
-	</div>
+            @Html.ValidationSummary(true)
+
+            <form method="post">
+                @AntiForgery.GetHtml()
+                <div class="form-group">
+                    <label class="form-label" for="uUname">Username</label>
+                    <input name="uUname" class="form-control" @Validation.For("uUname") required>
+                    @FormHelper.GetFormFieldError("uUname", Validation.IsValid("uUname"), hasPost)
+                    @FormHelper.GetFormError("accountNotFound");
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="uPassword">Password</label>
+                    <input type="password" name="uPassword" class="form-control" @Validation.For("uPassword") required>
+                    @FormHelper.GetFormFieldError("uPassword", Validation.IsValid("uPassword"), hasPost)
+                    @FormHelper.GetFormError("passwordIncorrect");
+                </div>
+
+                <div class="custom-control">
+                    <input type="checkbox" name="uRemember">
+                    <label class="custom-control-label form-label" for="uRemember">Remember me</label>
+                    <a href="@Href("~/RecoverPassword.cshtml")" class="fl-right inline-link" align="right">Recover your password</a>
+                </div>
+
+                <button type="submit" class="btn btn-secondary vm-1">Login!</button>
+            </form>
+        </div>
+    </div>
 </div>
-

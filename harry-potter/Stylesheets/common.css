@@ -1,4 +1,11 @@
 ﻿
+/* Positioning classes */
+.fl-right
+{
+    float: right;
+
+}
+
 /* Spacing classes.*/
 .vm-1
 {
@@ -31,3 +38,4 @@
 {
     color: tomato;
 }
+

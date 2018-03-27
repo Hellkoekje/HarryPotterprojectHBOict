@@ -13,12 +13,12 @@
     Validation.Add("uUname",
         Validator.Required("Username cannot be empty"),
         Validator.StringLength(32, 6, "Username is too long or too short"),
-        Validator.Regex(@"^[A-Za-z0-9_.]+$", "Usernames contains illegal characters")
+        Validator.Regex(@"^[A-Za-z0-9_.]+$", "Username contains illegal characters")
     );
 
     Validation.Add("uEmail",
         Validator.Required("Email cannot be empty"),
-        Validator.StringLength(128, 3, "Username is too long or too short"),
+        Validator.StringLength(128, 3, "Email is too long or too short"),
         Validator.Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", "Email format is incorrect")
     );
 
