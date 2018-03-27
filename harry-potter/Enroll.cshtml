@@ -2,9 +2,10 @@
 @{
     bool hasPost = false;
 
-    var uUname = "";
-    var uEmail = "";
-    var uPassword = "";
+    string uUname = "";
+    string uEmail = "";
+    string uPassword = "";
+    string uPasswordConfirm = "";
 
     Page.Title = "Enroll";
     Layout = "~/Shared/_DefaultPage.cshtml";
@@ -31,17 +32,31 @@
         Validator.StringLength(1024, 6, "The given password is too short")
     );
 
+
     if (IsPost)
     {
+        bool isThisPostValid = true;
         hasPost = true;
         AntiForgery.Validate();
 
-        if (Validation.IsValid())
+        if (!Validation.IsValid())
         {
-            uUname = Request.Form["uUname"];
-            uEmail = Request.Form["uEmail"];
-            uPassword = Request.Form["uPassword"];
+            isThisPostValid = false;
+        }
 
+        uUname = Request.Form["uUname"];
+        uEmail = Request.Form["uEmail"];
+        uPassword = Request.Form["uPassword"];
+        uPasswordConfirm = Request.Form["uPasswordConfirm"];
+
+        if (!uPassword.Equals(uPasswordConfirm))
+        {
+            ModelState.AddError("noPasswordMatch", "The given passwords do not match.");
+            isThisPostValid = false;
+        }
+
+        if (isThisPostValid)
+        {
             try
             {
                 Database db = Database.Open("Database");
@@ -52,6 +67,7 @@
             catch (Exception e)
             {
                 Response.Write($"You fucked up! {Environment.NewLine} Error: {e.Message}");
+
             }
         }
     }
@@ -92,12 +108,14 @@
                     <label class="form-label" for="uPassword">Password</label>
                     <input type="password" name="uPassword" class="form-control" @Validation.For("uPassword") required>
                     @FormHelper.GetFormFieldError("uPassword", Validation.IsValid("uPassword"), hasPost)
+                    @FormHelper.GetFormError("noPasswordMatch", hasPost)
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="uPasswordConfirm">Confirm password</label>
                     <input type="password" name="uPasswordConfirm" class="form-control" @Validation.For("uPasswordConfirm") required>
                     @FormHelper.GetFormFieldError("uPasswordConfirm", Validation.IsValid("uPasswordConfirm"), hasPost)
+                    @FormHelper.GetFormError("noPasswordMatch", hasPost)
                 </div>
 
                 <button type="submit" class="btn btn-secondary vm-1">Enroll!</button>
