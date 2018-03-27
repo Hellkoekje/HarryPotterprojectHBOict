@@ -1,6 +1,14 @@
-﻿@helper GetFormFieldError(string name, bool state)
+﻿@helper GetFormFieldError(string name, bool isValid, bool show = false)
 {
-    if (!state)
+    if (!isValid)
+    {
+        FormHelper.GetFormError(name, show);
+    }
+}
+
+@helper GetFormError(string name, bool show = false)
+{
+    if (show)
     {
         <span class="form-error">
             - @Html.ValidationMessage(name)
