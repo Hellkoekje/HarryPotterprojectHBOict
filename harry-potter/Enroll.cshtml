@@ -66,8 +66,14 @@
             }
             catch (Exception e)
             {
-                Response.Write($"You fucked up! {Environment.NewLine} Error: {e.Message}");
-
+                if ((bool)AppState["debugMode"])
+                {
+                    Response.Write($"You fucked up! {Environment.NewLine} Error: {e.Message}");
+                }
+                else
+                {
+                    Response.Redirect("~/500.cshtml", true);
+                }
             }
         }
     }
