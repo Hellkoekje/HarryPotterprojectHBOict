@@ -1,0 +1,42 @@
+﻿@helper GenerateTimeTable(DateTime start, DateTime end, TimeSpan timeStep)
+{
+    string[] days = new string[]
+    {
+        "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Satureday",
+        "Sunday"
+    };
+
+    <table class="table">
+        <h3>Time table</h3>
+        <thead>
+            <tr>
+                <th scope="col">Time</th>
+                @foreach(string day in days)
+                {
+                    <th scope="col">@day</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                DateTime current = start;
+                while ((current - timeStep) < end)
+                {
+                    <tr>
+                        <th scope="row">@current.ToString("HH:mm")</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    current += timeStep;
+                }
+            }
+        </tbody>
+    </table>
+}

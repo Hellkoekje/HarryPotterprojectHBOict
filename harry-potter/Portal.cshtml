@@ -16,6 +16,11 @@
     houseImages.TryGetValue(house, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent("Houses/" + image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
+
+    DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+    DateTime endTime = DateTime.ParseExact("17:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+    TimeSpan increments = new TimeSpan(0, 30, 0);
+
 }
 
 <div class="col-md-12">
@@ -51,134 +56,7 @@
         </div>
 
         <div class="col-md-9 info-panel vm-1 hm-1">
-            <table class="table">
-                <caption>List of users</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Time</th>
-                        <th scope="col">Monday</th>
-                        <th scope="col">Tuesday</th>
-                        <th scope="col">Wednesday</th>
-                        <th scope="col">Thursday</th>
-                        <th scope="col">Friday</th>
-                        <th scope="col">Saturday</th>
-                        <th scope="col">Sunday</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">08:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">09:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">10:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">11:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">12:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">13:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">14:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">15:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">16:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">17:00</th>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-
-                </tbody>
-            </table>
+            @TimeTableHelper.GenerateTimeTable(startTime, endTime, increments);
         </div>
     </div>
 </div>
