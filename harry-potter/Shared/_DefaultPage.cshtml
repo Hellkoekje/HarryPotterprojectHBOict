@@ -10,8 +10,9 @@
             @RenderPage("~/Shared/Common/_NavigationBar.cshtml")
 
             <div class="content row">
-                @RenderBody()
-            </div>
+                <div class="col-md-10 col-sm-12 col-md-offset-1">
+                    @RenderBody()
+                </div>
             
             @RenderPage("~/Shared/Common/_Footer.cshtml")
         </div>
