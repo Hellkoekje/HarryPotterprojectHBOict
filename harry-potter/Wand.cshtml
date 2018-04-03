@@ -1,0 +1,143 @@
+﻿@{
+    Page.Title = "Wand";
+    Layout = "~/Shared/_DefaultPage.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <form method="post">
+        <br /> <h1>Wand selector</h1>
+        <br />
+        <br />
+
+        <div id="quiz">
+            <p>
+                <strong>Question 1</strong> <br />
+                In what month of the year were you born?<br />
+                <input type="radio" value="ash" name="vraag1">&nbsp;&nbsp;Dec, Jan, Feb <br />
+                <input type="radio" value="haw" name="vraag1">&nbsp;&nbsp;Mar, Apr, May <br />
+                <input type="radio" value="hol" name="vraag1">&nbsp;&nbsp;Jun, Jul, Aug <br />
+                <input type="radio" value="vin" name="vraag1">&nbsp;&nbsp;Sep, Okt, Nov  <br />
+            </p>
+            <p>
+                <strong>Question 2</strong> <br />
+                What is an import aspect, that your think your wand should have?<br />
+                My wand:<br />
+                <input type="radio" value="vin" name="vraag2">&nbsp;&nbsp;should be sensitive and help me seek a greater purpose.<br />
+                <input type="radio" value="haw" name="vraag2">&nbsp;&nbsp;should only be used by a skillful and complex wizard like me.<br />
+                <input type="radio" value="hol" name="vraag2">&nbsp;&nbsp;has to be rare and has to help me on my spiritual quests. <br />
+                <input type="radio" value="ash" name="vraag2">&nbsp;&nbsp;has to stay loyal to me and shouldn’t be gifted or passed on.<br />
+            </p>
+            <p>
+                <strong>Question 3</strong><br />
+                When I am wandering through Hogwarts and think about some of the great students who used to roam around here, I particularry look up to:<br />
+                <input type="radio" value="hol" name="vraag3">&nbsp;&nbsp;Harry Potter<br />
+                <input type="radio" value="ash" name="vraag3">&nbsp;&nbsp;Ron Weasley<br />
+                <input type="radio" value="haw" name="vraag3">&nbsp;&nbsp;Draco Malfoy<br />
+                <input type="radio" value="vin" name="vraag3">&nbsp;&nbsp;Hermione Granger<br />
+            </p>
+            <p>
+                <strong>Question 4</strong><br />
+                Since you will be using your wand quite a lot, it has to be really comfortable in your hand.
+                What length seems most comfortable to you?
+                <br />
+                <input type="radio" value="haw" name="vraag4">&nbsp;&nbsp;10”<br />
+                <input type="radio" value="vin" name="vraag4">&nbsp;&nbsp;10¾’’<br />
+                <input type="radio" value="hol" name="vraag4">&nbsp;&nbsp;11”<br />
+                <input type="radio" value="ash" name="vraag4">&nbsp;&nbsp;12¼”<br />
+            </p>
+            <p>
+                <strong>Question 5</strong><br />
+                A wand doesn’t only consist out of wood. Inside of the wand is a core made out of a magical substance. What kind of substance is of your liking?
+                <br />
+                <input type="radio" value="vin" name="vraag5">&nbsp;&nbsp;Unicorn hair, because it is the most consistent.	<br />
+                <input type="radio" value="hol" name="vraag5">&nbsp;&nbsp;Phoenix feather, because I want to do different kinds of magic.	 <br />
+                <input type="radio" value="haw" name="vraag5">&nbsp;&nbsp;Dragon heartstring, because I want the most power.<br />
+                <input type="radio" value="ash" name="vraag5">&nbsp;&nbsp;Dragon heartstring, because I want a strong bond.<br />
+            </p>
+            <br />
+            <br />
+        </div>
+        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+
+
+        @{
+            
+            string wand = "no wand";
+            var ash = 0;
+            var haw= 0;
+            var hol= 0;
+            var vin = 0;
+            if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
+            { <p> Be sure to fill in everything!</p>}
+            else
+            {
+
+                if (Request["vraag1"] == "ash") { ash += 1; }
+                if (Request["vraag1"] == "haw") { haw += 1; }
+                if (Request["vraag1"] == "hol") { hol += 1; }
+                if (Request["vraag1"] == "vin") { vin += 1; }
+                if (Request["vraag2"] == "ash") { ash += 1; }
+                if (Request["vraag2"] == "haw") { haw += 1; }
+                if (Request["vraag2"] == "hol") { hol += 1; }
+                if (Request["vraag2"] == "vin") { vin += 1; }
+                if (Request["vraag3"] == "ash") { ash += 1; }
+                if (Request["vraag3"] == "haw") { haw += 1; }
+                if (Request["vraag3"] == "hol") { hol += 1; }
+                if (Request["vraag3"] == "vin") { vin += 1; }
+                if (Request["vraag4"] == "ash") { ash += 1; }
+                if (Request["vraag4"] == "haw") { haw += 1; }
+                if (Request["vraag4"] == "hol") { hol += 1; }
+                if (Request["vraag4"] == "vin") { vin += 1; }
+                if (Request["vraag5"] == "ash") { ash += 1; }
+                if (Request["vraag5"] == "haw") { haw += 1; }
+                if (Request["vraag5"] == "hol") { hol += 1; }
+                if (Request["vraag5"] == "vin") { vin += 1; }
+
+
+
+                if (ash > haw && ash > hol && ash > vin) { wand = "ash"; }
+                if (vin > haw && vin > hol && vin > ash) { wand = "vin"; }
+                if (haw > ash && haw > hol && haw > vin) { wand = "haw"; }
+                if (hol > haw && hol > ash && hol > vin) { wand = "hol"; }
+                if (hol == 2 && haw == 2) { wand = "hol"; }
+                if (hol == 2 && vin == 2) { wand = "vin"; }
+                if (ash == 2 && hol == 2) { wand = "ash"; }
+                if (ash == 2 && vin == 2) { wand = "vin"; }
+                if (ash == 2 && haw == 2) { wand = "haw"; }
+                if (haw == 2 && vin == 2) { wand = "haw"; }
+
+
+
+
+
+                <p> Your wand is....</p><br /><br />
+                if (wand == "ash")
+                { <p>Ashen</p> <img style="height:400px; width:300px" src="https://vignette.wikia.nocookie.net/harrypotter/images/d/de/Cedricdiggorywandnn8202.jpg/revision/latest?cb=20140602191133" /> }
+                if (wand == "haw")
+                { <p>Hawtorn</p><img style="height:400px; width:500px" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/39/DracoMalfoyWandNN8409.jpg/revision/latest?cb=20141208233016" /> }
+                if (wand == "hol")
+                {<p>Holly</p><img style="height:400px; width:600px" src="https://vignette.wikia.nocookie.net/harrypotter/images/c/ca/HarryPotterWandNN8415.jpg/revision/latest?cb=20141208232731" />  }
+                if (wand == "vin")
+                { <p>Vine</p> <img style="height:400px; width:500px" src="https://vignette.wikia.nocookie.net/harrypotter/images/c/c6/HermioneGrangerWandNN8411.jpg/revision/latest?cb=20140602200406" /> }
+                <br /> <br /> <br />
+                                <a href="AAAAAAAAAAAAAAAA"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+                                <style>
+                                    #submitbutton {
+                                        display: none
+                                    }
+
+                                    #quiz {
+                                        display: none
+                                    }
+                                </style>
+            }
+        }
+
+    </form>
+
+</body>
+</html>

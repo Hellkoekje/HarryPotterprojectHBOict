@@ -1,0 +1,141 @@
+﻿@{
+    Page.Title = "SortingHat";
+    Layout = "~/Shared/_DefaultPage.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <form method="post">
+        <br /> <h1>Sorting Hat</h1>
+        <br />
+        <br />
+       
+        <div id="quiz">
+            <p>
+                <strong>Question 1</strong> <br />
+                What kind of wizard do you want to become?<br />
+                <input type="radio" value="s" name="vraag1">&nbsp;&nbsp;A great wizard, powerful and respected <br />
+                <input type="radio" value="h" name="vraag1">&nbsp;&nbsp;A good wizard, just and kind<br />
+                <input type="radio" value="r" name="vraag1">&nbsp;&nbsp;A wise wizard, clever and knowledgeable<br />
+                <input type="radio" value="g" name="vraag1">&nbsp;&nbsp;A bold wizard, courageous and adventurous <br />
+            </p>
+            <p>
+                <strong>Question 2</strong> <br />
+                If you had to say something bad about yourself, would you say you are:<br />
+                <input type="radio" value="h" name="vraag2">&nbsp;&nbsp;Cowardly<br />
+                <input type="radio" value="r" name="vraag2">&nbsp;&nbsp;Ordinary<br />
+                <input type="radio" value="g" name="vraag2">&nbsp;&nbsp;Ignorant<br />
+                <input type="radio" value="s" name="vraag2">&nbsp;&nbsp;Selfish<br />
+            </p>
+            <p>
+                <strong>Question 3</strong><br />
+                What do you find most important in life?<br />
+                <input type="radio" value="h" name="vraag3">&nbsp;&nbsp;Hanging out with friends, helping others<br />
+                <input type="radio" value="r" name="vraag3">&nbsp;&nbsp;Reading books, obtaining knowledge<br />
+                <input type="radio" value="g" name="vraag3">&nbsp;&nbsp;Going on new adventures, always trying out new exciting things<br />
+                <input type="radio" value="s" name="vraag3">&nbsp;&nbsp;Earning money, always looking for opportunities<br />
+            </p>
+            <p>
+                <strong>Question 4</strong><br />
+                What’s your pet of choice?<br />
+                <input type="radio" value="s" name="vraag4">&nbsp;&nbsp;A Cat<br />
+                <input type="radio" value="g" name="vraag4">&nbsp;&nbsp;A Dog<br />
+                <input type="radio" value="r" name="vraag4">&nbsp;&nbsp;A type of Bird<br />
+                <input type="radio" value="h" name="vraag4">&nbsp;&nbsp;A Rabbit<br />
+            </p>
+            <p>
+                <strong>Question 5</strong><br />
+                If I’m facing a very important decision I will:
+                <br />
+                <input type="radio" value="r" name="vraag5">&nbsp;&nbsp;Think it through real hard<br />
+                <input type="radio" value="s" name="vraag5">&nbsp;&nbsp;Try to think of a way around it	 <br />
+                <input type="radio" value="g" name="vraag5">&nbsp;&nbsp;Do the best I can, I’m not scared of a little challenge<br />
+                <input type="radio" value="h" name="vraag5">&nbsp;&nbsp;Get very anxious and stressed to the point where I’m having trouble falling asleep<br />
+            </p>
+            <br />
+            <br />
+        </div>
+        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+
+
+        @{
+            int uHouse = 0;
+            string housename = "no house";
+            var sp = 0;
+            var hp = 0;
+            var rp = 0;
+            var gp = 0;
+            if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
+            { <p> Be sure to fill in everything!</p>}
+            else
+            {
+
+                if (Request["vraag1"] == "s") { sp += 1; }
+                if (Request["vraag1"] == "h") { hp += 1; }
+                if (Request["vraag1"] == "r") { rp += 1; }
+                if (Request["vraag1"] == "g") { gp += 1; }
+                if (Request["vraag2"] == "s") { sp += 1; }
+                if (Request["vraag2"] == "h") { hp += 1; }
+                if (Request["vraag2"] == "r") { rp += 1; }
+                if (Request["vraag2"] == "g") { gp += 1; }
+                if (Request["vraag3"] == "s") { sp += 1; }
+                if (Request["vraag3"] == "h") { hp += 1; }
+                if (Request["vraag3"] == "r") { rp += 1; }
+                if (Request["vraag3"] == "g") { gp += 1; }
+                if (Request["vraag4"] == "s") { sp += 1; }
+                if (Request["vraag4"] == "h") { hp += 1; }
+                if (Request["vraag4"] == "r") { rp += 1; }
+                if (Request["vraag4"] == "g") { gp += 1; }
+                if (Request["vraag5"] == "s") { sp += 1; }
+                if (Request["vraag5"] == "h") { hp += 1; }
+                if (Request["vraag5"] == "r") { rp += 1; }
+                if (Request["vraag5"] == "g") { gp += 1; }
+
+
+                if (sp > hp && sp > rp && sp > gp) { uHouse = 1; }
+                if (gp > hp && gp > rp && gp > sp) { uHouse = 2; }
+                if (hp > sp && hp > rp && hp > gp) { uHouse = 3; }
+                if (rp > hp && rp > sp && rp > gp) { uHouse = 4; }
+                if (rp == 2 && hp == 2) { uHouse = 4; }
+                if (rp == 2 && gp == 2) { uHouse = 2; }
+                if (sp == 2 && rp == 2) { uHouse = 1; }
+                if (sp == 2 && gp == 2) { uHouse = 2; }
+                if (sp == 2 && hp == 2) { uHouse = 3; }
+                if (hp == 2 && gp == 2) { uHouse = 3; }
+
+                if (uHouse == 1)
+                { housename = "Slytherin"; }
+                if (uHouse == 2)
+                { housename = "Gryffindor"; }
+                if (uHouse == 3)
+                { housename = "Hufflepuff"; }
+                if (uHouse == 4)
+                { housename = "Ravenclaw"; }
+
+
+
+                <p> Your House is....</p><br /><br />
+                if (uHouse == 1) { <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg"/> }
+                   if (uHouse == 2) { <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png"/> }
+                    if (uHouse == 3) {<img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg"/>  }
+                    if (uHouse == 4) { <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png"/> }
+                                <br /> <br /> <br />
+                <a href = "aaaaaaaaaaaaaaaaaaaaaa"><button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+                    <style>
+                        #submitbutton {
+                            display: none
+                        }
+                        #quiz{
+                            display:none
+                        }
+                    </style>
+                }
+            }
+        
+    </form>
+
+</body>
+</html>
