@@ -1,14 +1,184 @@
 ﻿@{
-	Page.Title = "Wizard portal";
-	Layout = "~/Shared/_DefaultPage.cshtml";
+    Page.Title = "Portal";
+    Layout = "~/Shared/_DefaultPage.cshtml";
+
+    IDictionary<int, string> houseImages = new Dictionary<int, string>
+    {
+        { 0, "nope.png"},
+        { 1, "gryffindor.png" },
+        { 2, "hufflepuff.png" },
+        { 3, "ravenclaw.png"},
+        { 4, "slytherin.png"}
+    };
+
+    int house = 1;
+
+    houseImages.TryGetValue(house, out string image);
+    string houseImagePath = ImageHelper.PathToImageInContent("Houses/" + image);
+    string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 }
 
-
 <div class="col-md-12">
+    <div class="row col-md-offset-1">
+        <div class="col-md-2">
 
-    <div class="col-md-3">
-        
+            <div class="row info-panel vm-1">
+                <div align="center">
+                    <h2> House information </h2>
+                    <img src=@houseImagePath width="200px">
+                </div>
+
+                <ul class="stats-list" align="left">
+                    <li>Total members: 0</li>
+                    <li>Total points: 0</li>
+                    <li>House rank: #1</li>
+                </ul>
+            </div>
+
+            <div class="row info-panel vm-1">
+                <div align="center">
+                    <h2> Wizard information </h2>
+                    <img src=@avatarImagePath width="200px">
+                </div>
+
+                <ul class="stats-list" align="left">
+                    <li>Wizard name: Harry Potter</li>
+                    <li>Total points: 0</li>
+                    <li>Total smekkies: 0</li>
+                    <li>Wizard rank: #1</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9 info-panel vm-1 hm-1">
+            <table class="table">
+                <caption>List of users</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                        <th scope="col">Saturday</th>
+                        <th scope="col">Sunday</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">08:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">09:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">10:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">11:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">12:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">13:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">14:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">15:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">16:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">17:00</th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
-
 </div>
-

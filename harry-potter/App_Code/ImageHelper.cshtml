@@ -1,0 +1,11 @@
+﻿@functions
+{
+    public static string PathToImageInContent(string contentFile)
+    {
+        string hostname = "http://" + Request.Url.Authority;
+        string imagesFolder = "/Content/Images/";
+        string path = hostname + imagesFolder;
+
+        return $"{path}{contentFile}";
+    }
+}
