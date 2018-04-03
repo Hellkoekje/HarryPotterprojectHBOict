@@ -14,7 +14,7 @@
     int house = 1;
 
     houseImages.TryGetValue(house, out string image);
-    string houseImagePath = ImageHelper.PathToImageInContent("Houses/" + image);
+    string houseImagePath = ImageHelper.PathToImageInContent(image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 
     DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
