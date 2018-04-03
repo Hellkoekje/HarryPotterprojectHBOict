@@ -1,7 +1,11 @@
-﻿@{
+﻿@using System.Configuration;
+@using System.Data;
+@using System.Data.SqlClient;
+@{
     Page.Title = "Login";
     Layout = "~/Shared/_DefaultPage.cshtml";
-
+    string uUname = "";
+    string uPassword = "";
     bool hasPost = false;
 
     Validation.Add("uUname",
@@ -25,9 +29,29 @@
         {
             isValid = false;
         }
-
-        if(isValid)
+        if (isValid)
         {
+            uUname = Request.Form["uUname"];
+            uPassword = Request.Form["uPassword"];
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from users where uUname =@uUname and UPassword=@uPassword", con);
+
+            cmd.Parameters.AddWithValue("@uUname", uUname);
+            cmd.Parameters.AddWithValue("@uPassword", uPassword);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                Response.Redirect("~/Portal.cshtml");
+            }
+        }
+        else
+        {
+
             ModelState.AddError("accountNotFound", "The given account name does not exist!");
             ModelState.AddError("passwordIncorrect", "The password for this account is incorrect.");
 
