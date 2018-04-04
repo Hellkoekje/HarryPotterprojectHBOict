@@ -29,40 +29,42 @@
         {
             isValid = false;
         }
-
         if (isValid)
         {
+            //Hier wordt de username & password opgevraagd. 
             uUname = Request.Form["uUname"];
             uPassword = Request.Form["uPassword"];
 
+            //Conectie met de database wordt hier gemaakt.
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
             con.Open();
+            //Hier wordt na gekeken of de username & pasword sammen een hit zijn in de database.
             SqlCommand cmd = new SqlCommand("select * from users where uUname =@uUname and UPassword=@uPassword", con);
-
             cmd.Parameters.AddWithValue("@uUname", uUname);
             cmd.Parameters.AddWithValue("@uPassword", uPassword);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-
+            // Conection met database wordt hier gesloten.
+            con.Close();
+            // Aanmaak van de cookies Username & House.
             if (dt.Rows.Count > 0)
             {
-                HttpCookie onzekoekjes = new HttpCookie("Login");               // Cookies wordt hier aangemaakt 
+                HttpCookie onzekoekjes = new HttpCookie("Login");
                 onzekoekjes["uUname"] = dt.Rows[0]["uUname"].ToString();
+                onzekoekjes["uUhouse"] = dt.Rows[0]["uHouse"].ToString();
                 onzekoekjes.Expires = DateTime.Now.AddDays(1d);
                 Response.Cookies.Add(onzekoekjes);
 
-
+                //Redirect naar de homepage voor de members.
                 Response.Redirect("~/Portal.cshtml");
             }
         }
         else
         {
-
+            //Error message verkeerde wachtwoord / id.
             ModelState.AddError("accountNotFound", "The given account name does not exist!");
             ModelState.AddError("passwordIncorrect", "The password for this account is incorrect.");
-
-            Response.Redirect("~/Portal.cshtml");
         }
     }
 }

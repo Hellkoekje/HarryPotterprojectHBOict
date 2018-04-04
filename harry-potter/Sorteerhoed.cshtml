@@ -128,25 +128,10 @@
                 {
                     <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png" />
                 }
-                string uUname = "";
-                string uPassword = "";
-                string uEmail = "";
 
-                if (Request.Cookies["registerkoekjes"] != null) {
-                    uUname = Request.Cookies["registerkoekjes"]["uUname"];
-                    uPassword = Request.Cookies["registerkoekjes"]["uPassword"];
-                    uEmail = Request.Cookies["registerkoekjes"]["uEmail"];
-
-                    if (uHouse > 0)
-                    {
-                        Database db = Database.Open("Database");
-                        var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword, uHouse) VALUES (@0, @1, @2, @3)";
-                        db.Execute(insertCommand, uUname, uEmail, uPassword, uHouse);
-                    }
-                }
                 else
                 {
-                    Response.Redirect("~/Login.cshtml");
+                    Response.Redirect("~/Portal.cshtml");
                 }
                 <br /> <br /> <br />
                 <a href = "~/Login.cshtml" button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</a>

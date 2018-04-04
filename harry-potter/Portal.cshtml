@@ -1,8 +1,48 @@
-﻿@{
+﻿@using System.Configuration;
+@using System.Data;
+@using System.Data.SqlClient;
+@{
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
+    int house = 0;
+    string username = "";
+    string name;
+    string Points;
+    string House = "";
+    if (Request.Cookies["Login"] != null)
+    {
+        username = Request.Cookies["Login"]["uUname"];
+    }
+
+    else
+    {
+        Response.Redirect("~/Login.cshtml");
+    }
     PortalController controller = new PortalController();
+
+    // Connectie met de database wordt hier gemaakt.
+
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+    SqlDataReader dr;
+    con.Open();
+
+    SqlCommand cmd = new SqlCommand("select & from users where uUname ='" + @username + "'", con);
+    dr = cmd.ExecuteReader();
+
+    if (dr.Read())
+    {
+        name = dr[3].ToString();
+        House = dr[4].ToString();
+        Points = dr[5].ToString();
+    }
+    con.Close();
+    // Als de gebruiker nog geen house heeft automatische redirect naar de Sorteerhoed.
+
+    if (House == "0")
+    {
+        Response.Redirect("~/Sorteerhoed.cshtml");
+    }
 
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
@@ -13,17 +53,8 @@
         { 4, "slytherin.png"}
     };
 
-    string username = "";
-    if (Request.Cookies["Login"] != null)
-    {
-        username = Request.Cookies["Login"]["uUname"];
-        //username = "hufflepuff";
-    }
-    else
-    {
-        Response.Redirect("~/Login.cshtml");
-    }
-    int house = 1;
+
+
 
     houseImages.TryGetValue(house, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent(image);

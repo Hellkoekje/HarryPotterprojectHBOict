@@ -4,7 +4,7 @@
 @using System.Data.SqlClient;
 @{
     bool hasPost = false;
-
+    string uYear = DateTime.Now.ToShortDateString();
     string uUname = "";
     string uEmail = "";
     string uPassword = "";
@@ -38,6 +38,11 @@
 
     if (IsPost)
     {
+        uUname = Request.Form["uUname"];
+        uEmail = Request.Form["uEmail"];
+        uPassword = Request.Form["uPassword"];
+        uPasswordConfirm = Request.Form["uPasswordConfirm"];
+
         bool isThisPostValid = true;
         hasPost = true;
         AntiForgery.Validate();
@@ -46,11 +51,6 @@
         {
             isThisPostValid = false;
         }
-
-        uUname = Request.Form["uUname"];
-        uEmail = Request.Form["uEmail"];
-        uPassword = Request.Form["uPassword"];
-        uPasswordConfirm = Request.Form["uPasswordConfirm"];
 
         if (!uPassword.Equals(uPasswordConfirm))
         {
@@ -62,15 +62,11 @@
         {
             try
             {
-                DataTable dt = new DataTable();
-                HttpCookie registerkoekjes = new HttpCookie("register");               // Cookies wordt hier aangemaakt 
-                registerkoekjes["uUname"] = dt.Rows[2]["uUname"].ToString();
-                registerkoekjes["uPassword"] = dt.Rows[3]["uPassword"].ToString();
-                registerkoekjes["uEmail"] = dt.Rows[3]["uEmail"].ToString();
-                registerkoekjes.Expires = DateTime.Now.AddDays(1d);
-                Response.Cookies.Add(registerkoekjes);
+                Database db = Database.Open("Database");
+                var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword, uYear) VALUES (@0, @1, @2, @3)";
+                db.Execute(insertCommand, uUname, uEmail, uPassword, uYear);
 
-                Response.Redirect("~/Sorteerhoed.cshtml");
+                Response.Redirect("~/Login.cshtml");
 
             }
             catch (Exception e)
