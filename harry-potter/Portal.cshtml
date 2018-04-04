@@ -2,6 +2,8 @@
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
+    PortalController controller = new PortalController();
+
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
         { 0, "nope.png"},
@@ -15,6 +17,7 @@
     if (Request.Cookies["Login"] != null)
     {
         username = Request.Cookies["Login"]["uUname"];
+        //username = "hufflepuff";
     }
     else
     {
@@ -28,7 +31,7 @@
 
     DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
     DateTime endTime = DateTime.ParseExact("17:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-    TimeSpan increments = new TimeSpan(1, 0, 0);
+    TimeSpan increments = new TimeSpan(0, 45, 0);
 
 }
 
@@ -38,28 +41,27 @@
 
             <div class="row info-panel vm-1">
                 <div align="center">
-                    <h2 class="harry-font"> House information </h2>
+                    <h4 class="harry-font"> House information </h4>
                     <img src=@houseImagePath width="200px">
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Total members: 0</li>
-                    <li>Total points: 0</li>
-                    <li>House rank: #1</li>
+                    <li>Total members: @controller.GetHouseMemberCount(house) members</li>
+                    <li>Total points: @controller.GetHousePoints(house) points</li>
+                    <li>House rank: #@controller.GetHouseRank(house)</li>
                 </ul>
             </div>
 
             <div class="row info-panel vm-1">
                 <div align="center">
-                    <h2 class="harry-font"> Wizard information </h2>
+                    <h4 class="harry-font"> Wizard information </h4>
                     <img src=@avatarImagePath width="200px">
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Wizard name: Harry Potter</li>
-                    <li>Total points: 0</li>
-                    <li>Total smekkies: 0</li>
-                    <li>Wizard rank: #1</li>
+                    <li>Wizard name: @username</li>
+                    <li>Total points: @controller.GetUserPoints(username) points</li>
+                    <li>Wizard rank: #@controller.GetUserRank(username)</li>
                 </ul>
             </div>
         </div>

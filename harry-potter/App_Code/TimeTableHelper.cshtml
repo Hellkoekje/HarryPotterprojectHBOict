@@ -3,12 +3,12 @@
     string[] days = new string[]
     {
         "Monday", "Tuesday", "Wednesday",
-        "Thursday", "Friday", "Satureday",
+        "Thursday", "Friday", "Saturday",
         "Sunday"
     };
 
     <table class="table">
-        <h3>Time table</h3>
+        <h3 class="harry-font">Time table</h3>
         <thead>
             <tr>
                 <th scope="col">Time</th>
@@ -25,13 +25,11 @@
                 {
                     <tr>
                         <th scope="row">@current.ToString("HH:mm")</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+
+                        @foreach(string day in days)
+                        {
+                            <td>@current.ToString("HH:mm") - @day</td>
+                        }
                     </tr>
 
                     current += timeStep;
