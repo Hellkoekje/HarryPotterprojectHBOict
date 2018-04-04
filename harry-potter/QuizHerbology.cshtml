@@ -12,16 +12,16 @@
     <form method="post">
         <h1 class="harry-font">Herbology Quiz 1</h1>
         <p><h3>Take the quiz and see if you're a real wizard!</h3></p>
-        <p>
-            <img src="https://images.pottermore.com/bxd3o8b291gf/23VZyGVSg8MyMieGeg04qk/02ca0f7af74c33ccfd6a8b26f871bdeb/MandrakeSeedlings_PM_B2C6M2_MandrakeSeedlingsInHerbologyLesson_Moment.jpg?w=727&h=409&fit=thumb&f=center&q=85" alt="Screaming Mandrake" style="float:right;width:300px;height:180px;margin:15px" />
+        <p><br /><div id="quiz">
+    <img src="https://images.pottermore.com/bxd3o8b291gf/23VZyGVSg8MyMieGeg04qk/02ca0f7af74c33ccfd6a8b26f871bdeb/MandrakeSeedlings_PM_B2C6M2_MandrakeSeedlingsInHerbologyLesson_Moment.jpg?w=727&h=409&fit=thumb&f=center&q=85" alt="Screaming Mandrake" style="float:right;width:300px;height:180px;margin:15px" />
 
-            Question 1:<br />
-            Why are dragonhide gloves mainly used by herbologists?<br />
-            <input type="radio" id="radioButton" value="correct" name="vraag1">&nbsp;&nbsp;They protect your hands against dangerous plants.<br />
-            <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect your hands against chemicals.<br />
-            <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect your hands against cuts.<br />
-            <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect the plants from getting hurt.<br />
-        </p>
+    Question 1:<br />
+    Why are dragonhide gloves mainly used by herbologists?<br />
+    <input type="radio" id="radioButton" value="correct" name="vraag1">&nbsp;&nbsp;They protect your hands against dangerous plants.<br />
+    <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect your hands against chemicals.<br />
+    <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect your hands against cuts.<br />
+    <input type="radio" id="radioButton" value="wrong" name="vraag1">&nbsp;&nbsp;They protect the plants from getting hurt.<br />
+</p>
         <p>
             Question 2:<br />
             Why are earmuffs essential for herbologists?<br />
@@ -57,7 +57,7 @@
         <br />
         <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
 
-
+        </div>
         @{
 
             var kek = 1;
@@ -80,16 +80,20 @@
             { <p> Be sure to fill in everything!</p>}
             else
             {
-                <p>You answered @score/5 (@procentgoed%) of the questions correctly!</p>
+                <p>You answered @score/5 (@procentgoed%) of the questions correctly</p> if (score >= 3)
+                { <P>Good job!</P>}
+                else
+                {<p>Better luck next time! </p>}
+
                 <p>Click here to go back to Lesson overview</p>
                 <a href="~/LesOverzicht.cshtml"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+
                 <style>
-                    #submitbutton {
+                    #quiz {
                         display: none
                     }
                 </style>
             }
-        }
         }
     </form>
     

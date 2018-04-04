@@ -12,86 +12,90 @@
         <br /> <h1 class="harry-font">Quiz Astronomy</h1>
         <br />
         <br />
+        <div id="quiz">
+            <p>
+                <strong>Question 1</strong> <br />
+                If a student wants to pass the OWL score for Astronomy he/she has to take an exam. What must the student do during the exam?<br />
+                <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Fill in a black star chart<br />
+                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Study the stars<br />
+                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Write an essay about moons<br />
+                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Write an essay about a planet’s surface<br />
+            </p>
+            <p>
+                <strong>Question 2</strong> <br />
+                What important piece of equipment do you have to bring to class? A telescope or a microscope?<br />
+                <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;Telescope<br />
+                <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Microscope<br />
+                <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Both<br />
+                <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Neither<br />
+            </p>
+            <p>
+                <strong>Question 3</strong><br />
+                Every student needs his own telescope, where can you get a telescope?<br />
+                <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;Diagon Alley<br />
+                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Hogsmeade<br />
+                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;School<br />
+                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Class<br />
+            </p>
+            <p>
+                <strong>Question 4</strong><br /> <img style="width:300px; float:right; height:200px; margin-right:300px; position:relative;" src="http://www.rocketmime.com/astronomy/fig/LittleDipper.gif" />
+                While observing the sky at night you lay your eyes upon this constellation: What is it called?<br />
+                <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;Little bear<br />
+                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Small bear<br />
+                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Big bear<br />
+                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Great bear<br />
+            </p>
+            <p>
+                <strong>Question 5</strong><br />
+                What is the brightest star you can see?<br />
+                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Sirius<br />
+                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Polaris<br />
+                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Rigel<br />
+                <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;The Sun<br />
+            </p>
+            <br />
+            <br />
+            <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+        </div>
 
-        <p>
-            <strong>Question 1</strong> <br />
-            If a student wants to pass the OWL score for Astronomy he/she has to take an exam. What must the student do during the exam?<br />
-            <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Fill in a black star chart<br />
-            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Study the stars<br />
-            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Write an essay about moons<br />
-            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Write an essay about a planet’s surface<br />
-        </p>
-        <p>
-            <strong>Question 2</strong> <br />
-            What important piece of equipment do you have to bring to class? A telescope or a microscope?<br />
-            <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;Telescope<br />
-            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Microscope<br />
-            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Both<br />
-            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Neither<br />
-        </p>
-        <p>
-            <strong>Question 3</strong><br />
-            Every student needs his own telescope, where can you get a telescope?<br />
-            <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;Diagon Alley<br />
-            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Hogsmeade<br />
-            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;School<br />
-            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Class<br />
-        </p>
-        <p>
-            <strong>Question 4</strong><br /> <img style="width:300px; float:right; height:200px; margin-right:300px; position:relative;" src="http://www.rocketmime.com/astronomy/fig/LittleDipper.gif" />
-            While observing the sky at night you lay your eyes upon this constellation: What is it called?<br />
-            <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;Little bear<br />
-            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Small bear<br />
-            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Big bear<br />
-            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Great bear<br />
-        </p>
-        <p>
-            <strong>Question 5</strong><br />
-            What is the brightest star you can see?<br />
-            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Sirius<br />
-            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Polaris<br />
-            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Rigel<br />
-            <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;The Sun<br />
-        </p>
-        <br />
-        <br />
-        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+            @{
 
-
-        @{
-
-            var kek = 1;
-            double score = 0;
-            if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
-            { kek -= 1; }
-            else
-            {
-
-                if (Request["vraag1"] == "correct") { score += 1; }
-                if (Request["vraag2"] == "correct") { score += 1; }
-                if (Request["vraag3"] == "correct") { score += 1; }
-                if (Request["vraag4"] == "correct") { score += 1; }
-                if (Request["vraag5"] == "correct") { score += 1; }
-            }
-
-            double procentgoed = score / 5 * 100;
-
-            if (kek == 0)
-            { <p> Be sure to fill in everything!</p>}
+                var kek = 1;
+                double score = 0;
+                if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
+                { kek -= 1; }
                 else
                 {
-                <p>You answered @score/5 (@procentgoed%) of the questions correctly!</p>
-                <p>Click here to go back to Lesson overview</p>
-                <a href="~/LesOverzicht.cshtml"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
-                <style>
-                    #submitbutton {
-                        display: none
-                    }
-                </style>
+
+                    if (Request["vraag1"] == "correct") { score += 1; }
+                    if (Request["vraag2"] == "correct") { score += 1; }
+                    if (Request["vraag3"] == "correct") { score += 1; }
+                    if (Request["vraag4"] == "correct") { score += 1; }
+                    if (Request["vraag5"] == "correct") { score += 1; }
+                }
+
+                double procentgoed = score / 5 * 100;
+
+                if (kek == 0)
+                { <p> Be sure to fill in everything!</p>}
+            else
+            {
+                    <p>You answered @score/5 (@procentgoed%) of the questions correctly</p> if (score >= 3)
+                { <P>Good job!</P>}
+                else
+                {<p>Better luck next time! </p>}
+
+                    <p>Click here to go back to Lesson overview</p>
+                    <a href="~/LesOverzicht.cshtml"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+
+                    <style>
+                        #quiz {
+                            display: none
+                        }
+                    </style>
+                }
             }
-        }
-        }
-    </form>
+</form>
     
   </body>
 </html>
