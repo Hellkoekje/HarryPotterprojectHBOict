@@ -95,9 +95,9 @@
                 if (Request["vraag5"] == "g") { gp += 1; }
 
 
-                if (sp > hp && sp > rp && sp > gp) { uHouse = 1; }
-                if (gp > hp && gp > rp && gp > sp) { uHouse = 2; }
-                if (hp > sp && hp > rp && hp > gp) { uHouse = 3; }
+                if (sp > hp && sp > rp && sp > gp) { uHouse = 3; }
+                if (gp > hp && gp > rp && gp > sp) { uHouse = 1; }
+                if (hp > sp && hp > rp && hp > gp) { uHouse = 2; }
                 if (rp > hp && rp > sp && rp > gp) { uHouse = 4; }
                 if (rp == 2 && hp == 2) { uHouse = 4; }
                 if (rp == 2 && gp == 2) { uHouse = 2; }
@@ -107,20 +107,20 @@
                 if (hp == 2 && gp == 2) { uHouse = 3; }
 
                 if (uHouse == 1)
-                { housename = "Slytherin"; }
-                if (uHouse == 2)
                 { housename = "Gryffindor"; }
-                if (uHouse == 3)
+                if (uHouse == 2)
                 { housename = "Hufflepuff"; }
+                if (uHouse == 3)
+                { housename = "Slytherin"; }
                 if (uHouse == 4)
                 { housename = "Ravenclaw"; }
 
 
 
                 <p> Your House is....</p><br /><br />
-                if (uHouse == 1) { <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg"/> }
-                   if (uHouse == 2) { <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png"/> }
-                    if (uHouse == 3) {<img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg"/>  }
+                if (uHouse == 3) { <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg"/> }
+                   if (uHouse == 1) { <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png"/> }
+                    if (uHouse == 2) {<img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg"/>  }
                     if (uHouse == 4) { <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png"/> }
                                 <br /> <br /> <br />
                 <a href = "aaaaaaaaaaaaaaaaaaaaaa"><button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
