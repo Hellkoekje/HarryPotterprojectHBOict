@@ -5,11 +5,12 @@
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
-    int house = 0;
+    //int house = 0;
     string username = "";
-    string name;
-    string Points;
-    string House = "";
+    string name = "";
+    string Points = "";
+    string House = "4";
+    string id = "";
     if (Request.Cookies["Login"] != null)
     {
         username = Request.Cookies["Login"]["uUname"];
@@ -24,39 +25,59 @@
     // Connectie met de database wordt hier gemaakt.
 
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-    SqlDataReader dr;
     con.Open();
 
-    SqlCommand cmd = new SqlCommand("select & from users where uUname ='" + @username + "'", con);
-    dr = cmd.ExecuteReader();
+    // Hier word de table geselecteerd, en gecheckt waar de gegevens weg worden gehaald. 
+
+    SqlCommand cmd = new SqlCommand("select * from users where uUname ='" + @username + "'", con);
+    SqlDataReader dr = cmd.ExecuteReader();
+
+    // Hier word de database gelezen en op benamingen gezet.
 
     if (dr.Read())
     {
+        id = dr[0].ToString();
         name = dr[3].ToString();
         House = dr[4].ToString();
         Points = dr[5].ToString();
+
     }
+    SqlDataAdapter da = new SqlDataAdapter(cmd);
+    DataTable dt = new DataTable();
+
+    HttpCookie onzekoekjes = new HttpCookie("Login");
+    onzekoekjes["uUname"] = dt.Rows[0]["uUname"].ToString();
+    onzekoekjes["uUhouse"] = dt.Rows[0]["uHouse"].ToString();
+    onzekoekjes["uId"] = dt.Rows[0]["uId"].ToString();
+
+    onzekoekjes.Expires = DateTime.Now.AddDays(1d);
+    Response.Cookies.Add(onzekoekjes);
+
+    // Hier word de connection gestopt met de database.
+
     con.Close();
-    // Als de gebruiker nog geen house heeft automatische redirect naar de Sorteerhoed.
+
+    // Hier wordt na gekeken of de gebruiker al een house heeft. 
+    // Zo niet word de gebruiker redirect naar de Sorteerhoed.
 
     if (House == "0")
     {
         Response.Redirect("~/Sorteerhoed.cshtml");
     }
 
-    IDictionary<int, string> houseImages = new Dictionary<int, string>
+    IDictionary<string, string> houseImages = new Dictionary<string, string>
     {
-        { 0, "nope.png"},
-        { 1, "gryffindor.png" },
-        { 2, "hufflepuff.png" },
-        { 3, "ravenclaw.png"},
-        { 4, "slytherin.png"}
+        { "0", "nope.png"},
+        { "1", "gryffindor.png" },
+        { "2", "hufflepuff.png" },
+        { "3", "ravenclaw.png"},
+        { "4", "slytherin.png"}
     };
 
 
 
 
-    houseImages.TryGetValue(house, out string image);
+    houseImages.TryGetValue(House, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent(image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 
@@ -77,7 +98,7 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Total members: @controller.GetHouseMemberCount(house) members</li>
+                    <li>Total members: @controller.GetHouseMemberCount(House) members</li>
                     <li>Total points: @controller.GetHousePoints(house) points</li>
                     <li>House rank: #@controller.GetHouseRank(house)</li>
                 </ul>
@@ -90,8 +111,8 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Wizard name: @username</li>
-                    <li>Total points: @controller.GetUserPoints(username) points</li>
+                    <li>Wizard name: @name</li>
+                    <li>Total points: @Points points</li>
                     <li>Wizard rank: #@controller.GetUserRank(username)</li>
                 </ul>
             </div>

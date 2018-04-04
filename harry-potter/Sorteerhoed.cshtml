@@ -1,4 +1,6 @@
-﻿@using WebMatrix.Data;
+﻿@using System.Configuration;
+@using System.Data;
+@using System.Data.SqlClient;
 
 @{
     Page.Title = "SortingHat";
@@ -133,8 +135,29 @@
                 {
                     Response.Redirect("~/Portal.cshtml");
                 }
+                string uUname = "";
+                if (Request.Cookies["Login"] != null)
+                {
+                    uUname = Request.Cookies["Login"]["uUname"];
+                }
+                //Database
+                //Connectie met de database. 
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+                con.Open();
+                //Update van de house
+                SqlCommand command;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                string Sql = "";
+                command = new SqlCommand(Sql);
+                Sql = "update users set uHouse=" + @uHouse + "where uUname=" + uUname;
+                adapter.UpdateCommand = new SqlCommand(Sql);
+                //adapter.UpdateCommand.ExecuteNonQuery();
+                //Connectie met database wordt gesloten.
+                con.Close();
+
+
                 <br /> <br /> <br />
-                <a href = "~/Login.cshtml" button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</a>
+                <a href = "~/Login.cshtml" button type = "button" id = "okbutton" class="btn btn-secondary" style="color:White">&nbsp; OK &nbsp;</a>
                     <style>
                         #submitbutton {
                             display: none
