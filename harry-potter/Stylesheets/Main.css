@@ -23,14 +23,15 @@ a:hover
 }
 
 /*Set the default background color*/
-body 
-{
-	background-color: rgb(50, 50, 50);
-	overflow-x: hidden;
-	margin-bottom: 60px;
+body {
+    overflow-x: hidden;
+    margin-bottom: 60px;
 }
 
 
+.background {
+    background-image: url("../Content/Images/layout/background.jpg");
+}
 /* Navigation bar formatting */
 .navbar-active 
 {
