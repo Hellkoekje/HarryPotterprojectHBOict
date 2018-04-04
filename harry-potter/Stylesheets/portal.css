@@ -1,9 +1,5 @@
-﻿.info-panel
+﻿.info-panel 
 {
-    background-image: url("../Content/Images/layout/perkament.png");
-    background-position: center;
-    background-size: auto;
-
 }
 
 .stats-list
@@ -12,4 +8,9 @@
     margin-left: -10px;
     list-style: none;
     color: white;
+}
+
+.stats-img
+{
+
 }

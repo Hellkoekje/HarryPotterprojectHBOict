@@ -13,9 +13,6 @@ html
 h1, h2, h3, h4, h5, p, a, th, tr, td, label, button, li
 {
 	color: white;
-
-    font-family: harry;
-    font-size: 25px;
 }
 
 /* Avoid normalize.css from setting our button colors ;)*/
@@ -38,6 +35,8 @@ body {
 
 .background {
     background-image: url("../Content/Images/layout/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
 }
 
 /* Navigation bar formatting */
@@ -75,6 +74,13 @@ ul.nav a:focus {
 }
 
 /* Footer formatting */
+.footer-text
+{
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
 .footer-position 
 {
 	width: 100%;
