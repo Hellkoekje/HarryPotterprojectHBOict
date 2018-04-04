@@ -4,26 +4,47 @@
 }
 
 /* By default make all the text white*/
-html 
-{
-	position: relative;
-	min-height: 100%;
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-h1, h2, h3, h4, h5, p, a, th, tr, td, label, button, li
-{
-	color: white;
+h1, h2, h3, h4, h5, p, a, th, tr, td, label, button, li {
+    color: white;
+}
+
+h1.harry-font {
+    font-family: harry;
+    font-size: 86px;
+}
+
+h2.harry-font {
+    font-family: harry;
+    font-size: 66px;
+}
+
+h3.harry-font {
+    font-family: harry;
+    font-size: 46px;
+}
+
+h4.harry-font {
+    font-family: harry;
+    font-size: 36px;
+}
+
+h5.harry-font {
+    font-family: harry;
+    font-size: 27px;
 }
 
 /* Avoid normalize.css from setting our button colors ;)*/
-button
-{
+button {
     color: black;
 }
 
-a:hover
-{
-	color: white;
+a:hover {
+    color: white;
 }
 
 /*Set the default background color*/
@@ -34,82 +55,71 @@ body {
 
 
 .background {
-    background-image: url("../Content/Images/layout/background.jpg");
+    background-image: url("../Content/Images/layout/background2.jpg");
+    background-size: contain;
     background-repeat: no-repeat;
-    background-attachment:fixed;
+    background-attachment: fixed;
 }
 
 /* Navigation bar formatting */
-.navbar-active 
-{
+.navbar-active {
     background-color: cornflowerblue;
 }
 
-.navbar-colors 
-{
-	background-color: rgb(40, 40, 40);
-	margin: 0;
+.navbar-colors {
+    background-color: rgb(40, 40, 40);
+    margin: 0;
 }
 
-.navbar-hamburger-button
-{
-	color: white;
-	background-color: royalblue;
+.navbar-hamburger-button {
+    color: white;
+    background-color: royalblue;
 }
 
-.navbar-hamburger-button:hover
-{
-	color: black;
-	background-color: white;
-}
+    .navbar-hamburger-button:hover {
+        color: black;
+        background-color: white;
+    }
 
-ul.nav a:hover
-{
-	background-color: royalblue !important;
+ul.nav a:hover {
+    background-color: royalblue !important;
 }
 
 ul.nav a:focus {
-	color: white !important;
-	background-color: royalblue !important;
+    color: white !important;
+    background-color: royalblue !important;
 }
 
 /* Footer formatting */
-.footer-text
-{
+.footer-text {
     font-size: 20px;
     margin: 0px;
     padding: 0px;
 }
 
-.footer-position 
-{
-	width: 100%;
-
-	position: fixed;
-	left: 0;
-	bottom: 0;
+.footer-position {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
-.footer-color
-{
-	color: white;
-	background-color: rgb(40,40,40);
+.footer-color {
+    color: white;
+    background-color: rgb(40,40,40);
 }
 
-.footer-copyright
-{
-	width:100%;
-	background-color: royalblue;
+.footer-copyright {
+    width: 100%;
+    background-color: royalblue;
 }
 
 /* Content of the default page */
-.content 
-{
-	height: 100%;
+.content {
+    height: 100%;
 }
 
-.logo
-{
+.logo {
     width: 50%;
     height: 50%;
 }
