@@ -1,4 +1,8 @@
-﻿
+﻿@font-face {
+    font-family: harry;
+    src: url("../Content/Font/harryp.ttf");
+}
+
 /* By default make all the text white*/
 html 
 {
@@ -6,7 +10,7 @@ html
 	min-height: 100%;
 }
 
-h1, h2, h3, h4, h5, p, a, th, tr, td
+h1, h2, h3, h4, h5, p, a, th, tr, td, label, button, li
 {
 	color: white;
 }
@@ -23,13 +27,17 @@ a:hover
 }
 
 /*Set the default background color*/
-body 
-{
-	background-color: rgb(50, 50, 50);
-	overflow-x: hidden;
-	margin-bottom: 60px;
+body {
+    overflow-x: hidden;
+    margin-bottom: 60px;
 }
 
+
+.background {
+    background-image: url("../Content/Images/layout/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
 
 /* Navigation bar formatting */
 .navbar-active 
@@ -66,6 +74,13 @@ ul.nav a:focus {
 }
 
 /* Footer formatting */
+.footer-text
+{
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
 .footer-position 
 {
 	width: 100%;
@@ -91,4 +106,10 @@ ul.nav a:focus {
 .content 
 {
 	height: 100%;
+}
+
+.logo
+{
+    width: 50%;
+    height: 50%;
 }

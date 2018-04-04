@@ -1,0 +1,41 @@
+﻿@{Page.Title = "HouseCup";
+    Layout = "~/Shared/_DefaultPage.cshtml";
+
+}
+<DOCTYPE! HTML>
+<html>
+  <head>
+   
+
+</head>
+<body>
+    <div><br />
+<h1>House Cup </h1><br />
+        <h3>And the Winner of the 2018 House Cup is..</h3><br /><br />
+  @{ //replace the 0 with id value for each house from database
+      var hPoints1 = 0;
+      var hPoints2 = 0;
+      var hPoints3 = 0;
+      var hPoints4 = 0;
+
+      //in the rare event where 2 houses have equal points
+      if (hPoints1 == hPoints2) {hPoints1+=1; }
+      else if (hPoints1 == hPoints3) {hPoints1+=1; }
+      else if (hPoints1 == hPoints4) {hPoints1+=1; }
+      else if (hPoints2 == hPoints3) {hPoints2+=1; }
+      else if (hPoints2 == hPoints4) {hPoints2+=1; }
+      else if (hPoints3 == hPoints4) {hPoints3+=1; }
+      //picture of the winning house with points
+      if      ( hPoints1 > hPoints2 && hPoints1 > hPoints3 && hPoints1 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints1</p><img src="~/Content/Images/gryffindor.png"/> }
+      else if ( hPoints2 > hPoints1 && hPoints2 > hPoints3 && hPoints2 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints2</p><img src="~/Content/Images/hufflepuff.jpg"/> }
+      else if ( hPoints3 > hPoints2 && hPoints1 > hPoints3 && hPoints3 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints3</p><img src="~/Content/Images/ravenclaw.png"/> }
+      else if ( hPoints4 > hPoints2 && hPoints4 > hPoints3 && hPoints4 > hPoints1 ) {<p style="font-size:20px">Points: @hPoints4</p><img src="~/Content/Images/slytherin.jpg"/> }
+      
+      }
+    <br /><br />
+    <p>Congratulations! Click here to return to home &nbsp;&nbsp;<a href="AAAAAAAAAAAAAAAAAA"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a></p>
+    </div>
+
+</body>
+</html>
+</DOCTYPE!>

@@ -1,6 +1,5 @@
-﻿.info-panel
+﻿.info-panel 
 {
-    background-color: rgb(60, 60, 60);
 }
 
 .stats-list
@@ -9,4 +8,9 @@
     margin-left: -10px;
     list-style: none;
     color: white;
+}
+
+.stats-img
+{
+
 }
