@@ -56,7 +56,7 @@ body {
 
 .background {
     background-image: url("../Content/Images/layout/background2.jpg");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
