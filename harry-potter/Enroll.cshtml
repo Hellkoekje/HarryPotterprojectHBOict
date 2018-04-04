@@ -63,6 +63,8 @@
                 var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword) VALUES (@0, @1, @2)";
                 db.Execute(insertCommand, uUname, uEmail, uPassword);
 
+                Response.Redirect("~/Sorteerhoed.cshtml");
+
             }
             catch (Exception e)
             {
