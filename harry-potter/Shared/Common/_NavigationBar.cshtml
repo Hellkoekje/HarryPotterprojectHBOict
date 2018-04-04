@@ -5,7 +5,6 @@
     bool isLoggedIn = false;
     string username = "";
 
-
     if (Request.Cookies["Login"] != null)
     {
         isLoggedIn = true;
@@ -24,7 +23,6 @@
     }
 
     navigationLinks.Add(new Tuple<string, string, string>("About us", Href("~/AboutUs.cshtml"), "fa-info"));
-    navigationLinks.Add(new Tuple<string, string, string>("Contact", Href("~/Contact.cshtml"), "fa-phone"));
 }
 
 
@@ -57,9 +55,12 @@
 
 				@if (isLoggedIn)
 				{
-					<li>
-						<a href="#account"><i class="fas fa-user"></i> @username</a>
-					</li>
+                <li>
+                    <a href="#account"><i class="fas fa-user"></i> @username</a>
+                </li>
+                <li>
+                    <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
 				}
 				else
 				{
