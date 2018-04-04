@@ -1,4 +1,8 @@
-﻿
+﻿@font-face {
+    font-family: harry;
+    src: url("../Content/Font/harryp.ttf");
+}
+
 /* By default make all the text white*/
 html 
 {
@@ -6,9 +10,12 @@ html
 	min-height: 100%;
 }
 
-h1, h2, h3, h4, h5, p, a, th, tr, td
+h1, h2, h3, h4, h5, p, a, th, tr, td, label, button, li
 {
 	color: white;
+
+    font-family: harry;
+    font-size: 25px;
 }
 
 /* Avoid normalize.css from setting our button colors ;)*/
@@ -32,6 +39,7 @@ body {
 .background {
     background-image: url("../Content/Images/layout/background.jpg");
 }
+
 /* Navigation bar formatting */
 .navbar-active 
 {
@@ -92,4 +100,10 @@ ul.nav a:focus {
 .content 
 {
 	height: 100%;
+}
+
+.logo
+{
+    width: 50%;
+    height: 50%;
 }

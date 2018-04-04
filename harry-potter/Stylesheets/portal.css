@@ -1,6 +1,9 @@
 ﻿.info-panel
 {
-    background-color: rgb(60, 60, 60);
+    background-image: url("../Content/Images/layout/perkament.png");
+    background-position: center;
+    background-size: auto;
+
 }
 
 .stats-list
