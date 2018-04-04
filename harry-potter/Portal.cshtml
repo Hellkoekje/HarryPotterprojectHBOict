@@ -11,6 +11,15 @@
         { 4, "slytherin.png"}
     };
 
+    string username = "";
+    if (Request.Cookies["Login"] != null)
+    {
+        username = Request.Cookies["Login"]["uUname"];
+    }
+    else
+    {
+        Response.Redirect("~/Login.cshtml");
+    }
     int house = 1;
 
     houseImages.TryGetValue(house, out string image);

@@ -29,6 +29,7 @@
         {
             isValid = false;
         }
+
         if (isValid)
         {
             uUname = Request.Form["uUname"];
@@ -46,6 +47,12 @@
 
             if (dt.Rows.Count > 0)
             {
+                HttpCookie onzekoekjes = new HttpCookie("Login");               // Cookies wordt hier aangemaakt 
+                onzekoekjes["uUname"] = dt.Rows[0]["uUname"].ToString();
+                onzekoekjes.Expires = DateTime.Now.AddDays(1d);
+                Response.Cookies.Add(onzekoekjes);
+
+
                 Response.Redirect("~/Portal.cshtml");
             }
         }

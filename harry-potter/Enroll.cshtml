@@ -1,4 +1,7 @@
 ﻿@using WebMatrix.Data;
+@using System.Configuration;
+@using System.Data;
+@using System.Data.SqlClient;
 @{
     bool hasPost = false;
 
@@ -59,9 +62,13 @@
         {
             try
             {
-                Database db = Database.Open("Database");
-                var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword) VALUES (@0, @1, @2)";
-                db.Execute(insertCommand, uUname, uEmail, uPassword);
+                DataTable dt = new DataTable();
+                HttpCookie registerkoekjes = new HttpCookie("register");               // Cookies wordt hier aangemaakt 
+                registerkoekjes["uUname"] = dt.Rows[2]["uUname"].ToString();
+                registerkoekjes["uPassword"] = dt.Rows[3]["uPassword"].ToString();
+                registerkoekjes["uEmail"] = dt.Rows[3]["uEmail"].ToString();
+                registerkoekjes.Expires = DateTime.Now.AddDays(1d);
+                Response.Cookies.Add(registerkoekjes);
 
                 Response.Redirect("~/Sorteerhoed.cshtml");
 

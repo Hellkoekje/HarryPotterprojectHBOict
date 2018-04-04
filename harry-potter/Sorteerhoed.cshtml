@@ -1,4 +1,6 @@
-﻿@{
+﻿@using WebMatrix.Data;
+
+@{
     Page.Title = "SortingHat";
     Layout = "~/Shared/_DefaultPage.cshtml";
 }
@@ -61,9 +63,8 @@
         <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
 
 
-        @{
+        @{  
             int uHouse = 0;
-            string housename = "no house";
             var sp = 0;
             var hp = 0;
             var rp = 0;
@@ -72,69 +73,96 @@
             { <p> Be sure to fill in everything!</p>}
             else
             {
-
                 if (Request["vraag1"] == "s") { sp += 1; }
-                if (Request["vraag1"] == "h") { hp += 1; }
-                if (Request["vraag1"] == "r") { rp += 1; }
-                if (Request["vraag1"] == "g") { gp += 1; }
+                else if (Request["vraag1"] == "h") { hp += 1; }
+                else if (Request["vraag1"] == "r") { rp += 1; }
+                else if (Request["vraag1"] == "g") { gp += 1; }
                 if (Request["vraag2"] == "s") { sp += 1; }
-                if (Request["vraag2"] == "h") { hp += 1; }
-                if (Request["vraag2"] == "r") { rp += 1; }
-                if (Request["vraag2"] == "g") { gp += 1; }
+                else if (Request["vraag2"] == "h") { hp += 1; }
+                else if (Request["vraag2"] == "r") { rp += 1; }
+                else if (Request["vraag2"] == "g") { gp += 1; }
                 if (Request["vraag3"] == "s") { sp += 1; }
-                if (Request["vraag3"] == "h") { hp += 1; }
-                if (Request["vraag3"] == "r") { rp += 1; }
-                if (Request["vraag3"] == "g") { gp += 1; }
+                else if (Request["vraag3"] == "h") { hp += 1; }
+                else if (Request["vraag3"] == "r") { rp += 1; }
+                else if (Request["vraag3"] == "g") { gp += 1; }
                 if (Request["vraag4"] == "s") { sp += 1; }
-                if (Request["vraag4"] == "h") { hp += 1; }
-                if (Request["vraag4"] == "r") { rp += 1; }
-                if (Request["vraag4"] == "g") { gp += 1; }
+                else if (Request["vraag4"] == "h") { hp += 1; }
+                else if (Request["vraag4"] == "r") { rp += 1; }
+                else if (Request["vraag4"] == "g") { gp += 1; }
                 if (Request["vraag5"] == "s") { sp += 1; }
-                if (Request["vraag5"] == "h") { hp += 1; }
-                if (Request["vraag5"] == "r") { rp += 1; }
-                if (Request["vraag5"] == "g") { gp += 1; }
+                else if (Request["vraag5"] == "h") { hp += 1; }
+                else if (Request["vraag5"] == "r") { rp += 1; }
+                else if (Request["vraag5"] == "g") { gp += 1; }
 
 
-                if (sp > hp && sp > rp && sp > gp) { uHouse = 3; }
+
                 if (gp > hp && gp > rp && gp > sp) { uHouse = 1; }
-                if (hp > sp && hp > rp && hp > gp) { uHouse = 2; }
-                if (rp > hp && rp > sp && rp > gp) { uHouse = 4; }
-                if (rp == 2 && hp == 2) { uHouse = 4; }
-                if (rp == 2 && gp == 2) { uHouse = 2; }
-                if (sp == 2 && rp == 2) { uHouse = 1; }
-                if (sp == 2 && gp == 2) { uHouse = 2; }
-                if (sp == 2 && hp == 2) { uHouse = 3; }
-                if (hp == 2 && gp == 2) { uHouse = 3; }
-
-                if (uHouse == 1)
-                { housename = "Gryffindor"; }
-                if (uHouse == 2)
-                { housename = "Hufflepuff"; }
-                if (uHouse == 3)
-                { housename = "Slytherin"; }
-                if (uHouse == 4)
-                { housename = "Ravenclaw"; }
+                else if (hp > sp && hp > rp && hp > gp) { uHouse = 2; }
+                else if (sp > hp && sp > rp && sp > gp) { uHouse = 3; }
+                else if (rp > hp && rp > sp && rp > gp) { uHouse = 4; }
+                else if (rp == 2 && hp == 2) { uHouse = 4; }
+                else if (rp == 2 && gp == 2) { uHouse = 2; }
+                else if (sp == 2 && rp == 2) { uHouse = 1; }
+                else if (sp == 2 && gp == 2) { uHouse = 2; }
+                else if (sp == 2 && hp == 2) { uHouse = 3; }
+                else if (hp == 2 && gp == 2) { uHouse = 3; }
+                else { uHouse = 1; }
 
 
 
                 <p> Your House is....</p><br /><br />
-                if (uHouse == 3) { <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg"/> }
-                   if (uHouse == 1) { <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png"/> }
-                    if (uHouse == 2) {<img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg"/>  }
-                    if (uHouse == 4) { <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png"/> }
-                                <br /> <br /> <br />
-                <a href = "aaaaaaaaaaaaaaaaaaaaaa"><button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+
+                if (uHouse == 1)
+                {
+                    <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png" />
+                }
+                else if (uHouse == 2)
+                {
+                    <img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg" />
+                }
+                else if (uHouse == 3)
+                {
+                    <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg" />
+                }
+                else if (uHouse == 4)
+                {
+                    <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png" />
+                }
+                string uUname = "";
+                string uPassword = "";
+                string uEmail = "";
+
+                if (Request.Cookies["registerkoekjes"] != null) {
+                    uUname = Request.Cookies["registerkoekjes"]["uUname"];
+                    uPassword = Request.Cookies["registerkoekjes"]["uPassword"];
+                    uEmail = Request.Cookies["registerkoekjes"]["uEmail"];
+
+                    if (uHouse > 0)
+                    {
+                        Database db = Database.Open("Database");
+                        var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword, uHouse) VALUES (@0, @1, @2, @3)";
+                        db.Execute(insertCommand, uUname, uEmail, uPassword, uHouse);
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Login.cshtml");
+                }
+                <br /> <br /> <br />
+                <a href = "~/Login.cshtml" button type = "button" id = "okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</a>
                     <style>
                         #submitbutton {
                             display: none
                         }
-                        #quiz{
+                       #quiz{
                             display:none
                         }
                     </style>
-                }
+
+
+
             }
-        
+            }
     </form>
 
 </body>
