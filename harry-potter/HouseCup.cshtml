@@ -10,7 +10,7 @@
 </head>
 <body>
     <div><br />
-<h1>House Cup </h1><br />
+<h1 class="harry-font">House Cup </h1><br />
         <h3>And the Winner of the 2018 House Cup is..</h3><br /><br />
   @{ //replace the 0 with id value for each house from database
       var hPoints1 = 0;
@@ -18,7 +18,7 @@
       var hPoints3 = 0;
       var hPoints4 = 0;
 
-      //in the rare event where 2 houses have equal points
+      //in case 2 houses have equal points
       if (hPoints1 == hPoints2) {hPoints1+=1; }
       else if (hPoints1 == hPoints3) {hPoints1+=1; }
       else if (hPoints1 == hPoints4) {hPoints1+=1; }
