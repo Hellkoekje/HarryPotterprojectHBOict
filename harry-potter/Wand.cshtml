@@ -65,7 +65,8 @@
 
 
         @{
-            
+            /* the variable for each corresponding wand starts with a value of 0 and increases according to the users input. 
+            When the user submits, a picture of the wand with the highest value is displayed. */
             string wand = "no wand";
             var ash = 0;
             var haw= 0;
@@ -77,38 +78,38 @@
             {
 
                 if (Request["vraag1"] == "ash") { ash += 1; }
-                if (Request["vraag1"] == "haw") { haw += 1; }
-                if (Request["vraag1"] == "hol") { hol += 1; }
-                if (Request["vraag1"] == "vin") { vin += 1; }
+                else if (Request["vraag1"] == "haw") { haw += 1; }
+                else if (Request["vraag1"] == "hol") { hol += 1; }
+                else if (Request["vraag1"] == "vin") { vin += 1; }
                 if (Request["vraag2"] == "ash") { ash += 1; }
-                if (Request["vraag2"] == "haw") { haw += 1; }
-                if (Request["vraag2"] == "hol") { hol += 1; }
-                if (Request["vraag2"] == "vin") { vin += 1; }
+                else if (Request["vraag2"] == "haw") { haw += 1; }
+                else if (Request["vraag2"] == "hol") { hol += 1; }
+                else if (Request["vraag2"] == "vin") { vin += 1; }
                 if (Request["vraag3"] == "ash") { ash += 1; }
-                if (Request["vraag3"] == "haw") { haw += 1; }
-                if (Request["vraag3"] == "hol") { hol += 1; }
-                if (Request["vraag3"] == "vin") { vin += 1; }
+                else if (Request["vraag3"] == "haw") { haw += 1; }
+                else if (Request["vraag3"] == "hol") { hol += 1; }
+                else if (Request["vraag3"] == "vin") { vin += 1; }
                 if (Request["vraag4"] == "ash") { ash += 1; }
-                if (Request["vraag4"] == "haw") { haw += 1; }
-                if (Request["vraag4"] == "hol") { hol += 1; }
-                if (Request["vraag4"] == "vin") { vin += 1; }
+                else if (Request["vraag4"] == "haw") { haw += 1; }
+                else if (Request["vraag4"] == "hol") { hol += 1; }
+                else if (Request["vraag4"] == "vin") { vin += 1; }
                 if (Request["vraag5"] == "ash") { ash += 1; }
-                if (Request["vraag5"] == "haw") { haw += 1; }
-                if (Request["vraag5"] == "hol") { hol += 1; }
-                if (Request["vraag5"] == "vin") { vin += 1; }
+                else if (Request["vraag5"] == "haw") { haw += 1; }
+                else if (Request["vraag5"] == "hol") { hol += 1; }
+                else if (Request["vraag5"] == "vin") { vin += 1; }
+            }
 
 
-
-                if (ash > haw && ash > hol && ash > vin) { wand = "ash"; }
-                if (vin > haw && vin > hol && vin > ash) { wand = "vin"; }
-                if (haw > ash && haw > hol && haw > vin) { wand = "haw"; }
-                if (hol > haw && hol > ash && hol > vin) { wand = "hol"; }
-                if (hol == 2 && haw == 2) { wand = "hol"; }
-                if (hol == 2 && vin == 2) { wand = "vin"; }
-                if (ash == 2 && hol == 2) { wand = "ash"; }
-                if (ash == 2 && vin == 2) { wand = "vin"; }
-                if (ash == 2 && haw == 2) { wand = "haw"; }
-                if (haw == 2 && vin == 2) { wand = "haw"; }
+            if (ash > haw && ash > hol && ash > vin) { wand = "ash"; }
+            else if (vin > haw && vin > hol && vin > ash) { wand = "vin"; }
+            else if (haw > ash && haw > hol && haw > vin) { wand = "haw"; }
+            else if (hol > haw && hol > ash && hol > vin) { wand = "hol"; }
+            else if (hol == 2 && haw == 2) { wand = "hol"; }
+            else if (hol == 2 && vin == 2) { wand = "vin"; }
+            else if (ash == 2 && hol == 2) { wand = "ash"; }
+            else if (ash == 2 && vin == 2) { wand = "vin"; }
+            else if (ash == 2 && haw == 2) { wand = "haw"; }
+            else if (haw == 2 && vin == 2) { wand = "haw"; }
 
 
 
