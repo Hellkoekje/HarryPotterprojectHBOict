@@ -21,6 +21,9 @@
         return lastUserData;
     }
 
+    /// <summary>
+    ///     Grab the house of the player.
+    /// </summary>
     public static House GetHouse(int userId)
     {
         User user = GetUserById(userId);
@@ -37,6 +40,17 @@
     {
         string query = "UPDATE users SET uHouse=@0 WHERE uUname=@1";
         _database.Execute(query, house.Id, user.Username);
+        Invalidate();
+    }
+
+    /// <summary>
+    ///     Increase the amount of points.
+    /// </summary>
+    public static void IncrementUserPoints(User user, int amount)
+    {
+        string query = "UPDATE users SET uPoints = uPoints + @1 WHERE uUname=@0";
+        _database.Execute(query, user.Username, amount);
+
         Invalidate();
     }
 

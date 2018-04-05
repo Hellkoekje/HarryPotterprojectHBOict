@@ -32,11 +32,11 @@
     }
 
     /// <summary>
-    ///     Increase the amount of points by one.
+    ///     Increase the amount of points.
     /// </summary>
-    public static void IncrementMemberPoints(House house)
+    public static void IncrementMemberPoints(House house, int amount)
     {
-        string query = "UPDATE houses SET hPoints = hPoints + 1 WHERE hName=@0";
-        _database.Execute(query, house.HouseName);
+        string query = "UPDATE houses SET hPoints = hPoints + @1 WHERE hName=@0";
+        _database.Execute(query, house.HouseName, amount);
     }
 }

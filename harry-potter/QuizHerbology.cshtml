@@ -83,6 +83,27 @@
 
             double procentgoed = score / 5 * 100;
 
+            if (procentgoed >= 55)
+            {
+                User user = UserController.GetUserById(AuthController.LoginId);
+                House house = HouseController.GetHouseById(user.House);
+
+                int points = 1;
+
+                if (procentgoed > 75)
+                {
+                    points++;
+                }
+
+                if (procentgoed > 90)
+                {
+                    points++;
+                }
+
+                HouseController.IncrementMemberPoints(house, points);
+                UserController.IncrementUserPoints(user, points);
+            }
+
             if (kek == 0)
             { <p> Be sure to fill in everything!</p>}
             else

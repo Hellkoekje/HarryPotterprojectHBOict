@@ -86,6 +86,27 @@
 
                 double procentgoed = score / 5 * 100;
 
+                if (procentgoed >= 55)
+                {
+                    User user = UserController.GetUserById(AuthController.LoginId);
+                    House h = HouseController.GetHouseById(user.House);
+
+                    int points = 1;
+
+                    if (procentgoed > 75)
+                    {
+                        points++;
+                    }
+
+                    if (procentgoed > 90)
+                    {
+                        points++;
+                    }
+
+                    HouseController.IncrementMemberPoints(h, points);
+                    UserController.IncrementUserPoints(user, points);
+                }
+
                 if (kek == 0)
                 { <p> Be sure to fill in everything!</p>}
             else
@@ -104,35 +125,7 @@
                         }
                     </style>
                 }
-                double housepunten = procentgoed / 10;
-                int hPoints = 0;
-                string ID = "6";
-                string house = "5";
-
-                hPoints = hPoints + Convert.ToInt32(housepunten);
-                if (Request.Cookies["UserKoekje"] != null)
-                {
-                    ID = Request.Cookies["koekjemonster"]["ID"];
-                    house = Request.Cookies["koekjemonster"]["House"];
-                }
-                // Connectie met de database wordt hier gemaakt.
-
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand("UPDATE houses SET hId =@a1, hPoints=@a2", con);
-                cmd.Parameters.Add("a1", Convert.ToInt32(house));
-                cmd.Parameters.Add("a2", Convert.ToInt32(housepunten));
-                cmd.ExecuteNonQuery();
-                con.Close();
-
             }
-        
-
-
-
-
-
 </form>
     
   </body>
