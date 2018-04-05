@@ -5,11 +5,10 @@
     bool isLoggedIn = false;
     string username = "";
 
-    if (Request.Cookies["Login"] != null)
+    if (Request.Cookies["loginkoekje"] != null)
     {
         isLoggedIn = true;
-        username = Request.Cookies["Login"]["uUname"];
-
+        username = Request.Cookies["loginkoekje"]["username"];
     }
     //TODO: Fetch links from somwhere else...
     List<Tuple<string, string, string>> navigationLinks = new List<Tuple<string, string, string>>();
@@ -59,10 +58,10 @@
 				@if (isLoggedIn)
 				{
                 <li>
-                    <a href="#account"><i class="fas fa-user"></i> @username</a>
+                    <a href="@Href("~/Portal.cshtml")"><i class="fas fa-user"></i> @username</a>
                 </li>
                 <li>
-                    <a href="@Href("~/Login.cshtml")"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="@Href("~/Index.cshtml")"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
 				}
 				else

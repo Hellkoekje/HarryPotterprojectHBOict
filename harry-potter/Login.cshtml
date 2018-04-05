@@ -19,6 +19,10 @@
         Validator.StringLength(1024, 6, "The given password is too short")
     );
 
+    HttpCookie UserKoekje = new HttpCookie("UserKoekje");
+    Response.Cookies["UserKoekje"].Expires = DateTime.Now.AddDays(-1);
+
+
     if (IsPost)
     {
         hasPost = true;
