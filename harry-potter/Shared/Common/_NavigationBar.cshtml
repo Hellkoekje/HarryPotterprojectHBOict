@@ -1,16 +1,7 @@
 ﻿@{
+    User user = AuthController.AuthedUserData;
+    bool isLoggedIn = user.Id != -1;
 
-    //TODO: Some code to check if the user is logged in
-    //		If so, fetch the user data.
-    bool isLoggedIn = false;
-    string username = "";
-
-    if (Request.Cookies["loginkoekje"] != null)
-    {
-        isLoggedIn = true;
-        username = Request.Cookies["loginkoekje"]["username"];
-    }
-    //TODO: Fetch links from somwhere else...
     List<Tuple<string, string, string>> navigationLinks = new List<Tuple<string, string, string>>();
     if (isLoggedIn == false)
     {
@@ -26,7 +17,6 @@
 
     navigationLinks.Add(new Tuple<string, string, string>("About us", Href("~/AboutUs.cshtml"), "fa-info"));
 }
-
 
 <nav class="navbar navbar-colors">
 	<div class="container-fluid">
@@ -58,7 +48,7 @@
 				@if (isLoggedIn)
 				{
                 <li>
-                    <a href="@Href("~/Portal.cshtml")"><i class="fas fa-user"></i> @username</a>
+                    <a href="@Href("~/Portal.cshtml")"><i class="fas fa-user"></i> @user.Username</a>
                 </li>
                 <li>
                     <a href="@Href("~/Index.cshtml")"><i class="fas fa-sign-out-alt"></i> Logout</a>

@@ -44,6 +44,23 @@ public class AuthController
         }
     }
 
+    private static User _authedUserData = default(User);
+    public static User AuthedUserData
+    {
+        get
+        {
+            if(_authedUserData.Equals(default(User)))
+            {
+                string query = "SELECT uId, uEmail, uUname, uHouse, uPoints FROM users WHERE uId=@0";
+                dynamic result = _database.Query(query, _loggedInId);
+
+                _authedUserData = new User(result);
+            }
+
+            return _authedUserData;
+        }
+    }
+
     /// <summary>
     ///     Try to register a new user in the database.
     /// </summary>

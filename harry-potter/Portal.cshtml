@@ -1,77 +1,10 @@
-﻿@using System.Configuration;
-@using System.Data;
-@using System.Data.SqlClient;
-@using System.Globalization;
-
-
+﻿@using System.Globalization;
 @{
-    //goeie
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
-    //int house = 0;
-    string username = "";
-    int Points = 0;
-    int House = 0;
-    int ID = 0;
-
-    //hier word de cookie aangevraagd voor de username.
-    if (Request.Cookies["loginkoekje"] != null)
-    {
-        username = Request.Cookies["loginkoekje"]["username"];
-    }
-    else
-    {
-        //Response.Redirect("~/Login.cshtml");
-    }
     PortalController controller = new PortalController();
-
-    // Connectie met de database wordt hier gemaakt.
-
-    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-    con.Open();
-
-    // Hier word de table geselecteerd, en gecheckt waar de gegevens weg worden gehaald. 
-
-    SqlCommand cmd = new SqlCommand("select * from users where uUname='"+username+"'", con);
-    SqlDataReader dr = cmd.ExecuteReader();
-
-    // Hier word de database gelezen en op benamingen gezet.
-
-    if (dr.Read())
-    {
-        ID = dr.GetInt32(0);
-        username = dr[3].ToString();
-        House = dr.GetInt32(4);
-        Points = dr.GetInt32(5);
-    }
-
-    SqlDataAdapter da = new SqlDataAdapter(cmd);
-    DataTable dt = new DataTable();
-    // Cookiesss
-
-
-    if (ID != 0)
-    {
-
-        HttpCookie UserKoekje = new HttpCookie("UserKoekje");
-        Response.Cookies["UserKoekje"]["ID"] = ID.ToString();
-        Response.Cookies["UserKoekje"]["username"] = username.ToString();
-        Response.Cookies["UserKoekje"]["House"] = House.ToString();
-        UserKoekje.Expires = DateTime.Now.AddDays(1d);
-        Response.Cookies.Add(UserKoekje);
-    }
-    // Hier word de connection gestopt met de database.
-
-    con.Close();
-
-    // Hier wordt na gekeken of de gebruiker al een house heeft. 
-    // Zo niet word de gebruiker redirect naar de Sorteerhoed.
-
-    //if (House == 0)
-    //{
-    //    Response.Redirect("~/Sorteerhoed.cshtml");
-    //}
+    User user = AuthController.AuthedUserData;
 
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
@@ -82,7 +15,7 @@
         { 4, "slytherin.jpg"}
     };
 
-    houseImages.TryGetValue(House, out string image);
+    houseImages.TryGetValue(user.House, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent(image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 
@@ -103,9 +36,9 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Total members: @House members</li>
+                    @*<li>Total members: @House members</li>
                     <li>Total points: @House points</li>
-                    <li>House rank: @House  </li>
+                    <li>House rank: @House  </li>*@
                 </ul>
             </div>
 
@@ -116,9 +49,9 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Wizard name: @username</li>
-                    <li>Total points: @Points points</li>
-                    <li>Wizard rank: #@controller.GetUserRank(username)</li>
+                    <li>Wizard name: @user.Username</li>
+                    <li>Total points: @user.Points points</li>
+                    <li>Wizard rank: #@controller.GetUserRank(user.Username)</li>
                 </ul>
             </div>
         </div>
