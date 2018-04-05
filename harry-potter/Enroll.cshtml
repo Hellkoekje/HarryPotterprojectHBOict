@@ -1,9 +1,4 @@
-﻿@using WebMatrix.Data;
-@using System.Configuration;
-@using System.Data;
-@using System.Data.SqlClient;
-
-@{
+﻿@{
     bool hasPost = false;
     string uYear = DateTime.Now.ToShortDateString();
     string uUname = "";
@@ -36,7 +31,6 @@
         Validator.StringLength(1024, 6, "The given password is too short")
     );
 
-
     if (IsPost)
     {
         uUname = Request.Form["uUname"];
@@ -46,6 +40,7 @@
 
         bool isThisPostValid = true;
         hasPost = true;
+
         AntiForgery.Validate();
 
         if (!Validation.IsValid())
@@ -59,31 +54,28 @@
             isThisPostValid = false;
         }
 
-        Random random = new Random();
-        int uHouse = random.Next(1, 5);
         if (isThisPostValid)
         {
-            try
-            {
-                Database db = Database.Open("Database");
-                var insertCommand2 = "INSERT INTO users (uUname, uPassword, uEmail, uHouse, uYear ) VALUES (@0, @1, @2, @3, @4)";
-                db.Execute(insertCommand2, uUname, uPassword, uEmail, uHouse, uYear);
+            RegisterState state = AuthController.Register(uUname, uPassword, uEmail);
 
-                db.Close();
-                Response.Redirect("~/Login.cshtml");
-            }
-            catch (Exception e)
+            switch (state)
             {
-                if ((bool)AppState["debugMode"])
-                {
-                    Response.Write($"You fucked up! {Environment.NewLine} Error: {e.Message}");
-                }
-                else
-                {
-                    Response.Redirect("~/500.cshtml", true);
-                }
+                case RegisterState.Ok:
+                    Response.Redirect("~/Login.cshtml");
+                    break;
+                case RegisterState.Failed:
+                    Response.Redirect("~/500.cshtml");
+                    break;
+                case RegisterState.AlreadyExists:
+                    Validation.AddFormError("Username or email already exists!");
+                    break;
             }
         }
+        else
+        {
+            Response.Redirect("~/Login.cshtml");
+        }
+    }
     }
 }
 
@@ -102,7 +94,7 @@
     <div class="row vm-2">
         <div class="contact-form col-md-offset-3 col-md-6" align="left">
 
-            @Html.ValidationSummary(true)
+            @Html.ValidationSummary()
 
             <form method="post">
                 @AntiForgery.GetHtml()
