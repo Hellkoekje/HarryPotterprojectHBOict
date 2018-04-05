@@ -92,7 +92,7 @@ ul.nav a:focus {
 
 /* Footer formatting */
 .footer-text {
-    font-size: 20px;
+    font-size: 15px;
     margin: 0px;
     padding: 0px;
 }
@@ -106,12 +106,12 @@ ul.nav a:focus {
 
 .footer-color {
     color: white;
-    background-color: rgb(40,40,40);
+   
 }
 
 .footer-copyright {
     width: 100%;
-    background-color: royalblue;
+    
 }
 
 /* Content of the default page */
