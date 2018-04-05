@@ -13,13 +13,15 @@
     }
     //TODO: Fetch links from somwhere else...
     List<Tuple<string, string, string>> navigationLinks = new List<Tuple<string, string, string>>();
-
-    navigationLinks.Add(new Tuple<string, string, string>("Home", Href("~/Index.cshtml"), "fa-home"));
-
-    if(isLoggedIn)
+    if (isLoggedIn == false)
     {
-        navigationLinks.Add(new Tuple<string, string, string>("Wizard Portal", Href("~/Portal.cshtml"), "fa-magic"));
-        navigationLinks.Add(new Tuple<string, string, string>("Hogsmeade", Href("~/Hogsmeade.cshtml"), "fa-star"));
+        navigationLinks.Add(new Tuple<string, string, string>("Home", Href("~/Index.cshtml"), "fa-home"));
+    }
+    if (isLoggedIn)
+    {
+        navigationLinks.Add(new Tuple<string, string, string>("Wizard Portal", Href("~/Portal.cshtml"), "fa-star"));
+        navigationLinks.Add(new Tuple<string, string, string>("Classes", Href("~/LesOverzicht.cshtml"), "fa-magic"));
+        navigationLinks.Add(new Tuple<string, string, string>("Sorting Hood", Href("~/Sorteerhoed.cshtml"), "fa-magic"));
     }
 
     navigationLinks.Add(new Tuple<string, string, string>("About us", Href("~/AboutUs.cshtml"), "fa-info"));
@@ -59,7 +61,7 @@
                     <a href="#account"><i class="fas fa-user"></i> @username</a>
                 </li>
                 <li>
-                    <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="@Href("~/Login.cshtml")"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
 				}
 				else
