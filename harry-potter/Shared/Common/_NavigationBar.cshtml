@@ -21,7 +21,8 @@
     {
         navigationLinks.Add(new Tuple<string, string, string>("Wizard Portal", Href("~/Portal.cshtml"), "fa-star"));
         navigationLinks.Add(new Tuple<string, string, string>("Classes", Href("~/LesOverzicht.cshtml"), "fa-magic"));
-        navigationLinks.Add(new Tuple<string, string, string>("Sorting Hood", Href("~/Sorteerhoed.cshtml"), "fa-magic"));
+        navigationLinks.Add(new Tuple<string, string, string>("Sorting Hat", Href("~/Sorteerhoed.cshtml"), "fa-magic"));
+        navigationLinks.Add(new Tuple<string, string, string>("Quidditch", Href("~/QuidditchOverview.cshtml"), "fa-star"));
     }
 
     navigationLinks.Add(new Tuple<string, string, string>("About us", Href("~/AboutUs.cshtml"), "fa-info"));
@@ -41,7 +42,7 @@
 		<!-- The menu itself.-->
 		<div class="collapse navbar-collapse" id="jfdgjfsg">
 			<ul class="nav navbar-nav">
-
+                    
 			@foreach (var item in navigationLinks)
 			{
 				string classes = item.Item1.Equals(Page.Title) ? "navbar-active" : "";
