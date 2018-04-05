@@ -3,9 +3,20 @@
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
-    PortalController controller = new PortalController();
+    if(!AuthController.IsLoggedIn)
+    {
+        Response.Redirect("~/Login.cshtml");
+    }
+
     User user = AuthController.AuthedUserData;
 
+    if(user.House == 0)
+    {
+        Response.Redirect("~/Sortinghat.cshtml");
+    }
+
+
+    PortalController controller = new PortalController();
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
         { 0, "nope.png"},
