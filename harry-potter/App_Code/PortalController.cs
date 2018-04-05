@@ -76,4 +76,12 @@ public class PortalController
             return 0;
         }
     }
+
+    public dynamic GetTimeTableData(int lessonWeek)
+    {
+        Database db = Database.Open("Database");
+        string query = "SELECT lesson, day, time, duration FROM timetable WHERE lessonWeek=@0";
+
+        return db.Query(query, lessonWeek);
+    }
 }

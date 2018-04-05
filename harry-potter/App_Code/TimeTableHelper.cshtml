@@ -1,4 +1,4 @@
-﻿@helper GenerateTimeTable(DateTime start, DateTime end, TimeSpan timeStep)
+﻿@helper GenerateTimeTable(DateTime start, DateTime end, TimeSpan timeStep, dynamic timeTableData)
 {
     string[] days = new string[]
     {
@@ -20,18 +20,67 @@
         </thead>
         <tbody>
             @{
+                @*Add a row for each time step, do this until we reach our end time.*@
                 DateTime current = start;
                 while ((current - timeStep) < end)
                 {
+                    string time = current.ToString("HH:mm");
                     <tr>
-                        <th scope="row">@current.ToString("HH:mm")</th>
+                        <th scope="row">@time</th>
 
-                        @foreach(string day in days)
+                        @*Loop over the days (0 to 6)*@
+                        @for (int i = 0; i < 7; i++)
                         {
-                            <td>@current.ToString("HH:mm") - @day</td>
+                            bool hasFound = false;
+
+                            //Iterate of the time table data, this contains all the lessons on when they are and by whom.
+                            foreach (dynamic timeTableEntry in timeTableData)
+                            {
+                                //Check if the current item is meant for the current day. (i.e. don't put mondays lessons onto tuesdays schedule).
+                                int currentDay = i + 1;
+                                if (currentDay != timeTableEntry.day)
+                                {
+                                    continue;
+                                }
+
+                                //Check if the current time equals the lesson time or is within the duration.
+                                int duration = timeTableEntry.duration;
+                                bool isWithinTimeFrame = false;
+
+                                //Start with the intial time the lessons starts, if the time did not match what we are currently looking for then
+                                //increment the timeframe by one step, to see if it then fits the time we are looking for.
+                                //The increments is limited by the duration of a lesson, duration directly correlates to the timestep.
+                                DateTime timeFrame = timeTableEntry.time;
+                                for(int d = 0; d < duration; d++)
+                                {
+                                    if(timeFrame.ToString("HH:mm") == time)
+                                    {
+                                        isWithinTimeFrame = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        timeFrame = timeFrame.Add(timeStep);
+                                    }
+                                }
+
+                                //If we find a lesson that fits the time frame, then add it to the time table.
+                                if(isWithinTimeFrame)
+                                {
+                                    <td>Lesson: @timeTableEntry.lesson</td>
+                                    hasFound = true;
+                                }
+                            }
+
+                            //If we have found absolutely nothing, add empty indicies.
+                            if(!hasFound)
+                            {
+                                <td>...</td>
+                            }
                         }
                     </tr>
 
+                    //Increment the current time by one timestep.
                     current += timeStep;
                 }
             }

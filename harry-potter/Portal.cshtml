@@ -1,6 +1,7 @@
 ﻿@using System.Configuration;
 @using System.Data;
 @using System.Data.SqlClient;
+@using System.Globalization;
 @{
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
@@ -64,10 +65,10 @@
     // Hier wordt na gekeken of de gebruiker al een house heeft. 
     // Zo niet word de gebruiker redirect naar de Sorteerhoed.
 
-    if (House == 0)
-    {
-        Response.Redirect("~/Sorteerhoed.cshtml");
-    }
+    //if (House == 0)
+    //{
+    //    Response.Redirect("~/Sorteerhoed.cshtml");
+    //}
 
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
@@ -78,16 +79,13 @@
         { 4, "slytherin.jpg"}
     };
 
-
-
-
     houseImages.TryGetValue(House, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent(image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 
-    DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-    DateTime endTime = DateTime.ParseExact("17:00", "HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-    TimeSpan increments = new TimeSpan(0, 45, 0);
+    DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", CultureInfo.InvariantCulture);
+    DateTime endTime = DateTime.ParseExact("17:00", "HH:mm", CultureInfo.InvariantCulture);
+    TimeSpan increments = new TimeSpan(1, 0, 0);
 
 }
 
@@ -123,7 +121,9 @@
         </div>
 
         <div class="col-md-9 info-panel vm-1 hm-1">
-            @TimeTableHelper.GenerateTimeTable(startTime, endTime, increments);
+
+            @* Lesson week is hardcoded for now. *@
+            @TimeTableHelper.GenerateTimeTable(startTime, endTime, increments, controller.GetTimeTableData(1));
         </div>
     </div>
 </div>

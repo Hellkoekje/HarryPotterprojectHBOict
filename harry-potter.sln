@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "harry-potter", "harry-potter\", "{C7B1B654-0353-4A9F-9D7F-7964F1A4F4D9}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -26,9 +26,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "harry-potter", "harry-potte
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B33148E3-2A9F-4EE6-A254-1453CE6D2B80}"
-	ProjectSection(SolutionItems) = preProject
-		Class1.cs = Class1.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
