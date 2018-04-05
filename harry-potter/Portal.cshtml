@@ -12,11 +12,11 @@
     int House = 0;
     int ID = 0;
 
-    if (Request.Cookies["Login"] != null)
+    //hier word de cookie aangevraagd voor de username.
+    if (Request.Cookies["loginkoekje"] != null)
     {
-        username = Request.Cookies["Login"]["uUname"];
+        username = Request.Cookies["loginkoekje"]["username"];
     }
-
     else
     {
         Response.Redirect("~/Login.cshtml");
@@ -51,10 +51,10 @@
     if (ID != 0)
     {
 
-        HttpCookie UserKoekje = new HttpCookie("koekjemonster");
-        UserKoekje["ID"] = ID.ToString();
-        UserKoekje["username"] = username.ToString();
-        UserKoekje["House"] = House.ToString();
+        HttpCookie UserKoekje = new HttpCookie("UserKoekje");
+        Response.Cookies["UserKoekje"]["ID"] = ID.ToString();
+        Response.Cookies["UserKoekje"]["username"] = username.ToString();
+        Response.Cookies["UserKoekje"]["House"] = House.ToString();
         UserKoekje.Expires = DateTime.Now.AddDays(1d);
         Response.Cookies.Add(UserKoekje);
     }

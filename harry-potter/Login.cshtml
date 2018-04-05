@@ -39,7 +39,7 @@
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
             con.Open();
             //Hier wordt na gekeken of de username & pasword sammen een hit zijn in de database.
-            SqlCommand cmd = new SqlCommand("select * from users where uUname =@uUname and UPassword=@uPassword", con);
+            SqlCommand cmd = new SqlCommand("select * from users where uUname =@uUname and uPassword=@uPassword", con);
             cmd.Parameters.AddWithValue("@uUname", uUname);
             cmd.Parameters.AddWithValue("@uPassword", uPassword);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -51,7 +51,11 @@
 
             if (dt.Rows.Count > 0)
             {
-              
+                HttpCookie loginkoekje = new HttpCookie("loginkoekje");
+                Response.Cookies["loginkoekje"]["username"] = uUname.ToString();
+                loginkoekje.Expires = DateTime.Now.AddDays(1d);
+                Response.Cookies.Add(loginkoekje);
+
 
                 //Redirect naar de homepage voor de members.
                 Response.Redirect("~/Portal.cshtml");
