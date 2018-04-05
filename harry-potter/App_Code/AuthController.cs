@@ -118,7 +118,14 @@ public class AuthController : BaseController
         _isLoggedIn = true;
     }
 
-
+    /// <summary>
+    ///     Invalidate the current login
+    /// </summary>
+    public static void Invalidate()
+    {
+        _loginId = -1;
+        _isLoggedIn = false;
+    }
 
     private static string Encrypt(string password)
     {
@@ -132,4 +139,6 @@ public class AuthController : BaseController
         string passwordEncryptedInput = Encrypt(passwordInput);
         return passwordEncryptedInput.Equals(passwordFromDb, StringComparison.InvariantCulture);
     }
+
+
 }

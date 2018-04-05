@@ -9,4 +9,13 @@
             AuthController.SetAuthedUser(id);
         }
     }
+
+    if (Request.QueryString["logout"] != null)
+    {
+        Session["user_loggedin"] = false;
+        Session["user_id"] = -1;
+
+        UserController.Invalidate();
+        AuthController.Invalidate();
+    }
 }
