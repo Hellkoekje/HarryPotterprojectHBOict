@@ -67,7 +67,8 @@
                                 //If we find a lesson that fits the time frame, then add it to the time table.
                                 if(isWithinTimeFrame)
                                 {
-                                    <td>Lesson: @timeTableEntry.lesson</td>
+                                    string style = $"style=background-color:{timeTableEntry.color}";
+                                    <td @style>Lesson: @timeTableEntry.name <br/> by @timeTableEntry.teacher</td>
                                     hasFound = true;
                                 }
                             }
