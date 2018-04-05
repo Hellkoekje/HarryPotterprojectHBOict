@@ -19,6 +19,10 @@
         Validator.StringLength(1024, 6, "The given password is too short")
     );
 
+    HttpCookie UserKoekje = new HttpCookie("UserKoekje");
+    Response.Cookies["UserKoekje"].Expires = DateTime.Now.AddDays(-1);
+
+
     if (IsPost)
     {
         hasPost = true;
@@ -55,7 +59,6 @@
                 Response.Cookies["loginkoekje"]["username"] = uUname.ToString();
                 loginkoekje.Expires = DateTime.Now.AddDays(1d);
                 Response.Cookies.Add(loginkoekje);
-
 
                 //Redirect naar de homepage voor de members.
                 Response.Redirect("~/Portal.cshtml");

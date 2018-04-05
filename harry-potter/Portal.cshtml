@@ -2,7 +2,10 @@
 @using System.Data;
 @using System.Data.SqlClient;
 @using System.Globalization;
+
+
 @{
+    //goeie
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
@@ -30,7 +33,7 @@
 
     // Hier word de table geselecteerd, en gecheckt waar de gegevens weg worden gehaald. 
 
-    SqlCommand cmd = new SqlCommand("select * from users where uUname='"+@username+"'", con);
+    SqlCommand cmd = new SqlCommand("select * from users where uUname='"+username+"'", con);
     SqlDataReader dr = cmd.ExecuteReader();
 
     // Hier word de database gelezen en op benamingen gezet.
