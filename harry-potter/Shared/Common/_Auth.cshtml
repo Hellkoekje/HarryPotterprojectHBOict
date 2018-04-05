@@ -4,7 +4,7 @@
     {
         int id = (int)Session["user_id"];
 
-        if (id > 0 && AuthController.LoggedInId == -1)
+        if (id > 0 && AuthController.LoginId == -1)
         {
             AuthController.SetAuthedUser(id);
         }

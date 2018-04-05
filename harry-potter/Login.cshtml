@@ -39,7 +39,7 @@
             {
                 case LoginState.Ok:
                     Session["user_loggedin"] = true;
-                    Session["user_id"] = AuthController.LoggedInId;
+                    Session["user_id"] = AuthController.LoginId;
 
                     Response.Redirect("~/Portal.cshtml");
                     break;

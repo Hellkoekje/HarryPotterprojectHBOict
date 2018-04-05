@@ -8,9 +8,9 @@
         Response.Redirect("~/Login.cshtml");
     }
 
-    User user = AuthController.AuthedUserData;
+    User user = UserController.GetUserById(AuthController.LoginId);
 
-    if(user.House == 0)
+    if (user.House <= 0)
     {
         Response.Redirect("~/Sortinghat.cshtml");
     }

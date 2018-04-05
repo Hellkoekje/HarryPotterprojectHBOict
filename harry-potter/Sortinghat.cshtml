@@ -6,6 +6,18 @@
     string house = "";
     string houseImagePath = "";
 
+    if(!AuthController.IsLoggedIn)
+    {
+        Response.Redirect("~/Login.cshtml");
+    }
+
+    User user = UserController.GetUserById(AuthController.LoginId);
+
+    if(user.House > 0)
+    {
+        Response.Redirect("~/Portal.cshtml");
+    }
+
     if (IsPost)
     {
         IDictionary<string, int> points = new Dictionary<string, int>
@@ -43,6 +55,9 @@
                 .Key;
 
             houseImagePath = ImageHelper.PathToImageInContent(house) + ".png";
+
+            House houseObject = HouseController.GetHouseByName(house);
+            UserController.AssignHouse(user, houseObject);
         }
     }
 }
@@ -116,7 +131,7 @@ else if (valid)
         <br />
         <br />
         <br />
-        <a class="btn btn-lg btn-default" href="Sorteerhoed.cshtml">Continue!</a>
+        <a class="btn btn-lg btn-default" href="Portal.cshtml">Continue!</a>
 
     </div>
 }
@@ -124,5 +139,5 @@ else
 {
     <h2 class="harry-font">Woops!</h2>
     <p> Looks like you forgot some questions, make sure you fill in all the questions!</p>
-    <a class="btn btn-lg btn-default" href="Sorteerhoed.cshtml">Back</a>
+    <a class="btn btn-lg btn-default" href="Sortinghat.cshtml">Back</a>
 }

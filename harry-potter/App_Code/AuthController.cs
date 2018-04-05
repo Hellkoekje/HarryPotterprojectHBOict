@@ -18,23 +18,8 @@ public enum LoginState
 
 }
 
-public class AuthController
+public class AuthController : BaseController
 {
-    private static Database database;
-    private static Database _database
-    {
-        get
-        {
-            if(database == null ||
-                database.Connection.State != System.Data.ConnectionState.Open)
-            {
-                database = Database.Open("Database");
-            }
-
-            return database;
-        }
-    }
-
     private static bool _isLoggedIn = false;
     public static bool IsLoggedIn
     {
@@ -44,21 +29,12 @@ public class AuthController
         }
     }
 
-    private static int _loggedInId = -1;
-    public static int LoggedInId
+    private static int _loginId = -1;
+    public static int LoginId
     {
         get
         {
-            return _loggedInId;
-        }
-    }
-
-    private static User _authedUserData = default(User);
-    public static User AuthedUserData
-    {
-        get
-        {
-            return _authedUserData;
+            return _loginId;
         }
     }
 
@@ -138,12 +114,7 @@ public class AuthController
     {
         if (id == -1) return;
 
-        _loggedInId = id;
-
-        string query = "SELECT uId, uEmail, uUname, uHouse, uPoints FROM users WHERE uId=@0";
-        dynamic result = _database.Query(query, id);
-
-        _authedUserData = new User(result);
+        _loginId = id;
         _isLoggedIn = true;
     }
 
