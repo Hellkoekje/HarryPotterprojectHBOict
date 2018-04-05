@@ -12,20 +12,20 @@
     <div><br />
 <h1 class="harry-font">House Cup </h1><br />
         <h3>And the Winner of the 2018 House Cup is..</h3><br /><br />
-  @{ //replace the 0 with id value for each house from database
+  @{ //Acquires house points from database (hoe moet dit?)
       var hPoints1 = 0;
       var hPoints2 = 0;
       var hPoints3 = 0;
       var hPoints4 = 0;
 
-      //in case 2 houses have equal points
+      //in case 2 houses have equal points add 1 point to one of those houses
       if (hPoints1 == hPoints2) {hPoints1+=1; }
       else if (hPoints1 == hPoints3) {hPoints1+=1; }
       else if (hPoints1 == hPoints4) {hPoints1+=1; }
       else if (hPoints2 == hPoints3) {hPoints2+=1; }
       else if (hPoints2 == hPoints4) {hPoints2+=1; }
       else if (hPoints3 == hPoints4) {hPoints3+=1; }
-      //picture of the winning house with points
+      //displays a picture of the winning house with earned points
       if      ( hPoints1 > hPoints2 && hPoints1 > hPoints3 && hPoints1 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints1</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/gryffindor.png"/> }
       else if ( hPoints2 > hPoints1 && hPoints2 > hPoints3 && hPoints2 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints2</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/hufflepuff.jpg"/> }
       else if ( hPoints3 > hPoints2 && hPoints3 > hPoints1 && hPoints3 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints3</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/ravenclaw.png"/> }

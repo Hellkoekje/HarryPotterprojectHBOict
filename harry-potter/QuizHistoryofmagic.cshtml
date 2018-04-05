@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    <!--An History of Magic Quiz with a submit button to submit the answers -->
     <form method="post">
         <h1 class="harry-font">Quiz History of Magic 1 </h1><div id="quiz">
     <p><h3>Take the quiz and see if you're a real wizard!</h3></p>
@@ -60,6 +61,10 @@
 </div>
 
         @{
+            /*Results  will only shown if none of the radiobutton groups have a value of null. 
+            If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
+            Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
+            */
 
             var kek = 1;
             double score = 0;

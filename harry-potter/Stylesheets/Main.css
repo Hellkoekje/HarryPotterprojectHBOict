@@ -95,6 +95,7 @@ ul.nav a:focus {
     font-size: 15px;
     margin: 0px;
     padding: 0px;
+    background-color: black;
 }
 
 .footer-position {
@@ -106,6 +107,7 @@ ul.nav a:focus {
 
 .footer-color {
     color: white;
+    
    
 }
 

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    <!--A transfiguration Quiz with a submit button to submit the answers -->
     <form method="post">
         <h1 class="harry-font">Quiz Transfiguration 1 </h1>
         <div id="quiz">
@@ -89,7 +90,10 @@
         </div>
 
         @{
-
+            /*Results  will only shown if none of the radiobutton groups have a value of null. 
+            If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
+            Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
+            */
             var kek = 1;
             double score = 0;
             if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
