@@ -1,6 +1,6 @@
 ﻿@{
+    bool isLoggedIn = AuthController.IsLoggedIn;
     User user = AuthController.AuthedUserData;
-    bool isLoggedIn = user.Id != -1;
 
     List<Tuple<string, string, string>> navigationLinks = new List<Tuple<string, string, string>>();
     if (isLoggedIn == false)

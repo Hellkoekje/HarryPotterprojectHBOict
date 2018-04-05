@@ -35,6 +35,15 @@ public class AuthController
         }
     }
 
+    private static bool _isLoggedIn = false;
+    public static bool IsLoggedIn
+    {
+        get
+        {
+            return _isLoggedIn;
+        }
+    }
+
     private static int _loggedInId = -1;
     public static int LoggedInId
     {
@@ -49,14 +58,6 @@ public class AuthController
     {
         get
         {
-            if(_authedUserData.Equals(default(User)))
-            {
-                string query = "SELECT uId, uEmail, uUname, uHouse, uPoints FROM users WHERE uId=@0";
-                dynamic result = _database.Query(query, _loggedInId);
-
-                _authedUserData = new User(result);
-            }
-
             return _authedUserData;
         }
     }
@@ -138,7 +139,15 @@ public class AuthController
         if (id == -1) return;
 
         _loggedInId = id;
+
+        string query = "SELECT uId, uEmail, uUname, uHouse, uPoints FROM users WHERE uId=@0";
+        dynamic result = _database.Query(query, id);
+
+        _authedUserData = new User(result);
+        _isLoggedIn = true;
     }
+
+
 
     private static string Encrypt(string password)
     {

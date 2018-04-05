@@ -40,7 +40,7 @@
                 case LoginState.Ok:
                     Session["user_loggedin"] = true;
                     Session["user_id"] = AuthController.LoggedInId;
-                    Session.Timeout = 180;
+
                     Response.Redirect("~/Portal.cshtml");
                     break;
                 case LoginState.Failed:
