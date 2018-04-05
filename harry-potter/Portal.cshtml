@@ -15,6 +15,7 @@
         Response.Redirect("~/Sortinghat.cshtml");
     }
 
+    House house = HouseController.GetHouseById(user.House);
 
     PortalController controller = new PortalController();
     IDictionary<int, string> houseImages = new Dictionary<int, string>
@@ -47,9 +48,9 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    @*<li>Total members: @House members</li>
-                    <li>Total points: @House points</li>
-                    <li>House rank: @House  </li>*@
+                    <li>Total members: @house.MembersCount members</li>
+                    <li>Total points: @house.Points points</li>
+                    <li>House rank: #@controller.GetHouseRank(house.Id)</li>
                 </ul>
             </div>
 
