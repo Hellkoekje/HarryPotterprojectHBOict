@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using WebMatrix.Data;
+﻿using WebMatrix.Data;
 
-/// <summary>
-/// Summary description for BaseController
-/// </summary>
 public class BaseController
 {
     protected static Database database;
+
+    /// <summary>
+    ///     Get the current database context or open a new one.
+    /// </summary>
     protected static Database _database
     {
         get

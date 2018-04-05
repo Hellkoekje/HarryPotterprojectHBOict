@@ -3,34 +3,42 @@
     Page.Title = "Portal";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
+    //Check if the user is logged in.
     if(!AuthController.IsLoggedIn)
     {
         Response.Redirect("~/Login.cshtml");
     }
 
+    // Fetch user data.
     User user = UserController.GetUserById(AuthController.LoginId);
 
+    //Check if the user has a house.
     if (user.House <= 0)
     {
         Response.Redirect("~/Sortinghat.cshtml");
     }
-
+    
+    //Fetch house data.
     House house = HouseController.GetHouseById(user.House);
 
     PortalController controller = new PortalController();
+
+    //Determine what image the house should have.
     IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
-        { 0, "nope.png"},
-        { 1, "gryffindor.png" },
-        { 2, "hufflepuff.jpg" },
-        { 3, "ravenclaw.png"},
-        { 4, "slytherin.jpg"}
+        { -1, "nope.png"},
+        { 0, "gryffindor.png" },
+        { 1, "hufflepuff.jpg" },
+        { 2, "ravenclaw.png"},
+        { 3, "slytherin.jpg"}
     };
 
+    //Get the paths.
     houseImages.TryGetValue(user.House, out string image);
     string houseImagePath = ImageHelper.PathToImageInContent(image);
     string avatarImagePath = ImageHelper.PathToImageInContent("avatar.png");
 
+    //Setup the time table variables.
     DateTime startTime = DateTime.ParseExact("08:00", "HH:mm", CultureInfo.InvariantCulture);
     DateTime endTime = DateTime.ParseExact("17:00", "HH:mm", CultureInfo.InvariantCulture);
     TimeSpan increments = new TimeSpan(1, 0, 0);
@@ -69,7 +77,6 @@
         </div>
 
         <div class="col-md-9 info-panel vm-1 hm-1">
-
             @* Lesson week is hardcoded for now. *@
             @TimeTableHelper.GenerateTimeTable(startTime, endTime, increments, controller.GetTimeTableData(1));
         </div>

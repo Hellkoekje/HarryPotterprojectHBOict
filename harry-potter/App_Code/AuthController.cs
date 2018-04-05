@@ -21,6 +21,10 @@ public enum LoginState
 public class AuthController : BaseController
 {
     private static bool _isLoggedIn = false;
+
+    /// <summary>
+    ///     Bool wether there is a login available.
+    /// </summary>
     public static bool IsLoggedIn
     {
         get
@@ -30,6 +34,10 @@ public class AuthController : BaseController
     }
 
     private static int _loginId = -1;
+
+    /// <summary>
+    ///     The current user id that is logged int.
+    /// </summary>
     public static int LoginId
     {
         get
@@ -45,7 +53,7 @@ public class AuthController : BaseController
     public static RegisterState Register(string username, string password, string email)
     {
         //Encrypt the entered password
-        string encryptedPassword = Encrypt(password);
+        string encryptedPassword = EncryptPassword(password);
 
         try
         {
@@ -127,16 +135,22 @@ public class AuthController : BaseController
         _isLoggedIn = false;
     }
 
-    private static string Encrypt(string password)
+    /// <summary>
+    ///     Encrypt the current password.
+    /// </summary>
+    private static string EncryptPassword(string password)
     {
         //TODO: Potentially salt the password.
         string hashed = Crypto.Hash(password, "SHA256");
         return Convert.ToBase64String(Encoding.UTF8.GetBytes(hashed));
     }
 
+    /// <summary>
+    ///     Check if the given password is valid against the one in the database.
+    /// </summary>
     private static bool CheckPassword(string passwordInput, string passwordFromDb)
     {
-        string passwordEncryptedInput = Encrypt(passwordInput);
+        string passwordEncryptedInput = EncryptPassword(passwordInput);
         return passwordEncryptedInput.Equals(passwordFromDb, StringComparison.InvariantCulture);
     }
 

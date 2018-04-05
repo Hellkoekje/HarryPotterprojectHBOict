@@ -1,5 +1,6 @@
 ﻿@{ 
-    object auth = Session["user_loggedin"];
+
+    //Check if the user has a session, if so, tell the authcontroller to load user data.
     if (Session["user_loggedin"] != null)
     {
         int id = (int)Session["user_id"];
@@ -10,6 +11,7 @@
         }
     }
 
+    //Check if the user wants to log out (via query string).
     if (Request.QueryString["logout"] != null)
     {
         Session["user_loggedin"] = false;

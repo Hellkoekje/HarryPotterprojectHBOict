@@ -1,4 +1,7 @@
-﻿public struct User
+﻿/// <summary>
+///     Object representation of a user row.
+/// </summary>
+public struct User
 {
     public readonly int Id;
     public readonly string Email;
@@ -6,6 +9,9 @@
     public readonly int House;
     public readonly int Points;
 
+    /// <summary>
+    ///     Construct the user object based on a query result.
+    /// </summary>
     public User(dynamic queryResult)
     {
         if (queryResult.Count > 0)

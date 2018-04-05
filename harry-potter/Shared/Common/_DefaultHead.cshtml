@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="@Href("~/Stylesheets/common.css")" />
 
 @{
-    //Include page specific css.
+    //Include any stylesheets that are specific to that page.
+    //Page title serves are identifier.
     string stylesheetName = Page.Title.ToLower() + ".css";
     string stylesheetDirectory = "~/Stylesheets";
 

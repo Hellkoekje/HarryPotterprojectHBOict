@@ -5,6 +5,7 @@
     string uPassword = "";
     bool hasPost = false;
 
+    //Validation rules
     Validation.Add("uUname",
         Validator.Required("Username cannot be empty"),
         Validator.StringLength(32, 6, "Username is too long or too short"),
@@ -22,6 +23,7 @@
 
         bool isValid = true;
 
+        //Check if the validation rules are valid.
         if (!Validation.IsValid())
         {
             isValid = false;
@@ -33,19 +35,23 @@
             uUname = Request.Form["uUname"];
             uPassword = Request.Form["uPassword"];
 
+            //Request login, get the state back.
             LoginState loginState = AuthController.Login(uUname, uPassword);
 
             switch(loginState)
             {
+                //We logged in, create session, redirect to member portal.
                 case LoginState.Ok:
                     Session["user_loggedin"] = true;
                     Session["user_id"] = AuthController.LoginId;
 
                     Response.Redirect("~/Portal.cshtml");
                     break;
+                //Some fatal error occured :(
                 case LoginState.Failed:
                     Response.Redirect("~/500.cshtml");
                     break;
+                //Login username/password was not correct.
                 case LoginState.Incorrect:
                     Validation.AddFormError("The given information seems to be incorrect.");
                     break;
@@ -87,7 +93,6 @@
                 <div class="custom-control">
                     <input type="checkbox" name="uRemember">
                     <label class="custom-control-label form-label" for="uRemember">Remember me</label>
-                    <a href="@Href("~/RecoverPassword.cshtml")" class="fl-right inline-link" align="right">Recover your password</a>
                 </div>
 
                 <button type="submit" class="btn btn-secondary vm-1">Login!</button>

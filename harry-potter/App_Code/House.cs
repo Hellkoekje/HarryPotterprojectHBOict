@@ -1,10 +1,17 @@
-﻿public struct House
+﻿/// <summary>
+///     Object representation of the house table row.
+/// </summary>
+public struct House
 {
     public int Id;
     public string HouseName;
     public int MembersCount;
     public int Points;
 
+    /// <summary>
+    ///     Construct the house object based on a query result.
+    /// </summary>
+    /// <param name="queryResult"></param>
     public House(dynamic queryResult)
     {
         if (queryResult.Count > 0)
