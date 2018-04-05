@@ -97,7 +97,7 @@
                 else if (Request["vraag5"] == "haw") { haw += 1; }
                 else if (Request["vraag5"] == "hol") { hol += 1; }
                 else if (Request["vraag5"] == "vin") { vin += 1; }
-            }
+            
 
 
             if (ash > haw && ash > hol && ash > vin) { wand = "ash"; }
@@ -118,14 +118,14 @@
                 <p> Your wand is....</p><br /><br />
                 if (wand == "ash")
                 { <p>Ashen</p> <img style="height:400px; width:300px" src="https://vignette.wikia.nocookie.net/harrypotter/images/d/de/Cedricdiggorywandnn8202.jpg/revision/latest?cb=20140602191133" /> }
-                if (wand == "haw")
+               else if (wand == "haw")
                 { <p>Hawtorn</p><img style="height:400px; width:500px" src="https://vignette.wikia.nocookie.net/harrypotter/images/3/39/DracoMalfoyWandNN8409.jpg/revision/latest?cb=20141208233016" /> }
-                if (wand == "hol")
+              else  if (wand == "hol")
                 {<p>Holly</p><img style="height:400px; width:600px" src="https://vignette.wikia.nocookie.net/harrypotter/images/c/ca/HarryPotterWandNN8415.jpg/revision/latest?cb=20141208232731" />  }
-                if (wand == "vin")
+               else if (wand == "vin")
                 { <p>Vine</p> <img style="height:400px; width:500px" src="https://vignette.wikia.nocookie.net/harrypotter/images/c/c6/HermioneGrangerWandNN8411.jpg/revision/latest?cb=20140602200406" /> }
                 <br /> <br /> <br />
-                                <a href="AAAAAAAAAAAAAAAA"><button type="button" id="okbutton" class="btn btn-secondary" style="color:black">&nbsp; OK &nbsp;</button></a>
+                                <a class="button2" href="~/Portal.cshtml">&nbsp; OK &nbsp;</a>
                                 <style>
                                     #submitbutton {
                                         display: none
@@ -137,7 +137,7 @@
                                 </style>
             }
         }
-
+        }
     </form>
 
 </body>
