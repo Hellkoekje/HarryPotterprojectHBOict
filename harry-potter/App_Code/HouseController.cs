@@ -1,5 +1,4 @@
-﻿
-public class HouseController : BaseController
+﻿public class HouseController : BaseController
 {
     /// <summary>
     ///     Fetch a house by name.
@@ -21,5 +20,23 @@ public class HouseController : BaseController
         dynamic result = _database.Query(query, id);
 
         return new House(result);
+    }
+
+    /// <summary>
+    ///     Increse the amount of members by one
+    /// </summary>
+    public static void IncrementMemberCount(House house)
+    {
+        string query = $"UPDATE houses SET hMembers = hMembers + 1 WHERE hName=@0";
+        _database.Execute(query, house.HouseName);
+    }
+
+    /// <summary>
+    ///     Increase the amount of points by one.
+    /// </summary>
+    public static void IncrementMemberPoints(House house)
+    {
+        string query = "UPDATE houses SET hPoints = hPoints + 1 WHERE hName=@0";
+        _database.Execute(query, house.HouseName);
     }
 }

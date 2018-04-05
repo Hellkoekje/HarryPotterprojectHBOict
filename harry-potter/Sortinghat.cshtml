@@ -57,7 +57,9 @@
             houseImagePath = ImageHelper.PathToImageInContent(house) + ".png";
 
             House houseObject = HouseController.GetHouseByName(house);
+
             UserController.AssignHouse(user, houseObject);
+            HouseController.IncrementMemberCount(houseObject);
         }
     }
 }
