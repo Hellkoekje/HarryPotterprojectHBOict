@@ -1,178 +1,132 @@
-﻿@using System.Configuration;
-@using System.Data;
-@using System.Data.SqlClient;
-
-@{
+﻿@{
     Page.Title = "SortingHat";
     Layout = "~/Shared/_DefaultPage.cshtml";
-}
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
+    bool valid = true;
+    string house = "";
+    string houseImagePath = "";
+
+    if (IsPost)
+    {
+        IDictionary<string, int> points = new Dictionary<string, int>
+        {
+            { "hufflepuff", 0 },
+            { "slytherin", 0 },
+            { "ravenclaw", 0 },
+            { "gryffindor", 0 },
+        };
+
+        string[] answers = new[]
+        {
+            Request["vraag1"],
+            Request["vraag2"],
+            Request["vraag3"],
+            Request["vraag4"],
+            Request["vraag5"]
+        };
+
+        foreach (var answer in answers)
+        {
+            if (answer == null)
+            {
+                valid = false;
+                break;
+            }
+
+            points[answer]++;
+        }
+
+        if (valid)
+        {
+            house = points.OrderByDescending(n => n.Value)
+                .FirstOrDefault()
+                .Key;
+
+            houseImagePath = ImageHelper.PathToImageInContent(house) + ".png";
+        }
+    }
+}
+
+@if (!IsPost)
+{
     <form method="post">
         <br /> <h1 class="harry-font">Sorting Hat</h1>
         <br />
         <br />
-       
+
         <div id="quiz">
             <p>
                 <strong>Question 1</strong> <br />
                 What kind of wizard do you want to become?<br />
-                <input type="radio" value="s" name="vraag1">&nbsp;&nbsp;A great wizard, powerful and respected <br />
-                <input type="radio" value="h" name="vraag1">&nbsp;&nbsp;A good wizard, just and kind<br />
-                <input type="radio" value="r" name="vraag1">&nbsp;&nbsp;A wise wizard, clever and knowledgeable<br />
-                <input type="radio" value="g" name="vraag1">&nbsp;&nbsp;A bold wizard, courageous and adventurous <br />
+                <input type="radio" value="slytherin" name="vraag1">&nbsp;&nbsp;A great wizard, powerful and respected <br />
+                <input type="radio" value="hufflepuff" name="vraag1">&nbsp;&nbsp;A good wizard, just and kind<br />
+                <input type="radio" value="ravenclaw" name="vraag1">&nbsp;&nbsp;A wise wizard, clever and knowledgeable<br />
+                <input type="radio" value="gryffindor" name="vraag1">&nbsp;&nbsp;A bold wizard, courageous and adventurous <br />
             </p>
             <p>
                 <strong>Question 2</strong> <br />
                 If you had to say something bad about yourself, would you say you are:<br />
-                <input type="radio" value="h" name="vraag2">&nbsp;&nbsp;Cowardly<br />
-                <input type="radio" value="r" name="vraag2">&nbsp;&nbsp;Ordinary<br />
-                <input type="radio" value="g" name="vraag2">&nbsp;&nbsp;Ignorant<br />
-                <input type="radio" value="s" name="vraag2">&nbsp;&nbsp;Selfish<br />
+                <input type="radio" value="hufflepuff" name="vraag2">&nbsp;&nbsp;Cowardly<br />
+                <input type="radio" value="ravenclaw" name="vraag2">&nbsp;&nbsp;Ordinary<br />
+                <input type="radio" value="gryffindor" name="vraag2">&nbsp;&nbsp;Ignorant<br />
+                <input type="radio" value="slytherin" name="vraag2">&nbsp;&nbsp;Selfish<br />
             </p>
             <p>
                 <strong>Question 3</strong><br />
                 What do you find most important in life?<br />
-                <input type="radio" value="h" name="vraag3">&nbsp;&nbsp;Hanging out with friends, helping others<br />
-                <input type="radio" value="r" name="vraag3">&nbsp;&nbsp;Reading books, obtaining knowledge<br />
-                <input type="radio" value="g" name="vraag3">&nbsp;&nbsp;Going on new adventures, always trying out new exciting things<br />
-                <input type="radio" value="s" name="vraag3">&nbsp;&nbsp;Earning money, always looking for opportunities<br />
+                <input type="radio" value="hufflepuff" name="vraag3">&nbsp;&nbsp;Hanging out with friends, helping others<br />
+                <input type="radio" value="ravenclaw" name="vraag3">&nbsp;&nbsp;Reading books, obtaining knowledge<br />
+                <input type="radio" value="gryffindor" name="vraag3">&nbsp;&nbsp;Going on new adventures, always trying out new exciting things<br />
+                <input type="radio" value="slytherin" name="vraag3">&nbsp;&nbsp;Earning money, always looking for opportunities<br />
             </p>
             <p>
                 <strong>Question 4</strong><br />
                 What’s your pet of choice?<br />
-                <input type="radio" value="s" name="vraag4">&nbsp;&nbsp;A Cat<br />
-                <input type="radio" value="g" name="vraag4">&nbsp;&nbsp;A Dog<br />
-                <input type="radio" value="r" name="vraag4">&nbsp;&nbsp;A type of Bird<br />
-                <input type="radio" value="h" name="vraag4">&nbsp;&nbsp;A Rabbit<br />
+                <input type="radio" value="slytherin" name="vraag4">&nbsp;&nbsp;A Cat<br />
+                <input type="radio" value="gryffindor" name="vraag4">&nbsp;&nbsp;A Dog<br />
+                <input type="radio" value="ravenclaw" name="vraag4">&nbsp;&nbsp;A type of Bird<br />
+                <input type="radio" value="hufflepuff" name="vraag4">&nbsp;&nbsp;A Rabbit<br />
             </p>
             <p>
                 <strong>Question 5</strong><br />
                 If I’m facing a very important decision I will:
                 <br />
-                <input type="radio" value="r" name="vraag5">&nbsp;&nbsp;Think it through real hard<br />
-                <input type="radio" value="s" name="vraag5">&nbsp;&nbsp;Try to think of a way around it	 <br />
-                <input type="radio" value="g" name="vraag5">&nbsp;&nbsp;Do the best I can, I’m not scared of a little challenge<br />
-                <input type="radio" value="h" name="vraag5">&nbsp;&nbsp;Get very anxious and stressed to the point where I’m having trouble falling asleep<br />
+                <input type="radio" value="ravenclaw" name="vraag5">&nbsp;&nbsp;Think it through real hard<br />
+                <input type="radio" value="slytherin" name="vraag5">&nbsp;&nbsp;Try to think of a way around it	 <br />
+                <input type="radio" value="gryffindor" name="vraag5">&nbsp;&nbsp;Do the best I can, I’m not scared of a little challenge<br />
+                <input type="radio" value="hufflepuff" name="vraag5">&nbsp;&nbsp;Get very anxious and stressed to the point where I’m having trouble falling asleep<br />
             </p>
             <br />
             <br />
+
+            <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
         </div>
-        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
-
-
-        @{  
-            int uHouse = 0;
-            var sp = 0;
-            var hp = 0;
-            var rp = 0;
-            var gp = 0;
-            if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
-            { <p> Be sure to fill in everything!</p>}
-            else
-            {
-                if (Request["vraag1"] == "s") { sp += 1; }
-                else if (Request["vraag1"] == "h") { hp += 1; }
-                else if (Request["vraag1"] == "r") { rp += 1; }
-                else if (Request["vraag1"] == "g") { gp += 1; }
-                if (Request["vraag2"] == "s") { sp += 1; }
-                else if (Request["vraag2"] == "h") { hp += 1; }
-                else if (Request["vraag2"] == "r") { rp += 1; }
-                else if (Request["vraag2"] == "g") { gp += 1; }
-                if (Request["vraag3"] == "s") { sp += 1; }
-                else if (Request["vraag3"] == "h") { hp += 1; }
-                else if (Request["vraag3"] == "r") { rp += 1; }
-                else if (Request["vraag3"] == "g") { gp += 1; }
-                if (Request["vraag4"] == "s") { sp += 1; }
-                else if (Request["vraag4"] == "h") { hp += 1; }
-                else if (Request["vraag4"] == "r") { rp += 1; }
-                else if (Request["vraag4"] == "g") { gp += 1; }
-                if (Request["vraag5"] == "s") { sp += 1; }
-                else if (Request["vraag5"] == "h") { hp += 1; }
-                else if (Request["vraag5"] == "r") { rp += 1; }
-                else if (Request["vraag5"] == "g") { gp += 1; }
-
-
-
-                if (gp > hp && gp > rp && gp > sp) { uHouse = 1; }
-                else if (hp > sp && hp > rp && hp > gp) { uHouse = 2; }
-                else if (sp > hp && sp > rp && sp > gp) { uHouse = 3; }
-                else if (rp > hp && rp > sp && rp > gp) { uHouse = 4; }
-                else if (rp == 2 && hp == 2) { uHouse = 4; }
-                else if (rp == 2 && gp == 2) { uHouse = 2; }
-                else if (sp == 2 && rp == 2) { uHouse = 1; }
-                else if (sp == 2 && gp == 2) { uHouse = 2; }
-                else if (sp == 2 && hp == 2) { uHouse = 3; }
-                else if (hp == 2 && gp == 2) { uHouse = 3; }
-                else { uHouse = 1; }
-
-
-
-                <p> Your House is....</p><br /><br />
-
-                if (uHouse == 1)
-                {
-                    <img style="height:400px; width:500px" src="~/Content/Images/gryffindor.png" />
-                }
-                else if (uHouse == 2)
-                {
-                    <img style="height:400px; width:600px" src="~/Content/Images/hufflepuff.jpg" />
-                }
-                else if (uHouse == 3)
-                {
-                    <img style="height:400px; width:300px" src="~/Content/Images/slytherin.jpg" />
-                }
-                else if (uHouse == 4)
-                {
-                    <img style="height:400px; width:500px" src="~/Content/Images/ravenclaw.png" />
-                }
-
-                else
-                {
-                    Response.Redirect("~/Portal.cshtml");
-                }
-                string uUname = "";
-                if (Request.Cookies["Login"] != null)
-                {
-                    uUname = Request.Cookies["Login"]["uUname"];
-                }
-
-                //Database
-                //Connectie met de database. 
-                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-                //con.Open();
-                //Update van de house
-                //SqlCommand command;
-                //SqlDataAdapter adapter = new SqlDataAdapter();
-                //string Sql = "";
-                //command = new SqlCommand(Sql);
-                //Sql = "update users set uHouse=" + @uHouse + "where uUname=" + uUname;
-                //adapter.UpdateCommand = new SqlCommand(Sql);
-                //adapter.UpdateCommand.ExecuteNonQuery();
-                //Connectie met database wordt gesloten.
-                //con.Close();
-
-
-                <br /> <br /> <br />
-                <a href = "~/Login.cshtml" button type = "button" id = "okbutton" class="btn btn-secondary" style="color:White">&nbsp; OK &nbsp;</a>
-                    <style>
-                        #submitbutton {
-                            display: none
-                        }
-                       #quiz{
-                            display:none
-                        }
-                    </style>
-
-
-
-            }
-            }
     </form>
+}
+else if (valid)
+{
+    <div class="col-md-12" align="center">
+        <h1 class="harry-font">Sorting Hat</h1>
+        <br />
+        <p> The wise sorting hat has spoken and came to the following conclusion:</p>
+        <br />
 
-</body>
-</html>
+        <h3 class="harry-font">Your house is @house!</h3>
+        <img style="width:250px; min-width:250px;" src="@houseImagePath" />
+        <br />
+        <br />
+
+        <br />
+
+        <br />
+
+        <a class="btn btn-lg btn-default" href="Sorteerhoed.cshtml">Continue!</a>
+
+    </div>
+}
+else
+{
+    <h2 class="harry-font">Woops!</h2>
+    <p> Looks like you forgot some questions, make sure you fill in all the questions!</p>
+    <a class="btn btn-lg btn-default" href="Sorteerhoed.cshtml">Back</a>
+}
