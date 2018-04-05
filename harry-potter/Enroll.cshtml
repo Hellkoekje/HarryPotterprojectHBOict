@@ -2,6 +2,7 @@
 @using System.Configuration;
 @using System.Data;
 @using System.Data.SqlClient;
+
 @{
     bool hasPost = false;
     string uYear = DateTime.Now.ToShortDateString();
@@ -58,16 +59,18 @@
             isThisPostValid = false;
         }
 
+        Random random = new Random();
+        int uHouse = random.Next(1, 5);
         if (isThisPostValid)
         {
             try
             {
                 Database db = Database.Open("Database");
-                var insertCommand = "INSERT INTO users (uUname, uEmail, uPassword, uYear) VALUES (@0, @1, @2, @3)";
-                db.Execute(insertCommand, uUname, uEmail, uPassword, uYear);
+                var insertCommand2 = "INSERT INTO users (uUname, uPassword, uEmail, uHouse, uYear ) VALUES (@0, @1, @2, @3, @4)";
+                db.Execute(insertCommand2, uUname, uPassword, uEmail, uHouse, uYear);
 
+                db.Close();
                 Response.Redirect("~/Login.cshtml");
-
             }
             catch (Exception e)
             {

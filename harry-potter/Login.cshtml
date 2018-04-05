@@ -49,15 +49,9 @@
             con.Close();
 
 
-            // Aanmaak van de cookies Username & House.
             if (dt.Rows.Count > 0)
             {
-                HttpCookie onzekoekjes = new HttpCookie("Login");
-                onzekoekjes["uUname"] = dt.Rows[0]["uUname"].ToString();
-                onzekoekjes["uUhouse"] = dt.Rows[0]["uHouse"].ToString();
-                onzekoekjes["uPassword"] = dt.Rows[0]["uPassword"].ToString();
-                onzekoekjes.Expires = DateTime.Now.AddDays(1d);
-                Response.Cookies.Add(onzekoekjes);
+              
 
                 //Redirect naar de homepage voor de members.
                 Response.Redirect("~/Portal.cshtml");

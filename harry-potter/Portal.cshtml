@@ -7,10 +7,10 @@
 
     //int house = 0;
     string username = "";
-    string name = "";
-    string Points = "";
-    string House = "4";
-    string id = "";
+    int Points = 0;
+    int House = 0;
+    int ID = 0;
+
     if (Request.Cookies["Login"] != null)
     {
         username = Request.Cookies["Login"]["uUname"];
@@ -29,30 +29,34 @@
 
     // Hier word de table geselecteerd, en gecheckt waar de gegevens weg worden gehaald. 
 
-    SqlCommand cmd = new SqlCommand("select * from users where uUname ='" + @username + "'", con);
+    SqlCommand cmd = new SqlCommand("select * from users where uUname='"+@username+"'", con);
     SqlDataReader dr = cmd.ExecuteReader();
 
     // Hier word de database gelezen en op benamingen gezet.
 
     if (dr.Read())
     {
-        id = dr[0].ToString();
-        name = dr[3].ToString();
-        House = dr[4].ToString();
-        Points = dr[5].ToString();
-
+        ID = dr.GetInt32(0);
+        username = dr[3].ToString();
+        House = dr.GetInt32(4);
+        Points = dr.GetInt32(5);
     }
+
     SqlDataAdapter da = new SqlDataAdapter(cmd);
     DataTable dt = new DataTable();
+    // Cookiesss
 
-    HttpCookie onzekoekjes = new HttpCookie("Login");
-    onzekoekjes["uUname"] = dt.Rows[0]["uUname"].ToString();
-    onzekoekjes["uUhouse"] = dt.Rows[0]["uHouse"].ToString();
-    onzekoekjes["uId"] = dt.Rows[0]["uId"].ToString();
 
-    onzekoekjes.Expires = DateTime.Now.AddDays(1d);
-    Response.Cookies.Add(onzekoekjes);
+    if (ID != 0)
+    {
 
+        HttpCookie UserKoekje = new HttpCookie("koekjemonster");
+        UserKoekje["ID"] = ID.ToString();
+        UserKoekje["username"] = username.ToString();
+        UserKoekje["House"] = House.ToString();
+        UserKoekje.Expires = DateTime.Now.AddDays(1d);
+        Response.Cookies.Add(UserKoekje);
+    }
     // Hier word de connection gestopt met de database.
 
     con.Close();
@@ -60,18 +64,18 @@
     // Hier wordt na gekeken of de gebruiker al een house heeft. 
     // Zo niet word de gebruiker redirect naar de Sorteerhoed.
 
-    if (House == "0")
+    if (House == 0)
     {
         Response.Redirect("~/Sorteerhoed.cshtml");
     }
 
-    IDictionary<string, string> houseImages = new Dictionary<string, string>
+    IDictionary<int, string> houseImages = new Dictionary<int, string>
     {
-        { "0", "nope.png"},
-        { "1", "gryffindor.png" },
-        { "2", "hufflepuff.png" },
-        { "3", "ravenclaw.png"},
-        { "4", "slytherin.png"}
+        { 0, "nope.png"},
+        { 1, "gryffindor.png" },
+        { 2, "hufflepuff.jpg" },
+        { 3, "ravenclaw.png"},
+        { 4, "slytherin.jpg"}
     };
 
 
@@ -98,9 +102,9 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Total members: @controller.GetHouseMemberCount(House) members</li>
-                    <li>Total points: @controller.GetHousePoints(house) points</li>
-                    <li>House rank: #@controller.GetHouseRank(house)</li>
+                    <li>Total members: @House members</li>
+                    <li>Total points: @House points</li>
+                    <li>House rank: @House  </li>
                 </ul>
             </div>
 
@@ -111,7 +115,7 @@
                 </div>
 
                 <ul class="stats-list" align="left">
-                    <li>Wizard name: @name</li>
+                    <li>Wizard name: @username</li>
                     <li>Total points: @Points points</li>
                     <li>Wizard rank: #@controller.GetUserRank(username)</li>
                 </ul>

@@ -140,20 +140,21 @@
                 {
                     uUname = Request.Cookies["Login"]["uUname"];
                 }
+
                 //Database
                 //Connectie met de database. 
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
-                con.Open();
+                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+                //con.Open();
                 //Update van de house
-                SqlCommand command;
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                string Sql = "";
-                command = new SqlCommand(Sql);
-                Sql = "update users set uHouse=" + @uHouse + "where uUname=" + uUname;
-                adapter.UpdateCommand = new SqlCommand(Sql);
+                //SqlCommand command;
+                //SqlDataAdapter adapter = new SqlDataAdapter();
+                //string Sql = "";
+                //command = new SqlCommand(Sql);
+                //Sql = "update users set uHouse=" + @uHouse + "where uUname=" + uUname;
+                //adapter.UpdateCommand = new SqlCommand(Sql);
                 //adapter.UpdateCommand.ExecuteNonQuery();
                 //Connectie met database wordt gesloten.
-                con.Close();
+                //con.Close();
 
 
                 <br /> <br /> <br />
