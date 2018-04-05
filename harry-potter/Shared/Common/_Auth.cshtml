@@ -1,0 +1,11 @@
+﻿@{ 
+    if(Session["user_loggedin"] != null)
+    {
+        int id = (int)Session["user_id"];
+
+        if (id > 0)
+        {
+            AuthController.SetAuthedUser(id);
+        }
+    }
+}
