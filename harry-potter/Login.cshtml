@@ -1,7 +1,4 @@
-﻿@using System.Configuration;
-@using System.Data;
-@using System.Data.SqlClient;
-@{
+﻿@{
     Page.Title = "Login";
     Layout = "~/Shared/_DefaultPage.cshtml";
     string uUname = "";
@@ -18,10 +15,6 @@
         Validator.Required("Password cannot be empty"),
         Validator.StringLength(1024, 6, "The given password is too short")
     );
-
-    HttpCookie UserKoekje = new HttpCookie("UserKoekje");
-    Response.Cookies["UserKoekje"].Expires = DateTime.Now.AddDays(-1);
-
 
     if (IsPost)
     {
@@ -40,21 +33,23 @@
             uUname = Request.Form["uUname"];
             uPassword = Request.Form["uPassword"];
 
-            int id = AuthController.Login(uUname, uPassword);
+            LoginState loginState = AuthController.Login(uUname, uPassword);
 
-            if(id > 0)
+            switch(loginState)
             {
-                Session["user_loggedin"] = true;
-                Session["user_id"] = id;
-
-                Response.Redirect("~/Portal.cshtml");
+                case LoginState.Ok:
+                    Session["user_loggedin"] = true;
+                    Session["user_id"] = AuthController.LoggedInId;
+                    Session.Timeout = 180;
+                    Response.Redirect("~/Portal.cshtml");
+                    break;
+                case LoginState.Failed:
+                    Response.Redirect("~/500.cshtml");
+                    break;
+                case LoginState.Incorrect:
+                    Validation.AddFormError("The given information seems to be incorrect.");
+                    break;
             }
-        }
-        else
-        {
-            //Error message verkeerde wachtwoord / id.
-            ModelState.AddError("accountNotFound", "The given account name does not exist!");
-            ModelState.AddError("passwordIncorrect", "The password for this account is incorrect.");
         }
     }
 }
@@ -82,13 +77,11 @@
                     <label class="form-label" for="uUname">Username</label>
                     <input name="uUname" class="form-control" @Validation.For("uUname") required>
                     @FormHelper.GetFormFieldError("uUname", Validation.IsValid("uUname"), hasPost)
-                    @FormHelper.GetFormError("accountNotFound");
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="uPassword">Password</label>
                     <input type="password" name="uPassword" class="form-control" @Validation.For("uPassword") required>
                     @FormHelper.GetFormFieldError("uPassword", Validation.IsValid("uPassword"), hasPost)
-                    @FormHelper.GetFormError("passwordIncorrect");
                 </div>
 
                 <div class="custom-control">

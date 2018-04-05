@@ -1,9 +1,10 @@
 ﻿@{ 
-    if(Session["user_loggedin"] != null)
+    object auth = Session["user_loggedin"];
+    if (Session["user_loggedin"] != null)
     {
         int id = (int)Session["user_id"];
 
-        if (id > 0)
+        if (id > 0 && AuthController.LoggedInId == -1)
         {
             AuthController.SetAuthedUser(id);
         }

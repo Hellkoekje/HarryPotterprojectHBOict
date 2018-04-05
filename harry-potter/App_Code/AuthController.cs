@@ -10,6 +10,14 @@ public enum RegisterState
     AlreadyExists
 }
 
+public enum LoginState
+{
+    Ok,
+    Failed,
+    Incorrect,
+
+}
+
 public class AuthController
 {
     private static Database database;
@@ -27,12 +35,12 @@ public class AuthController
         }
     }
 
-    private static int _isLogged = -1;
-    public static int IsLoggedIn
+    private static int _loggedInId = -1;
+    public static int LoggedInId
     {
         get
         {
-            return _isLogged;
+            return _loggedInId;
         }
     }
 
@@ -58,7 +66,7 @@ public class AuthController
 
             //Add account to the database.
             string query = "INSERT INTO users (uUname, uPassword, uEmail, uHouse, uYear) VALUES (@0, @1, @2, @3, @4)";
-            _database.Execute(query, username, encryptedPassword, email, 0, 0);
+            _database.Execute(query, username, encryptedPassword, email, 0, DateTime.Now.ToShortDateString());
             return RegisterState.Ok;
         }
         catch(Exception e)
@@ -71,28 +79,48 @@ public class AuthController
         }
     }
 
-    public static int Login(string username, string password)
+    /// <summary>
+    ///     Log in an user.
+    /// </summary>
+    /// <returns>State of the login.</returns>
+    public static LoginState Login(string username, string password)
     {
-        string query = "SELECT uId, uPassword FROM users WHERE uUname=@0";
-        dynamic result = _database.Query(query, username);
-
-        if (result.Count <= 0) return -1;
-
-        bool valid =  CheckPassword(password, result.uPassword);
-
-        if(valid)
+        try
         {
-            return result.uId;
-        }
+            string query = "SELECT uId, uPassword FROM users WHERE uUname=@0";
+            dynamic result = _database.Query(query, username);
 
-        return -1;
+            if (result.Count <= 0) return LoginState.Incorrect;
+
+            bool valid = CheckPassword(password, result[0].uPassword);
+
+            if (valid)
+            {
+                SetAuthedUser(result[0].uId);
+                return LoginState.Ok;
+            }
+
+            return LoginState.Incorrect;
+        }
+        catch (Exception e)
+        {
+            return LoginState.Failed;
+        }
+        finally
+        {
+            _database.Close();
+        }
     }
 
+    /// <summary>
+    ///     Tell the client we have a logged in user, represented by an id.
+    /// </summary>
+    /// <param name="id">Id of the user.</param>
     public static void SetAuthedUser(int id)
     {
         if (id == -1) return;
 
-        _isLogged = id;
+        _loggedInId = id;
     }
 
     private static string Encrypt(string password)
