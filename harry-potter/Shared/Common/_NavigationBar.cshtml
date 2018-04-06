@@ -5,67 +5,70 @@
 
     //Make a dictionary of all the navigation links. Based on the login state.
     List<Tuple<string, string, string>> navigationLinks = new List<Tuple<string, string, string>>();
+
     if (isLoggedIn)
     {
         navigationLinks.Add(new Tuple<string, string, string>("Home", Href("~/Index.cshtml"), "fa-home"));
-    }
-    else
-    {
         navigationLinks.Add(new Tuple<string, string, string>("Wizard Portal", Href("~/Portal.cshtml"), "fa-star"));
         navigationLinks.Add(new Tuple<string, string, string>("Classes", Href("~/LesOverzicht.cshtml"), "fa-magic"));
         navigationLinks.Add(new Tuple<string, string, string>("Quidditch", Href("~/QuidditchOverview.cshtml"), "fa-star"));
+        navigationLinks.Add(new Tuple<string, string, string>("Wand", Href("~/Wand.cshtml"), "fa-star"));
+        navigationLinks.Add(new Tuple<string, string, string>("HouseCup", Href("~/HouseCup.cshtml"), "fa-star"));
+    
+
     }
 
-    navigationLinks.Add(new Tuple<string, string, string>("About us", Href("~/AboutUs.cshtml"), "fa-info"));
-}
+    navigationLinks.Add(new Tuple<string, string, string>
+        ("About us", Href("~/AboutUs.cshtml"), "fa-info"));
+        }
 
-<nav class="navbar navbar-colors">
-	<div class="container-fluid">
+        <nav class="navbar navbar-colors">
+            <div class="container-fluid">
 
-		<!-- The collasped menu button.-->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle navbar-hamburger-button" data-toggle="collapse" data-target="#jfdgjfsg">
-				<i class="fas fa-bars"></i>
-			</button>
-		</div>
+                <!-- The collasped menu button.-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle navbar-hamburger-button" data-toggle="collapse" data-target="#jfdgjfsg">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
 
-		<!-- The menu itself.-->
-		<div class="collapse navbar-collapse" id="jfdgjfsg">
-			<ul class="nav navbar-nav">
-                    
-			@foreach (var item in navigationLinks)
-			{
-				string classes = item.Item1.Equals(Page.Title) ? "navbar-active" : "";
+                <!-- The menu itself.-->
+                <div class="collapse navbar-collapse" id="jfdgjfsg">
+                    <ul class="nav navbar-nav">
 
-				<li class=@classes>
-					<a href="@item.Item2"><i class="fas @item.Item3"></i> @item.Item1</a>
-				</li>
-			}
-			</ul>
+                        @foreach (var item in navigationLinks)
+                        {
+                            string classes = item.Item1.Equals(Page.Title) ? "navbar-active" : "";
+
+                            <li class=@classes>
+                                <a href="@item.Item2"><i class="fas @item.Item3"></i> @item.Item1</a>
+                            </li>
+                        }
+                    </ul>
 
 
-			<ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
 
-				@if (isLoggedIn)
-				{
-                <li>
-                    <a href="@Href("~/Portal.cshtml")"><i class="fas fa-user"></i> @user.Username</a>
-                </li>
-                <li>
-                    <a href="@Href("~/Index.cshtml?logout=true")"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </li>
-				}
-				else
-				{
-					<li>
-						<a href=@Href("~/Enroll.cshtml")><i class="fas fa-plus"></i> Enroll</a>
-					</li>
+                        @if (isLoggedIn)
+                        {
+                            <li>
+                                <a href="@Href("~/Portal.cshtml")"><i class="fas fa-user"></i> @user.Username</a>
+                            </li>
+                            <li>
+                                <a href="@Href("~/Index.cshtml?logout=true")"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href=@Href("~/Enroll.cshtml")><i class="fas fa-plus"></i> Enroll</a>
+                            </li>
 
-					<li>
-						<a href=@Href("~/Login.cshtml")><i class="fas fa-sign-in-alt"></i> Login</a>
-					</li>
-				}
-			</ul>
-		</div>
-	</div>
-</nav>
+                            <li>
+                                <a href=@Href("~/Login.cshtml")><i class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
