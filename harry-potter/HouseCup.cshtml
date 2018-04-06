@@ -1,41 +1,20 @@
 ﻿@{Page.Title = "HouseCup";
     Layout = "~/Shared/_DefaultPage.cshtml";
 
+    House winningHouse = HouseController.GetHouseWithMostPoints();
+    string imagePath = ImageHelper.PathToImageInContent(winningHouse.HouseName + ".png");
 }
-<DOCTYPE! HTML>
-<html>
-  <head>
-   
 
-</head>
-<body>
-    <div><br />
-<h1 class="harry-font">House Cup </h1><br />
-        <h3>And the Winner of the 2018 House Cup is..</h3><br /><br />
-  @{ //Acquires house points from database (hoe moet dit?)
-      var hPoints1 = 0;
-      var hPoints2 = 0;
-      var hPoints3 = 0;
-      var hPoints4 = 0;
+<div>
+    <br />
+    <h1 class="harry-font">House Cup </h1><br />
+    <h3>And the Winner of the 2018 House Cup is..</h3><br /><br />
 
-      //in case 2 houses have equal points add 1 point to one of those houses
-      if (hPoints1 == hPoints2) {hPoints1+=1; }
-      else if (hPoints1 == hPoints3) {hPoints1+=1; }
-      else if (hPoints1 == hPoints4) {hPoints1+=1; }
-      else if (hPoints2 == hPoints3) {hPoints2+=1; }
-      else if (hPoints2 == hPoints4) {hPoints2+=1; }
-      else if (hPoints3 == hPoints4) {hPoints3+=1; }
-      //displays a picture of the winning house with earned points
-      if      ( hPoints1 > hPoints2 && hPoints1 > hPoints3 && hPoints1 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints1</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/gryffindor.png"/> }
-      else if ( hPoints2 > hPoints1 && hPoints2 > hPoints3 && hPoints2 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints2</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/hufflepuff.jpg"/> }
-      else if ( hPoints3 > hPoints2 && hPoints3 > hPoints1 && hPoints3 > hPoints4 ) {<p style="font-size:20px">Points: @hPoints3</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/ravenclaw.png"/> }
-      else if ( hPoints4 > hPoints2 && hPoints4 > hPoints3 && hPoints4 > hPoints1 ) {<p style="font-size:20px">Points: @hPoints4</p><img style="height:auto; max-width: 600px; width:100%" src="~/Content/Images/slytherin.jpg"/> }
-      
-      }
-    <br /><br />
-        <a href="~/Portal.cshtml"><p>Congratulations! Click here to return to home</p></a>
-    </div>
+    <h2 class="harry-font">@winningHouse.HouseName</h2>
+    <p style="font-size:20px">Points: @winningHouse.Points.ToString()</p>
+    <img style="height:auto; max-width: 600px; width:100%" src="@imagePath" />
 
-</body>
-</html>
-</DOCTYPE!>
+    <br/>
+    <br/>
+    <a href="~/Portal.cshtml"><p>Congratulations! Click here to return to home</p></a>
+</div>

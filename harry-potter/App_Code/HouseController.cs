@@ -22,6 +22,15 @@
         return new House(result);
     }
 
+    public static House GetHouseWithMostPoints()
+    {
+        string query = "SELECT * FROM houses ORDER by hPoints DESC";
+
+        dynamic result = _database.Query(query);
+
+        return new House(result);
+    }
+
     /// <summary>
     ///     Increse the amount of members by one
     /// </summary>
