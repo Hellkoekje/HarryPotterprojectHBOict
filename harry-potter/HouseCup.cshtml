@@ -1,5 +1,5 @@
-﻿@{Page.Title = "HouseCup";
-    Layout = "~/Shared/_DefaultPage.cshtml";
+﻿@{Page.Title = "House Cup";
+    Layout = "~/Shared/_DefaultPageAuthOnly.cshtml";
 
     House winningHouse = HouseController.GetHouseWithMostPoints();
     string imagePath = ImageHelper.PathToImageInContent(winningHouse.HouseName + ".png");

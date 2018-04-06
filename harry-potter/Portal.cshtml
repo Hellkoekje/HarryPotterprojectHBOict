@@ -1,13 +1,7 @@
 ﻿@using System.Globalization;
 @{
     Page.Title = "Portal";
-    Layout = "~/Shared/_DefaultPage.cshtml";
-
-    //Check if the user is logged in.
-    if(!AuthController.IsLoggedIn)
-    {
-        Response.Redirect("~/Login.cshtml");
-    }
+    Layout = "~/Shared/_DefaultPageAuthOnly.cshtml";
 
     // Fetch user data.
     User user = UserController.GetUserById(AuthController.LoginId);

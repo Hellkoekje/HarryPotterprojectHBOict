@@ -16,7 +16,10 @@
 @{
     //Include any stylesheets that are specific to that page.
     //Page title serves are identifier.
-    string stylesheetName = Page.Title.ToLower() + ".css";
+    string name = Page.Title;
+    string name2 = name.Replace(" ", "");
+    string stylesheetName = name2.ToLower() + ".css";
+
     string stylesheetDirectory = "~/Stylesheets";
 
     string serverPath = Server.MapPath(stylesheetDirectory);

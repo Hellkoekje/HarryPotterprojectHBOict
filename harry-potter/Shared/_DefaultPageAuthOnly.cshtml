@@ -1,0 +1,30 @@
+﻿@RenderPage("~/Shared/Common/_Auth.cshtml")
+@{ 
+    bool isLoggedIn = AuthController.IsLoggedIn;
+
+    if(!isLoggedIn)
+    {
+        Response.Redirect("~/Login.cshtml");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		@RenderPage("~/Shared/Common/_DefaultHead.cshtml")
+	</head>
+    <body class="background">
+        <div class="content-wrapper">
+
+            @RenderPage("~/Shared/Common/_NavigationBar.cshtml")
+
+            <div class="content row">
+                <div class="col-md-10 col-sm-12 col-md-offset-1">
+                    @RenderBody()
+                </div>
+
+                @RenderPage("~/Shared/Common/_Footer.cshtml")
+            </div>
+        </div>
+    </body>
+</html>
