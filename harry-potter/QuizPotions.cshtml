@@ -3,124 +3,116 @@
     Layout = "~/Shared/_DefaultPageAuthOnly.cshtml";
 
 }
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
-    <!--A Potions Quiz with a submit button to submit the answers -->
-    <form method="post"> 
-        <h1 class="harry-font">Quiz Potions 1</h1><div id="quiz">
-    <p><h3>Take the quiz and see if you're a real wizard!</h3></p>
-    <p>
+<!--A Potions Quiz with a submit button to submit the answers -->
+<form method="post">
+    <h1 class="harry-font">Quiz Potions 1</h1><div id="quiz">
+        <p><h3>Take the quiz and see if you're a real wizard!</h3></p>
+        <p>
+            <br />
+            <img src="http://2.bp.blogspot.com/-BRxVQP6ErkI/T3OBKguRePI/AAAAAAAAAZg/4Hjt-Nfkw-c/s1600/IMG_0199.JPG" alt="Potions" style="float:right;width:300px;height:180px;margin:15px" />
+
+            Question 1:<br />
+            What is the first potion learned at Hogwarts? <br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Wideye Potion.<br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Forgetfulness Potion.<br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Herbicide Potion.<br />
+            <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Cure for Boils.<br />
+        </p>
+        <p>
+            Question 2:<br />
+            What’s the most advanced and challenging potion?<br />
+            <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;Polyjuice Potion.<br />
+            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Sleeping Draught.<br />
+            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Shrinking Solution.<br />
+            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Love Potion.<br />
+        </p>
+        <p>
+            Question 3:<br />
+            What is the main ingredient for most potions?<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Blood.<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Water.<br />
+            <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;Plants.<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Magic.<br />
+        </p>
+        <p>
+            Question 4:<br />
+            Where do the Potions lessons take place?<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;A classroom.<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;In the greenhouses behind the castle.<br />
+            <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;In the dungeon under the Hogwarts castle.<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;On top of the tallest tower in Hogwarts.<br />
+        </p>
+        <p>
+            Question 5:<br />
+            Students from the Slytherin house most of the time did better than others at Potions class, how come? <br />
+            <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;Professor Snape favored students from the Slytherin House.<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Professor Snape gave certain students better treatment.<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Students from Slytherin cheated during classes.<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Students from Slytherin were really motivated.<br />
+        </p>
         <br />
-        <img src="http://2.bp.blogspot.com/-BRxVQP6ErkI/T3OBKguRePI/AAAAAAAAAZg/4Hjt-Nfkw-c/s1600/IMG_0199.JPG" alt="Potions" style="float:right;width:300px;height:180px;margin:15px" />
+        <br />
+        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+    </div>
 
-        Question 1:<br />
-        What is the first potion learned at Hogwarts? <br />
-        <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Wideye Potion.<br />
-        <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Forgetfulness Potion.<br />
-        <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Herbicide Potion.<br />
-        <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Cure for Boils.<br />
-    </p>
-    <p>
-        Question 2:<br />
-        What’s the most advanced and challenging potion?<br />
-        <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;Polyjuice Potion.<br />
-        <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Sleeping Draught.<br />
-        <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Shrinking Solution.<br />
-        <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;Love Potion.<br />
-    </p>
-    <p>
-        Question 3:<br />
-        What is the main ingredient for most potions?<br />
-        <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Blood.<br />
-        <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Water.<br />
-        <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;Plants.<br />
-        <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;Magic.<br />
-    </p>
-    <p>
-        Question 4:<br />
-        Where do the Potions lessons take place?<br />
-        <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;A classroom.<br />
-        <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;In the greenhouses behind the castle.<br />
-        <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;In the dungeon under the Hogwarts castle.<br />
-        <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;On top of the tallest tower in Hogwarts.<br />
-    </p>
-    <p>
-        Question 5:<br />
-        Students from the Slytherin house most of the time did better than others at Potions class, how come? <br />
-        <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;Professor Snape favored students from the Slytherin House.<br />
-        <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Professor Snape gave certain students better treatment.<br />
-        <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Students from Slytherin cheated during classes.<br />
-        <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Students from Slytherin were really motivated.<br />
-    </p>
-    <br />
-    <br />
-    <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
-</div>
+    @{
+        /*Results  will only shown if none of the radiobutton groups have a value of null.
+        If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
+        Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
+        */
 
-        @{
-            /*Results  will only shown if none of the radiobutton groups have a value of null. 
-            If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
-            Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
-            */
-
-            var kek = 1;
-            double score = 0;
-            if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
-            { kek -= 1; }
-            else
-            {
-                if (Request["vraag1"] == "correct") { score += 1; }
-                if (Request["vraag2"] == "correct") { score += 1; }
-                if (Request["vraag3"] == "correct") { score += 1; }
-                if (Request["vraag4"] == "correct") { score += 1; }
-                if (Request["vraag5"] == "correct") { score += 1; }
-            }
-
-            double procentgoed = score / 5 * 100;
-
-            if (procentgoed >= 55)
-            {
-                User user = UserController.GetUserById(AuthController.LoginId);
-                House house = HouseController.GetHouseById(user.House);
-
-                int points = 1;
-
-                if (procentgoed > 75)
-                {
-                    points++;
-                }
-
-                if (procentgoed > 90)
-                {
-                    points++;
-                }
-
-                HouseController.IncrementMemberPoints(house, points);
-                UserController.IncrementUserPoints(user, points);
-            }
-
-            if (kek == 0)
-            { <p> Be sure to fill in everything!</p>}
-            else
-            {
-                <p>You answered @score/5 (@procentgoed%) of the questions correctly</p> if (score >= 3)
-                { <P>Good job!</P>}
-                else
-                {<p>Better luck next time! </p>}
-                <a href="~/LesOverzicht.cshtml"><p>Click here to go back to Lesson overview</p></a>
-
-                <style>
-                    #quiz {
-                        display: none
-                    }
-                </style>
-            }
+        var kek = 1;
+        double score = 0;
+        if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
+        { kek -= 1; }
+        else
+        {
+            if (Request["vraag1"] == "correct") { score += 1; }
+            if (Request["vraag2"] == "correct") { score += 1; }
+            if (Request["vraag3"] == "correct") { score += 1; }
+            if (Request["vraag4"] == "correct") { score += 1; }
+            if (Request["vraag5"] == "correct") { score += 1; }
         }
-    </form>
 
-</body>
-</html>
+        double procentgoed = score / 5 * 100;
+
+        if (procentgoed >= 55)
+        {
+            User user = UserController.GetUserById(AuthController.LoginId);
+            House house = HouseController.GetHouseById(user.House);
+
+            int points = 1;
+
+            if (procentgoed > 75)
+            {
+                points++;
+            }
+
+            if (procentgoed > 90)
+            {
+                points++;
+            }
+
+            HouseController.IncrementMemberPoints(house, points);
+            UserController.IncrementUserPoints(user, points);
+        }
+
+        if (kek == 0)
+        { <p> Be sure to fill in everything!</p>}
+        else
+        {
+            <p>You answered @score/5 (@procentgoed%) of the questions correctly</p> if (score >= 3)
+            { <P>Good job!</P>}
+            else
+            {<p>Better luck next time! </p>}
+            <a href="~/LesOverzicht.cshtml"><p>Click here to go back to Lesson overview</p></a>
+
+            <style>
+                #quiz {
+                    display: none
+                }
+            </style>
+        }
+    }
+</form>

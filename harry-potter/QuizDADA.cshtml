@@ -2,167 +2,159 @@
     Page.Title = "Astronomy";
     Layout = "~/Shared/_DefaultPageAuthOnly.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
-    <!--A Defence against the Dark Arts Quiz with a submit button to submit the answers -->
-    <form method="post">
-        <br /> <h1 class="harry-font">Quiz Defence Against the Dark Arts 1</h1>
+<!--A Defence against the Dark Arts Quiz with a submit button to submit the answers -->
+<form method="post">
+    <br /> <h1 class="harry-font">Quiz Defence Against the Dark Arts 1</h1>
+    <br />
+    <br />
+    <div id="quiz">
+        <p>
+            <strong>Question 1</strong> <br />
+            On which day can you follow the subject DADA ( ‘’Defense Against The Dark Arts’’ )?<br />
+            <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Monday<br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Tuesday <br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Wednesday<br />
+            <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Friday<br />
+        </p>
+        <p>
+            <strong>Question 2</strong> <br />
+            Students also learn how to duel in DADA-lessons<br />
+            <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;True<br />
+            <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;False<br />
+
+        </p>
+        <p>
+            <strong>Question 3</strong><br />
+            DADA is a required subject from:<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;2nd to 4th year<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;1st to 6th year<br />
+            <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;1st to 5th year<br />
+            <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;3rd to 7th year<br />
+        </p>
+        <p>
+            <strong>Question 4</strong><br /> <img style="width:300px; float:right; height:200px; margin-right:300px; position:relative;" src="http://www.rocketmime.com/astronomy/fig/LittleDipper.gif" />
+            DADA classes take place on:<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;The first floor, Classroom 105 in the south tower and classroom 5c<br />
+            <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;The first floor, Classroom 104 in the north tower and classroom 3c on the third floor<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;The second floor, Classroom 103 in the west tower and classroom 5D on the third floor<br />
+            <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Classroom 105 in the north tower and classroom 3c on the first floor
+            <br />
+        </p>
+        <p>
+            <strong>Question 5</strong><br />
+            Which of these DADA-Teachers turned out to be a fraud?<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Remus Lupin<br />
+            <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;Gilderoy lockhart<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Quirinus Quirrel<br />
+            <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Alastor Moody<br />
+        </p>
+        <p>
+            <strong>Questions 6</strong><br />
+            A dark spell is defined as:<br />
+            <input type="radio" value="wrong" name="vraag6">&nbsp;&nbsp;A dark magic spell or a curse meant to harm others.
+            <br />
+            <input type="radio" value="wrong" name="vraag6">&nbsp;&nbsp;any spell that directly affects the object in a harmful manner, usually associated with varying levels of pain and even death.
+            <br />
+            <input type="radio" value="correct" name="vraag6">&nbsp;&nbsp;any spell that consistently affects the object in a negative manner, usually associated with varying levels of discomfort.
+            <br />
+        </p>
+        <p>
+            <strong>Questions 7</strong><br />
+            The infamous spell ‘’Avada Kedavra’’ is a:<br />
+            <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Jinx <br />
+            <input type="radio" value="correct" name="vraag7">&nbsp;&nbsp;Curse<br />
+            <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Dark Spell<br />
+            <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Hex<br />
+            <strong>Questions 8</strong><br />
+        </p>
+        <p>
+            To cast the Knockback Jinx you use the incanation:
+            <br />
+            <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp;Oppugno <br />
+            <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp; Relashio<br />
+            <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp; Crucio<br />
+            <input type="radio" value="correct" name="vraag8">&nbsp;&nbsp; Flipendo<br />
+        </p>
+        <p>
+            <strong>Questions 9</strong><br />
+
+            The order of wickedness of the different dark spells goes as follows: (left weakest, right strongest)
+            <br />
+            <input type="radio" value="correct" name="vraag9">&nbsp;&nbsp; Jinxes-Hexes-Curses<br />
+            <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp;Curses-Hexes-Jinxes <br />
+            <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp; Hexes-Curses-Jinxes<br />
+            <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp; Hexes-Jinxes-Curses<br />
+        </p>
         <br />
         <br />
-        <div id="quiz">
-            <p>
-                <strong>Question 1</strong> <br />
-                On which day can you follow the subject DADA ( ‘’Defense Against The Dark Arts’’ )?<br />
-                <input type="radio" value="correct" name="vraag1">&nbsp;&nbsp;Monday<br />
-                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Tuesday <br />
-                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Wednesday<br />
-                <input type="radio" value="wrong" name="vraag1">&nbsp;&nbsp;Friday<br />
-            </p>
-            <p>
-                <strong>Question 2</strong> <br />
-                Students also learn how to duel in DADA-lessons<br />
-                <input type="radio" value="correct" name="vraag2">&nbsp;&nbsp;True<br />
-                <input type="radio" value="wrong" name="vraag2">&nbsp;&nbsp;False<br />
+        <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
+    </div>
 
-            </p>
-            <p>
-                <strong>Question 3</strong><br />
-                DADA is a required subject from:<br />
-                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;2nd to 4th year<br />
-                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;1st to 6th year<br />
-                <input type="radio" value="correct" name="vraag3">&nbsp;&nbsp;1st to 5th year<br />
-                <input type="radio" value="wrong" name="vraag3">&nbsp;&nbsp;3rd to 7th year<br />
-            </p>
-            <p>
-                <strong>Question 4</strong><br /> <img style="width:300px; float:right; height:200px; margin-right:300px; position:relative;" src="http://www.rocketmime.com/astronomy/fig/LittleDipper.gif" />
-                DADA classes take place on:<br />
-                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;The first floor, Classroom 105 in the south tower and classroom 5c<br />
-                <input type="radio" value="correct" name="vraag4">&nbsp;&nbsp;The first floor, Classroom 104 in the north tower and classroom 3c on the third floor<br />
-                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;The second floor, Classroom 103 in the west tower and classroom 5D on the third floor<br />
-                <input type="radio" value="wrong" name="vraag4">&nbsp;&nbsp;Classroom 105 in the north tower and classroom 3c on the first floor
-                <br />
-            </p>
-            <p>
-                <strong>Question 5</strong><br />
-                Which of these DADA-Teachers turned out to be a fraud?<br />
-                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Remus Lupin<br />
-                <input type="radio" value="correct" name="vraag5">&nbsp;&nbsp;Gilderoy lockhart<br />
-                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Quirinus Quirrel<br />
-                <input type="radio" value="wrong" name="vraag5">&nbsp;&nbsp;Alastor Moody<br />
-            </p>
-            <p>
-                <strong>Questions 6</strong><br />
-                A dark spell is defined as:<br />
-                <input type="radio" value="wrong" name="vraag6">&nbsp;&nbsp;A dark magic spell or a curse meant to harm others.
-                <br />
-                <input type="radio" value="wrong" name="vraag6">&nbsp;&nbsp;any spell that directly affects the object in a harmful manner, usually associated with varying levels of pain and even death.
-                <br />
-                <input type="radio" value="correct" name="vraag6">&nbsp;&nbsp;any spell that consistently affects the object in a negative manner, usually associated with varying levels of discomfort.
-                <br />
-            </p>
-            <p>
-                <strong>Questions 7</strong><br />
-                The infamous spell ‘’Avada Kedavra’’ is a:<br />
-                <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Jinx <br />
-                <input type="radio" value="correct" name="vraag7">&nbsp;&nbsp;Curse<br />
-                <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Dark Spell<br />
-                <input type="radio" value="wrong" name="vraag7">&nbsp;&nbsp;Hex<br />
-                <strong>Questions 8</strong><br />
-            </p>
-            <p>
-                To cast the Knockback Jinx you use the incanation:
-                <br />
-                <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp;Oppugno <br />
-                <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp; Relashio<br />
-                <input type="radio" value="wrong" name="vraag8">&nbsp;&nbsp; Crucio<br />
-                <input type="radio" value="correct" name="vraag8">&nbsp;&nbsp; Flipendo<br />
-            </p>
-            <p>
-                <strong>Questions 9</strong><br />
+    @{
+        /*Results  will only shown if none of the radiobutton groups have a value of null.
+    If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
+    Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
+    */
 
-                The order of wickedness of the different dark spells goes as follows: (left weakest, right strongest)
-                <br />
-                <input type="radio" value="correct" name="vraag9">&nbsp;&nbsp; Jinxes-Hexes-Curses<br />
-                <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp;Curses-Hexes-Jinxes <br />
-                <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp; Hexes-Curses-Jinxes<br />
-                <input type="radio" value="wrong" name="vraag9">&nbsp;&nbsp; Hexes-Jinxes-Curses<br />
-            </p>
-            <br />
-            <br />
-            <button type="submit" id="submitbutton" class="btn btn-secondary" style="color:black"> &nbsp; SUBMIT &nbsp;  </button>
-        </div>
+        var kek = 1;
+        double score = 0;
+        if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
+        { kek -= 1; }
+        else
+        {
 
-            @{
-                /*Results  will only shown if none of the radiobutton groups have a value of null. 
-            If thats the case, the variable "score" will increase by 1 for each radiobutton value of ''correct''
-            Pressing submit will hide the quiz, display the quiz results and show a button to return to lesson overview
-            */
+            if (Request["vraag1"] == "correct") { score += 1; }
+            if (Request["vraag2"] == "correct") { score += 1; }
+            if (Request["vraag3"] == "correct") { score += 1; }
+            if (Request["vraag4"] == "correct") { score += 1; }
+            if (Request["vraag5"] == "correct") { score += 1; }
+            if (Request["vraag6"] == "correct") { score += 1; }
+            if (Request["vraag7"] == "correct") { score += 1; }
+            if (Request["vraag8"] == "correct") { score += 1; }
+            if (Request["vraag9"] == "correct") { score += 1; }
+        }
 
-                var kek = 1;
-                double score = 0;
-                if (Request["vraag1"] == null || Request["vraag2"] == null || Request["vraag3"] == null || Request["vraag4"] == null || Request["vraag5"] == null)
-                { kek -= 1; }
-                else
-                {
+        double procentgoed = score / 9 * 100;
 
-                    if (Request["vraag1"] == "correct") { score += 1; }
-                    if (Request["vraag2"] == "correct") { score += 1; }
-                    if (Request["vraag3"] == "correct") { score += 1; }
-                    if (Request["vraag4"] == "correct") { score += 1; }
-                    if (Request["vraag5"] == "correct") { score += 1; }
-                    if (Request["vraag6"] == "correct") { score += 1; }
-                    if (Request["vraag7"] == "correct") { score += 1; }
-                    if (Request["vraag8"] == "correct") { score += 1; }
-                    if (Request["vraag9"] == "correct") { score += 1; }
-                }
+        if (procentgoed >= 55)
+        {
+            User user = UserController.GetUserById(AuthController.LoginId);
+            House house = HouseController.GetHouseById(user.House);
 
-                double procentgoed = score / 9 * 100;
+            int points = 1;
 
-                if (procentgoed >= 55)
-                {
-                    User user = UserController.GetUserById(AuthController.LoginId);
-                    House house = HouseController.GetHouseById(user.House);
-
-                    int points = 1;
-
-                    if (procentgoed > 75)
-                    {
-                        points++;
-                    }
-
-                    if (procentgoed > 90)
-                    {
-                        points++;
-                    }
-
-                    HouseController.IncrementMemberPoints(house, points);
-                    UserController.IncrementUserPoints(user, points);
-                }
-
-                if (kek == 0)
-                { <p> Be sure to fill in everything!</p>}
-            else
+            if (procentgoed > 75)
             {
-                    <p>You answered @score/9 (@procentgoed%) of the questions correctly</p> if (procentgoed >= 55)
-                { <P>Good job!</P>}
-                else
-                {<p>Better luck next time! </p>}
-
-                    
-                    <a href="~/LesOverzicht.cshtml"><p>Click here to go back to Lesson overview</p></a>
-
-                    <style>
-                        #quiz {
-                            display: none
-                        }
-                    </style>
-                }
+                points++;
             }
-</form>
 
-</body>
-</html>
+            if (procentgoed > 90)
+            {
+                points++;
+            }
+
+            HouseController.IncrementMemberPoints(house, points);
+            UserController.IncrementUserPoints(user, points);
+        }
+
+        if (kek == 0)
+        { <p> Be sure to fill in everything!</p>}
+        else
+        {
+            <p>You answered @score/9 (@procentgoed%) of the questions correctly</p> if (procentgoed >= 55)
+            { <P>Good job!</P>}
+            else
+            {<p>Better luck next time! </p>}
+
+
+            <a href="~/LesOverzicht.cshtml"><p>Click here to go back to Lesson overview</p></a>
+
+            <style>
+                #quiz {
+                    display: none
+                }
+            </style>
+        }
+    }
+</form>
