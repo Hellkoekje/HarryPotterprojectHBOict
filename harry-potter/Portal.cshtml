@@ -15,7 +15,7 @@
     //Check if the user has a house.
     if (user.House <= 0)
     {
-        Response.Redirect("~/Sortinghat.cshtml");
+        Response.Redirect("~/Hatclick.cshtml");
     }
     
     //Fetch house data.
@@ -52,7 +52,7 @@
             <div class="row info-panel vm-1">
                 <div align="center">
                     <h4 class="harry-font"> House information </h4>
-                    <img src=@houseImagePath width="200px">
+                    <img src=@houseImagePath style="width:200px;">
                 </div>
 
                 <ul class="stats-list" align="left">
@@ -65,7 +65,7 @@
             <div class="row info-panel vm-1">
                 <div align="center">
                     <h4 class="harry-font"> Wizard information </h4>
-                    <img src=@avatarImagePath width="200px">
+                    <img src=@avatarImagePath style="width:200px;">
                 </div>
 
                 <ul class="stats-list" align="left">
